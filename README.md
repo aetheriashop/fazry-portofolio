@@ -62,20 +62,15 @@ Buka berkas `index.html` menggunakan teks editor (misalnya Antigravity / VS Code
 
 ---
 
-## 🚀 Cara Menjalankan & Mempublikasikan ke GitHub Pages
+## 🚀 Akses Online & Cara Menjalankan
 
-### 1. Menjalankan di Komputer Lokal
+### 1. Tautan Live Online
+- **Vercel (Production)**: [https://fazry-portofolio.vercel.app](https://fazry-portofolio.vercel.app)
+- **GitHub Pages**: [https://aetheriashop.github.io/fazry-portofolio/](https://aetheriashop.github.io/fazry-portofolio/)
+
+### 2. Menjalankan di Komputer Lokal
 Cukup klik ganda (*double-click*) file `index.html` untuk langsung membukanya di browser Google Chrome, Edge, atau Firefox tanpa instalasi server tambahan.
 
-### 2. Mengaktifkan GitHub Pages (Online Gratis)
-1. Lakukan *commit* dan *push* berkas ke repositori GitHub:
-   ```bash
-   git add .
-   git commit -m "feat: inisialisasi portofolio akademik bahasa arab siyasah"
-   git push origin main
-   ```
-2. Buka repositori Anda di GitHub: `https://github.com/aetheriashop/fazry-portofolio`
-3. Klik menu **Settings** > **Pages** (di bilah kiri).
-4. Di bagian **Branch**, pilih `main` dan folder `/(root)`, lalu klik **Save**.
-5. Tunggu sekitar 1-2 menit, website portofolio Anda akan langsung online dan dapat diakses publik di:
-   `https://aetheriashop.github.io/fazry-portofolio/`
+### 3. Otomasi CI/CD
+Repositori GitHub ini telah terhubung langsung dengan **Vercel**. Setiap kali Anda melakukan `git push` ke cabang `main`, Vercel akan otomatis melakukan pembaruan (*auto-deploy*) ke website live Anda.
+
