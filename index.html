@@ -98,11 +98,13 @@
             </a>
 
             <!-- Navigation Links -->
-            <nav class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium">
-                <a href="#home" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Home</a>
-                <a href="#photo-booth" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Photo Booth</a>
-                <a href="#akademik" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Tugas Akademik</a>
-                <a href="#photo-booth" class="hidden sm:inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-600 px-3.5 py-1.5 text-xs font-bold text-white shadow hover:from-blue-600 hover:to-purple-700 transition">
+            <nav class="flex items-center gap-1.5 sm:gap-3 text-xs sm:text-sm font-medium">
+                <a href="#home" class="px-2.5 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Home</a>
+                <a href="#photo-booth" class="px-2.5 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Photo Booth</a>
+                <a href="#tugas" onclick="switchTaskTab('mufradat');" class="px-2.5 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Tugas Kosakata</a>
+                <a href="#tugas" onclick="switchTaskTab('qiraah');" class="hidden sm:inline-block px-2.5 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Tugas Baca Teks</a>
+                <a href="#tugas" onclick="switchTaskTab('uas');" class="hidden sm:inline-block px-2.5 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Tugas UAS</a>
+                <a href="#photo-booth" class="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1.5 text-xs font-bold text-white shadow hover:from-blue-600 hover:to-purple-700 transition">
                     Buka Kamera
                 </a>
             </nav>
@@ -131,38 +133,49 @@
                 </div>
             </div>
 
-            <!-- 3 Exact Feature Cards -->
+            <!-- 3 Exact Feature Cards (Clickable to Tasks / Booth) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 w-full max-w-4xl">
                 
-                <!-- Card 1: Capture Photos -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera h-12 w-12 mb-4 text-blue-400">
-                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
-                        <circle cx="12" cy="13" r="3"></circle>
+                <!-- Card 1: Tugas Kosakata (Clickable) -->
+                <a href="#tugas" onclick="switchTaskTab('mufradat');" class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-blue-500/60 hover:bg-slate-800/80 transition cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-12 w-12 mb-4 text-blue-400 group-hover:scale-110 transition-transform">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                     </svg>
-                    <h2 class="text-xl font-bold mb-2">Capture Photos</h2>
-                    <p class="text-slate-300">Take high-quality photos using your device's webcam with just a click.</p>
-                </div>
+                    <h2 class="text-xl font-bold mb-2">Tugas Kosakata</h2>
+                    <p class="text-slate-300 text-sm">Lihat status tugas 10 mufradat bahasa Arab (saat ini masih kosong / belum diisi).</p>
+                    <span class="mt-4 text-xs font-semibold text-blue-400 flex items-center gap-1">
+                        Cek Tugas Kosakata &rarr;
+                    </span>
+                </a>
 
-                <!-- Card 2: Apply Filters -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-purple-500/50 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter h-12 w-12 mb-4 text-purple-400">
-                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                <!-- Card 2: Tugas Baca Teks (Clickable) -->
+                <a href="#tugas" onclick="switchTaskTab('qiraah');" class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-purple-500/60 hover:bg-slate-800/80 transition cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones h-12 w-12 mb-4 text-purple-400 group-hover:scale-110 transition-transform">
+                        <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
                     </svg>
-                    <h2 class="text-xl font-bold mb-2">Apply Filters</h2>
-                    <p class="text-slate-300">Enhance your photos with various filters and adjustable intensity.</p>
-                </div>
+                    <h2 class="text-xl font-bold mb-2">Tugas Baca Teks</h2>
+                    <p class="text-slate-300 text-sm">Tugas qira'ah dan rekaman audio suara (saat ini masih kosong / belum diisi).</p>
+                    <span class="mt-4 text-xs font-semibold text-purple-400 flex items-center gap-1">
+                        Cek Tugas Baca Teks &rarr;
+                    </span>
+                </a>
 
-                <!-- Card 3: Create Photo Strips -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-pink-500/50 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image h-12 w-12 mb-4 text-pink-400">
-                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
-                        <circle cx="9" cy="9" r="2"></circle>
-                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                <!-- Card 3: Tugas UAS (Clickable) -->
+                <a href="#tugas" onclick="switchTaskTab('uas');" class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-pink-500/60 hover:bg-slate-800/80 transition cursor-pointer group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text h-12 w-12 mb-4 text-pink-400 group-hover:scale-110 transition-transform">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M10 9H8"></path>
+                        <path d="M16 13H8"></path>
+                        <path d="M16 17H8"></path>
                     </svg>
-                    <h2 class="text-xl font-bold mb-2">Create Photo Strips</h2>
-                    <p class="text-slate-300">Generate and download memorable photo strips to keep or share.</p>
-                </div>
+                    <h2 class="text-xl font-bold mb-2">Tugas UAS</h2>
+                    <p class="text-slate-300 text-sm">Laporan makalah akhir semester UAS (saat ini masih kosong / belum diisi).</p>
+                    <span class="mt-4 text-xs font-semibold text-pink-400 flex items-center gap-1">
+                        Cek Tugas UAS &rarr;
+                    </span>
+                </a>
 
             </div>
 
@@ -320,9 +333,7 @@
 
                                 <!-- Active Strip Container (Hidden when empty) -->
                                 <div id="activeStripBox" class="hidden w-full max-w-[260px] bg-white text-slate-900 p-3 rounded-lg shadow-2xl flex flex-col gap-2 items-center">
-                                    <div id="stripPhotosList" class="flex flex-col gap-2 w-full">
-                                        <!-- Captured photos added here -->
-                                    </div>
+                                    <div id="stripPhotosList" class="flex flex-col gap-2 w-full"></div>
                                     
                                     <!-- Photo Strip Footer Tag -->
                                     <div class="text-center pt-2 border-t border-slate-200 w-full">
@@ -350,150 +361,139 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 3. PORTOFOLIO AKADEMIK (HTN 1B - CUSTOMIZABLE TEMPLATES) -->
+    <!-- 3. TUGAS AKADEMIK (KOSONG / BELUM ADA TUGAS DIKERJAKAN)  -->
     <!-- ======================================================== -->
-    <section id="akademik" class="py-16 px-4 bg-slate-900/60 border-b border-slate-800">
-        <div class="container mx-auto max-w-5xl">
+    <section id="tugas" class="py-16 px-4 bg-slate-900/60 border-b border-slate-800">
+        <div class="container mx-auto max-w-4xl">
             
             <!-- Section Header -->
-            <div class="text-center mb-12">
+            <div class="text-center mb-10">
                 <span class="text-xs uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-800/60 font-semibold">
                     Akademik HTN 1B
                 </span>
                 <h2 class="text-3xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                    Portofolio Tugas Bahasa Arab
+                    Portofolio Tugas Akademik
                 </h2>
                 <p class="text-slate-400 text-sm mt-1">
-                    Slot template bersih untuk tugas mandiri Mahasiswa: <strong>Fazry ilham sulaeman</strong> (NIM: <strong>1263030076</strong> - <strong>HTN 1B</strong>)
+                    Mahasiswa: <strong>Fazry ilham sulaeman</strong> &bull; NIM: <strong>1263030076</strong> &bull; Kelas: <strong>HTN 1B</strong>
                 </p>
             </div>
 
-            <div class="space-y-12">
-                
-                <!-- 1. BIODATA MAHASISWA CARD -->
-                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm">
-                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span> Identitas Mahasiswa
-                        </h3>
-                        <span class="text-xs text-purple-400 font-mono">HTN 1B</span>
-                    </div>
+            <!-- Interactive Task Selector Tabs -->
+            <div class="flex items-center justify-center gap-2 mb-8 bg-slate-800/60 p-1.5 rounded-xl border border-slate-700 max-w-xl mx-auto">
+                <button id="tabBtnMufradat" onclick="switchTaskTab('mufradat');" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    Tugas 1: Kosakata
+                </button>
+                <button id="tabBtnQiraah" onclick="switchTaskTab('qiraah');" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-700/60">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path></svg>
+                    Tugas 2: Baca Teks
+                </button>
+                <button id="tabBtnUas" onclick="switchTaskTab('uas');" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-700/60">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>
+                    Tugas 3: UAS
+                </button>
+            </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
-                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">Nama Mahasiswa</span>
-                            <span class="font-bold text-white text-base">Fazry ilham sulaeman</span>
-                        </div>
-                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
-                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">NIM</span>
-                            <span class="font-bold text-blue-400 font-mono text-base">1263030076</span>
-                        </div>
-                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
-                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">Program Studi & Kelas</span>
-                            <span class="font-bold text-purple-300 text-base">HTN 1B</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. TUGAS 1: 10 MUFRADAT (SLOT TEMPLATE) -->
-                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="mufradat">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-700 pb-3 mb-6 gap-2">
+            <!-- TASK CONTENT PANELS (ALL CLEAN EMPTY STATES) -->
+            
+            <!-- PANEL 1: TUGAS KOSAKATA (EMPTY STATE) -->
+            <div id="panelMufradat" class="task-panel">
+                <div data-slot="card" class="rounded-xl border p-8 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm">
+                    
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-6">
                         <div>
-                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span> Tugas 1: 10 Mufradat Siyasah
+                            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-blue-500"></span> Tugas 1: 10 Kosakata Siyasah (Mufradat)
                             </h3>
-                            <p class="text-xs text-slate-400">10 Slot kosakata Arab, transliterasi, arti, dan contoh kalimat (siap di-custom)</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Mata Kuliah Bahasa Arab / Siyasah Syar'iyyah</p>
                         </div>
-                        <span class="text-xs text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded-md border border-purple-800 self-start sm:self-auto">
-                            Template Kosong
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-950/60 text-amber-400 border border-amber-800/60">
+                            Status: Belum Diisi
                         </span>
                     </div>
 
-                    <!-- 10 Slots Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="mufradatContainer">
-                        <!-- Populated via script with customizable template slots 1-10 -->
-                    </div>
-                </div>
-
-                <!-- 3. TUGAS 2: BACA TEKS & AUDIO (SLOT TEMPLATE) -->
-                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="qiraah">
-                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-pink-400"></span> Tugas 2: Baca Teks (Qira'ah)
-                        </h3>
-                        <span class="text-xs text-pink-300 bg-pink-950/60 px-2.5 py-1 rounded-md border border-pink-800">
-                            Audio & Naskah
-                        </span>
-                    </div>
-
-                    <div class="space-y-4">
-                        <!-- Audio Player -->
-                        <div class="bg-slate-900/80 p-4 rounded-xl border border-dashed border-slate-700">
-                            <span class="text-xs text-purple-300 font-semibold block mb-2">Pemutar Audio Rekaman Suara Anda:</span>
-                            <!-- [EDIT DISINI: GANTI SRC DENGAN FILE REKAMAN MP3 ANDA] -->
-                            <audio id="qiraahAudio" controls class="w-full h-10 filter invert-[0.85] hue-rotate-180">
-                                <source src="" type="audio/mpeg">
-                                Browser Anda tidak mendukung pemutar audio.
-                            </audio>
-                            <span class="text-[11px] text-amber-400 block mt-2">
-                                ⚠ File audio belum dihubungkan. Masukkan nama file rekaman audio pada atribut <code>src=""</code> di berkas <code>index.html</code>.
-                            </span>
+                    <!-- Authentic Snapbooth Empty State Box -->
+                    <div class="flex flex-col items-center justify-center min-h-[280px] border-2 border-dashed border-slate-700 rounded-xl p-8 text-center bg-slate-900/40">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500 mb-4 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open text-slate-500"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></svg>
                         </div>
-
-                        <!-- Arabic Text Box -->
-                        <div class="bg-slate-900/80 p-6 rounded-xl border border-dashed border-slate-700 text-right">
-                            <p class="text-xs text-purple-400 mb-2 font-mono text-left">[Slot Teks Qira'ah Berbahasa Arab]:</p>
-                            <!-- [EDIT DISINI: MASUKKAN TEKS BACAAN ARAB DENGAN HARAKAT] -->
-                            <p class="font-arabic text-2xl text-slate-300 leading-loose" dir="rtl">
-                                [اُكْتُبْ هُنَا نَصَّ القِرَاءَةِ بِاللُّغَةِ العَرَبِيَّةِ مَعَ الحَرَكَاتِ الكَامِلَةِ لِأَدَاءِ الوَاجِبِ الدِّرَاسِيِّ لِمَادَّةِ اللُّغَةِ العَرَبِيَّةِ...]
-                            </p>
-                        </div>
-
-                        <!-- Translation Box -->
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-dashed border-slate-700 text-xs text-slate-400">
-                            <span class="font-bold text-slate-300 block mb-1">[Slot Terjemahan Bahasa Indonesia]:</span>
-                            <p class="italic">"[Silakan masukkan terjemahan bahasa Indonesia teks bacaan Anda di sini.]"</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. TUGAS 3: PORTOFOLIO UAS (SLOT TEMPLATE) -->
-                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="uas">
-                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
-                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Tugas 3: Portofolio UAS
-                        </h3>
-                        <span class="text-xs text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800">
-                            Dokumen Akhir
-                        </span>
-                    </div>
-
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-dashed border-slate-700 space-y-3">
-                        <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800 pb-2">
-                            <span>Dosen Pengampu: <strong>[Nama Dosen Pengampu, M.A.]</strong></span>
-                            <span class="font-mono">Semester 1 &bull; HTN 1B</span>
-                        </div>
-
-                        <!-- [EDIT DISINI: JUDUL MAKALAH UAS] -->
-                        <h4 class="text-base font-bold text-white">
-                            [Judul Makalah / Tugas Akhir Semester (UAS) Anda]
-                        </h4>
-
-                        <!-- [EDIT DISINI: ABSTRAK MAKALAH] -->
-                        <p class="text-xs text-slate-400 italic">
-                            "[Masukkan intisari, ringkasan, atau abstrak laporan makalah tugas UAS Anda di bagian ini.]"
+                        <h4 class="text-lg font-bold text-slate-200 mb-1">Belum Ada Tugas yang Dikerjakan</h4>
+                        <p class="text-sm text-slate-400 max-w-md mx-auto mb-5 leading-relaxed">
+                            Tugas kosakata bahasa Arab ini masih kosong atau belum diisi. Anda dapat mengkustomisasi dan memasukkan daftar 10 mufradat saat tugas sudah siap.
                         </p>
-
-                        <div class="pt-3 border-t border-slate-800 flex gap-3">
-                            <!-- [EDIT DISINI: TAUTKAN LINK PDF ANDA PADA HREF] -->
-                            <a href="#" download="Tugas_UAS_Fazry_Ilham_Sulaeman.pdf" class="py-2 px-4 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-xs shadow flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                                Unduh Dokumen PDF
-                            </a>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-400 font-mono">
+                            <span><i class="fa-solid fa-code"></i> Siap dikustomisasi di berkas index.html</span>
                         </div>
                     </div>
-                </div>
 
+                </div>
+            </div>
+
+            <!-- PANEL 2: TUGAS BACA TEKS (EMPTY STATE) -->
+            <div id="panelQiraah" class="task-panel hidden">
+                <div data-slot="card" class="rounded-xl border p-8 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm">
+                    
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-purple-500"></span> Tugas 2: Tugas Baca Teks (Qira'ah)
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Teks Naratif & Pemutar Audio Rekaman Suara</p>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-950/60 text-amber-400 border border-amber-800/60">
+                            Status: Belum Diisi
+                        </span>
+                    </div>
+
+                    <!-- Authentic Snapbooth Empty State Box -->
+                    <div class="flex flex-col items-center justify-center min-h-[280px] border-2 border-dashed border-slate-700 rounded-xl p-8 text-center bg-slate-900/40">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500 mb-4 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mic-off text-slate-500"><line x1="2" x2="22" y1="2" y2="22"></line><path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"></path><path d="M5 10v2a7 7 0 0 0 12 5"></path><path d="M15 9.34V5a3 3 0 0 0-5.68-1.33"></path><path d="M9 9v3a3 3 0 0 0 5.12 2.12"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-200 mb-1">Belum Ada Rekaman & Teks yang Dikerjakan</h4>
+                        <p class="text-sm text-slate-400 max-w-md mx-auto mb-5 leading-relaxed">
+                            Tugas membaca teks (qira'ah) dan audio player masih kosong. Belum ada naskah bacaan maupun file rekaman suara yang diunggah.
+                        </p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-400 font-mono">
+                            <span><i class="fa-solid fa-code"></i> Audio player & teks siap diisi di index.html</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PANEL 3: TUGAS UAS (EMPTY STATE) -->
+            <div id="panelUas" class="task-panel hidden">
+                <div data-slot="card" class="rounded-xl border p-8 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm">
+                    
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-pink-500"></span> Tugas 3: Portofolio Tugas UAS
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Karya Tulis Ilmiah / Makalah Akhir Semester</p>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-950/60 text-amber-400 border border-amber-800/60">
+                            Status: Belum Diisi
+                        </span>
+                    </div>
+
+                    <!-- Authentic Snapbooth Empty State Box -->
+                    <div class="flex flex-col items-center justify-center min-h-[280px] border-2 border-dashed border-slate-700 rounded-xl p-8 text-center bg-slate-900/40">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-500 mb-4 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-x-2 text-slate-500"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="m3 15 4 4"></path><path d="m7 15-4 4"></path></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-200 mb-1">Belum Ada Dokumen Tugas yang Diunggah</h4>
+                        <p class="text-sm text-slate-400 max-w-md mx-auto mb-5 leading-relaxed">
+                            Tugas akhir semester (UAS) masih kosong. Belum ada berkas makalah PDF atau laporan yang ditautkan ke halaman ini.
+                        </p>
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-400 font-mono">
+                            <span><i class="fa-solid fa-code"></i> Tautan unduh PDF siap dimasukkan di index.html</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
         </div>
@@ -510,50 +510,41 @@
     </footer>
 
     <!-- ======================================================== -->
-    <!-- JAVASCRIPT LOGIC (PHOTO BOOTH & TEMPLATE RENDERER)       -->
+    <!-- JAVASCRIPT LOGIC (PHOTO BOOTH & TABS SWITCHER)          -->
     <!-- ======================================================== -->
     <script>
         // ----------------------------------------------------
-        // 1. DATA 10 MUFRADAT (SLOT TEMPLATE KOSONG)
+        // 1. INTERACTIVE TASK TABS SWITCHER
         // ----------------------------------------------------
-        const mufradatSlots = [
-            { no: 1, arab: "[كَلِمَة ١]", latin: "[Transliterasi 1]", arti: "[Arti Kosakata 1]", contoh: "[مِثَالُ الجُمْلَةِ ١]" },
-            { no: 2, arab: "[كَلِمَة ٢]", latin: "[Transliterasi 2]", arti: "[Arti Kosakata 2]", contoh: "[مِثَالُ الجُمْلَةِ ٢]" },
-            { no: 3, arab: "[كَلِمَة ٣]", latin: "[Transliterasi 3]", arti: "[Arti Kosakata 3]", contoh: "[مِثَالُ الجُمْلَةِ ٣]" },
-            { no: 4, arab: "[كَلِمَة ٤]", latin: "[Transliterasi 4]", arti: "[Arti Kosakata 4]", contoh: "[مِثَالُ الجُمْلَةِ ٤]" },
-            { no: 5, arab: "[كَلِمَة ٥]", latin: "[Transliterasi 5]", arti: "[Arti Kosakata 5]", contoh: "[مِثَالُ الجُمْلَةِ ٥]" },
-            { no: 6, arab: "[كَلِمَة ٦]", latin: "[Transliterasi 6]", arti: "[Arti Kosakata 6]", contoh: "[مِثَالُ الجُمْلَةِ ٦]" },
-            { no: 7, arab: "[كَلِمَة ٧]", latin: "[Transliterasi 7]", arti: "[Arti Kosakata 7]", contoh: "[مِثَالُ الجُمْلَةِ ٧]" },
-            { no: 8, arab: "[كَلِمَة ٨]", latin: "[Transliterasi 8]", arti: "[Arti Kosakata 8]", contoh: "[مِثَالُ الجُمْلَةِ ٨]" },
-            { no: 9, arab: "[كَلِمَة ٩]", latin: "[Transliterasi 9]", arti: "[Arti Kosakata 9]", contoh: "[مِثَالُ الجُمْلَةِ ٩]" },
-            { no: 10, arab: "[كَلِمَة ١٠]", latin: "[Transliterasi 10]", arti: "[Arti Kosakata 10]", contoh: "[مِثَالُ الجُمْلَةِ ١٠]" },
-        ];
+        function switchTaskTab(tabName) {
+            // Hide all panels
+            document.getElementById('panelMufradat').classList.add('hidden');
+            document.getElementById('panelQiraah').classList.add('hidden');
+            document.getElementById('panelUas').classList.add('hidden');
 
-        const mufradatContainer = document.getElementById('mufradatContainer');
-        mufradatSlots.forEach(item => {
-            const card = document.createElement('div');
-            card.className = "bg-slate-900/80 rounded-lg p-3.5 border border-dashed border-slate-700 flex flex-col justify-between";
-            card.innerHTML = `
-                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
-                    <span class="text-xs font-bold text-purple-400"># Slot ${item.no}</span>
-                    <span class="font-arabic text-lg text-slate-200" dir="rtl">${item.arab}</span>
-                </div>
-                <div class="space-y-1 text-xs">
-                    <div class="flex justify-between text-slate-400">
-                        <span>Transliterasi:</span>
-                        <span class="text-blue-400 font-mono">${item.latin}</span>
-                    </div>
-                    <div class="flex justify-between text-slate-400">
-                        <span>Arti:</span>
-                        <span class="text-slate-200">${item.arti}</span>
-                    </div>
-                    <div class="pt-1 text-[11px] text-slate-500 font-arabic text-right leading-loose" dir="rtl">
-                        ${item.contoh}
-                    </div>
-                </div>
-            `;
-            mufradatContainer.appendChild(card);
-        });
+            // Reset tab button styles
+            const btnMufradat = document.getElementById('tabBtnMufradat');
+            const btnQiraah = document.getElementById('tabBtnQiraah');
+            const btnUas = document.getElementById('tabBtnUas');
+
+            const inactiveClass = "flex-1 py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 text-slate-400 hover:text-white hover:bg-slate-700/60";
+            const activeClass = "flex-1 py-2 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow";
+
+            btnMufradat.className = inactiveClass;
+            btnQiraah.className = inactiveClass;
+            btnUas.className = inactiveClass;
+
+            if (tabName === 'mufradat') {
+                document.getElementById('panelMufradat').classList.remove('hidden');
+                btnMufradat.className = activeClass;
+            } else if (tabName === 'qiraah') {
+                document.getElementById('panelQiraah').classList.remove('hidden');
+                btnQiraah.className = activeClass;
+            } else if (tabName === 'uas') {
+                document.getElementById('panelUas').classList.remove('hidden');
+                btnUas.className = activeClass;
+            }
+        }
 
         // ----------------------------------------------------
         // 2. WEBCAM & PHOTO BOOTH ENGINE (SNAPBOOTH CORE)
@@ -582,7 +573,7 @@
                 video.srcObject = stream;
                 startOverlay.classList.add('hidden');
             } catch (err) {
-                alert("Tidak dapat mengakses kamera. Pastikan izin kamera aktif di browser Anda.");
+                alert("Tidak dapat mengakses kamera. Pastikan izin kamera diaktifkan di browser Anda.");
             }
         }
 
@@ -683,7 +674,6 @@
         function downloadStrip() {
             if (capturedPhotos.length === 0) return;
 
-            // Generate full strip image using canvas
             const stripCanvas = document.createElement('canvas');
             const w = 400;
             const imgH = 300;
@@ -708,7 +698,6 @@
                     loaded++;
 
                     if (loaded === capturedPhotos.length) {
-                        // Draw footer text
                         sCtx.fillStyle = '#0f172a';
                         sCtx.font = 'bold 16px Inter, sans-serif';
                         sCtx.textAlign = 'center';
@@ -718,7 +707,6 @@
                         sCtx.font = '12px Inter, sans-serif';
                         sCtx.fillText('1263030076 • HTN 1B', w / 2, totalH - 25);
 
-                        // Trigger download
                         const link = document.createElement('a');
                         link.download = `snapbooth_fazry_ilham_sulaeman_${Date.now()}.png`;
                         link.href = stripCanvas.toDataURL('image/png');
