@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fazry Portofolio | Academic Siyasah & Snapbooth UI</title>
+    <title>Fazry Ilham Sulaeman | Portofolio Akademik HTN 1B</title>
     
     <!-- Google Fonts: Inter / Poppins (Latin) & Amiri (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,28 +61,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .gradient-text-gold {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-border-glow {
-            position: relative;
-        }
-        .gradient-border-glow::before {
-            content: '';
-            position: absolute;
-            inset: -1.5px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0.6;
-            filter: blur(8px);
-            transition: opacity 0.3s ease;
-        }
-        .gradient-border-glow:hover::before {
-            opacity: 1;
-        }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -125,17 +103,17 @@
                 <a href="#beranda" class="flex items-center gap-3 group">
                     <div class="relative">
                         <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
-                        <div class="relative w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
-                            <i class="fa-solid fa-camera-retro text-lg text-transparent bg-clip-text bg-gradient-to-tr from-blue-400 to-purple-400"></i>
+                        <div class="relative w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform font-bold text-sm tracking-wider">
+                            FIS
                         </div>
                     </div>
                     <div>
-                        <!-- [EDIT DISINI: NAMA BRAND / LOGO TITLE] -->
+                        <!-- NAMA & KELAS -->
                         <span class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                            Fazry <span class="gradient-text-blue-purple font-extrabold">Portofolio</span>
-                            <span class="text-[10px] uppercase tracking-wider bg-purple-950/80 text-purple-300 font-semibold px-2 py-0.5 rounded-full border border-purple-700/50">Siyasah</span>
+                            Fazry Ilham Sulaeman
+                            <span class="text-[10px] uppercase tracking-wider bg-purple-950/80 text-purple-300 font-semibold px-2 py-0.5 rounded-full border border-purple-700/50">HTN 1B</span>
                         </span>
-                        <p class="text-xs text-slate-400">Bahasa Arab &bull; Akademik</p>
+                        <p class="text-xs text-slate-400">Portofolio Akademik &bull; Bahasa Arab</p>
                     </div>
                 </a>
 
@@ -151,7 +129,7 @@
                     <button id="openPhotoBoothNavBtn" type="button" class="ml-2 relative group p-0.5 rounded-lg overflow-hidden">
                         <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
                         <span class="relative px-4 py-2 rounded-[7px] text-xs font-bold text-white bg-slate-900 group-hover:bg-transparent flex items-center gap-2 transition duration-300">
-                            <i class="fa-solid fa-camera text-blue-400"></i> Snapbooth
+                            <i class="fa-solid fa-camera text-blue-400"></i> Pasang Foto
                         </span>
                     </button>
                 </nav>
@@ -173,7 +151,7 @@
             <a href="#qiraah" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Tugas 2: Baca Teks</a>
             <a href="#uas" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Tugas 3: Tugas UAS</a>
             <button onclick="openSnapboothModal();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold text-purple-300 bg-purple-950/40 border border-purple-800/50 flex items-center gap-2">
-                <i class="fa-solid fa-camera text-blue-400"></i> Buka Snapbooth Kamera
+                <i class="fa-solid fa-camera text-blue-400"></i> Ambil / Unggah Foto Profil
             </button>
         </div>
     </header>
@@ -182,7 +160,7 @@
     <!-- 1. HERO SECTION (Snapbooth Dark Experience)               -->
     <!-- ======================================================== -->
     <section id="beranda" class="relative overflow-hidden py-16 md:py-24 border-b border-slate-800/80">
-        <!-- Radial Glow Background like Snapbooth -->
+        <!-- Radial Glow Background -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-600/20 via-purple-600/20 to-pink-600/15 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -193,44 +171,47 @@
                 <!-- Pill Tag -->
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs sm:text-sm font-medium text-slate-300 backdrop-blur-sm shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Portofolio Akademik Bahasa Arab &bull; Siyasah Syar'iyyah</span>
+                    <span>Portofolio Akademik &bull; Kelas HTN 1B</span>
                 </div>
 
-                <!-- Main Gradient Header (Snapbooth Style) -->
+                <!-- Main Gradient Header -->
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                    Academic <span class="gradient-text-snap">Photo & Portfolio</span> <br class="hidden sm:inline">Experience
+                    Portofolio Akademik <br class="hidden sm:inline">
+                    <span class="gradient-text-snap">Bahasa Arab & Siyasah</span>
                 </h1>
 
                 <!-- Subtitle -->
                 <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                    Dokumentasi modern tugas mata kuliah Bahasa Arab dan Fiqh Siyasah Syar'iyyah, dilengkapi kosakata politik Islam, teks bacaan audio, dan karya ilmiah.
+                    Website dokumentasi akademik tugas perkuliahan Bahasa Arab untuk Program Studi Hukum Tata Negara (HTN 1B), siap dikustomisasi dengan data tugas mandiri Anda.
                 </p>
             </div>
 
-            <!-- Student Identity Box & Profile Avatar Strip -->
+            <!-- Student Identity Box & Empty Profile Photo Placeholder -->
             <div class="max-w-4xl mx-auto mb-12">
                 <div class="bg-slate-800/60 rounded-2xl border border-slate-700/80 p-6 backdrop-blur-md shadow-2xl">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                         
-                        <!-- Profile Avatar with Snapbooth Glow & Photo Booth Trigger -->
+                        <!-- Empty Profile Avatar Placeholder with Upload/Snap Trigger -->
                         <div class="md:col-span-4 flex flex-col items-center text-center">
-                            <div class="relative group cursor-pointer" onclick="openSnapboothModal();" title="Klik untuk ambil/ganti foto profil dengan Snapbooth">
-                                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                            <div class="relative group cursor-pointer" onclick="openSnapboothModal();" title="Klik untuk pasang / jepret foto profil Anda">
+                                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
                                 
-                                <!-- [EDIT DISINI: FOTO PROFIL MAHASISWA] -->
-                                <div class="relative w-32 h-32 rounded-full overflow-hidden border-2 border-slate-900 bg-slate-800 shadow-xl">
-                                    <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
-                                         alt="Foto Profil Mahasiswa" 
-                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <!-- Empty Avatar Frame with Initials / Camera Icon -->
+                                <div class="relative w-32 h-32 rounded-full overflow-hidden border-2 border-dashed border-purple-400/60 bg-slate-900 flex flex-col items-center justify-center text-slate-400 group-hover:border-purple-400 group-hover:text-purple-300 transition-all shadow-xl">
+                                    <img id="avatarImage" src="" alt="Foto Profil" class="hidden w-full h-full object-cover">
+                                    <div id="avatarPlaceholderIcon" class="flex flex-col items-center justify-center p-2">
+                                        <i class="fa-solid fa-camera text-2xl text-purple-400 mb-1"></i>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pasang Foto</span>
+                                    </div>
                                 </div>
 
                                 <!-- Camera Overlay Button -->
                                 <div class="absolute bottom-0 right-0 w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg border-2 border-slate-900 text-xs">
-                                    <i class="fa-solid fa-camera"></i>
+                                    <i class="fa-solid fa-plus"></i>
                                 </div>
                             </div>
                             <button onclick="openSnapboothModal();" class="mt-3 text-xs text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1.5">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> Buka Snapbooth Kamera
+                                <i class="fa-solid fa-camera"></i> Ambil / Unggah Foto
                             </button>
                         </div>
 
@@ -238,28 +219,28 @@
                         <div class="md:col-span-8 space-y-4 text-center md:text-left">
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 
-                                <!-- [EDIT DISINI: NAMA MAHASISWA] -->
+                                <!-- NAMA -->
                                 <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
                                     <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Nama Mahasiswa</span>
-                                    <p class="text-base font-bold text-white tracking-wide mt-0.5">Muhammad Fazry</p>
+                                    <p class="text-base font-bold text-white tracking-wide mt-0.5">Fazry ilham sulaeman</p>
                                 </div>
 
-                                <!-- [EDIT DISINI: NIM MAHASISWA] -->
+                                <!-- NIM -->
                                 <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
                                     <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">NIM</span>
-                                    <p class="text-base font-mono font-bold text-blue-400 mt-0.5">123456789</p>
+                                    <p class="text-base font-mono font-bold text-blue-400 mt-0.5">1263030076</p>
                                 </div>
 
-                                <!-- [EDIT DISINI: KELAS] -->
+                                <!-- KELAS -->
                                 <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
                                     <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Kelas</span>
-                                    <p class="text-base font-bold text-purple-300 mt-0.5">Siyasah Syar'iyyah - A</p>
+                                    <p class="text-base font-bold text-purple-300 mt-0.5">HTN 1B</p>
                                 </div>
 
                             </div>
 
                             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                                Mahasiswa Hukum Tatanegara Islam Fakultas Syariah dan Hukum. Mempelajari prinsip kepemimpinan adil (*Al-'Adalah*), perundang-undangan (*Ad-Dustur*), dan kemaslahatan umat.
+                                Mahasiswa Program Studi Hukum Tata Negara (HTN 1B), Fakultas Syari'ah dan Hukum. Media portofolio tugas Bahasa Arab dan literasi hukum ketatanegaraan Islam.
                             </p>
                         </div>
 
@@ -275,8 +256,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
                         <i class="fa-solid fa-book-bookmark text-2xl"></i>
                     </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">10 Mufradat Siyasah</h2>
-                    <p class="text-sm text-slate-300 mb-4">Kosakata kunci ketatanegaraan Islam dengan harakat, transliterasi, dan contoh kalimat.</p>
+                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 1: Mufradat</h2>
+                    <p class="text-sm text-slate-300 mb-4">10 Slot kosakata politik & ketatanegaraan siap diisi dan disesuaikan dengan tugas Anda.</p>
                     <a href="#mufradat" class="mt-auto text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
                         Buka Kosakata <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
@@ -287,10 +268,10 @@
                     <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
                         <i class="fa-solid fa-headphones text-2xl"></i>
                     </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">Baca Teks & Audio</h2>
-                    <p class="text-sm text-slate-300 mb-4">Teks bacaan naratif siyasah syar'iyyah lengkap dengan audio player dan toggle terjemahan.</p>
+                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 2: Baca Teks</h2>
+                    <p class="text-sm text-slate-300 mb-4">Wadah teks bacaan Arab (qira'ah), terjemahan, dan pemutar audio rekaman suara mandiri.</p>
                     <a href="#qiraah" class="mt-auto text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
-                        Dengar Rekaman <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        Buka Teks Bacaan <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
 
@@ -299,24 +280,24 @@
                     <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4 group-hover:bg-pink-500/20 transition-colors">
                         <i class="fa-solid fa-file-lines text-2xl"></i>
                     </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">Portofolio UAS</h2>
-                    <p class="text-sm text-slate-300 mb-4">Laporan ilmiah & makalah akhir semester tentang Piagam Madinah dengan modal pratinjau.</p>
+                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 3: Portofolio UAS</h2>
+                    <p class="text-sm text-slate-300 mb-4">Slot dokumen makalah / karya ilmiah UAS dengan tombol unduh PDF dan pratinjau naskah.</p>
                     <a href="#uas" class="mt-auto text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center gap-1">
-                        Lihat Makalah <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        Lihat Slot Tugas <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </a>
                 </div>
 
             </div>
 
-            <!-- Snapbooth Signature Launch Card -->
+            <!-- Snapbooth Launch Card -->
             <div class="w-full max-w-md mx-auto">
                 <div class="text-card-foreground flex flex-col gap-6 rounded-2xl border py-6 shadow-2xl bg-slate-800/70 border-slate-700/90 backdrop-blur-md">
                     <div class="flex flex-col gap-1.5 px-6 pb-2 text-center">
                         <div class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                            Siap Menjelajahi Tugas?
+                            Kelola & Kustomisasi Tugas
                         </div>
                         <div class="text-sm text-slate-300">
-                            Eksplorasi portofolio akademik dengan pengalaman visual interaktif
+                            Template portofolio bersih siap dikustomisasi sesuai kebutuhan Anda
                         </div>
                     </div>
                     
@@ -325,30 +306,11 @@
                             <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-75 animate-pulse"></div>
                             <a href="#mufradat" class="relative block w-full">
                                 <button type="button" class="inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-lg transition-all duration-200">
-                                    <i class="fa-solid fa-rocket"></i> Mulai Eksplorasi Sekarang
+                                    <i class="fa-solid fa-pen-to-square"></i> Mulai Kustomisasi Konten
                                 </button>
                             </a>
                         </div>
-                        <div class="mt-4 text-center text-slate-400 text-xs">
-                            Mendukung fitur pencarian mufradat, speech audio, dan webcam foto.
-                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Snapbooth 4-Color Gradient Strip Aesthetic -->
-            <div class="mt-16 grid grid-cols-4 gap-2 max-w-2xl mx-auto">
-                <div class="rounded-xl overflow-hidden h-16 sm:h-24 bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md flex items-center justify-center text-white font-arabic text-xl font-bold">
-                    السِّيَاسَة
-                </div>
-                <div class="rounded-xl overflow-hidden h-16 sm:h-24 bg-gradient-to-br from-purple-500 to-purple-700 shadow-md flex items-center justify-center text-white font-arabic text-xl font-bold">
-                    الدَّوْلَة
-                </div>
-                <div class="rounded-xl overflow-hidden h-16 sm:h-24 bg-gradient-to-br from-pink-500 to-rose-600 shadow-md flex items-center justify-center text-white font-arabic text-xl font-bold">
-                    الدُّسْتُوْر
-                </div>
-                <div class="rounded-xl overflow-hidden h-16 sm:h-24 bg-gradient-to-br from-indigo-500 to-blue-700 shadow-md flex items-center justify-center text-white font-arabic text-xl font-bold">
-                    العَدَالَة
                 </div>
             </div>
 
@@ -364,7 +326,7 @@
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-14">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-blue-800/60">
-                    Biodata Lengkap
+                    Biodata Akademik
                 </span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
                     Profil <span class="gradient-text-blue-purple">Mahasiswa</span>
@@ -375,47 +337,33 @@
             <!-- Content Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
                 
-                <!-- Left: Snapbooth-styled Profile Card -->
+                <!-- Left: Profile Frame (Customizable / Empty Placeholder) -->
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="w-full bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md shadow-2xl relative">
                         <div class="flex items-center justify-between border-b border-slate-700/80 pb-3 mb-5">
-                            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Identitas Akademik</span>
-                            <span class="font-arabic text-purple-300 font-bold text-base">السِّيْرَةُ الذَّاتِيَّةُ</span>
+                            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Foto Mahasiswa</span>
+                            <span class="font-arabic text-purple-300 font-bold text-base">الصُّوْرَةُ الشَّخْصِيَّةُ</span>
                         </div>
 
-                        <!-- Photo with Strip Frames -->
-                        <!-- [EDIT DISINI: FOTO PROFIL BESAR] -->
-                        <div class="relative w-48 h-48 mx-auto rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-xl mb-5 group">
-                            <img id="avatarImageSecondary" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80" 
-                                 alt="Foto Profil Mahasiswa" 
-                                 class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer" onclick="openSnapboothModal();">
-                                <span class="text-xs text-white bg-purple-600 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 shadow">
-                                    <i class="fa-solid fa-camera"></i> Ganti Foto
-                                </span>
+                        <!-- Empty Photo Box -->
+                        <div class="relative w-48 h-48 mx-auto rounded-2xl overflow-hidden border-2 border-dashed border-slate-600 bg-slate-900/90 flex flex-col items-center justify-center text-slate-400 mb-5 group cursor-pointer hover:border-purple-500 transition-all" onclick="openSnapboothModal();">
+                            <img id="avatarImageSecondary" src="" alt="Foto Profil" class="hidden w-full h-full object-cover">
+                            <div id="avatarPlaceholderIconSecondary" class="flex flex-col items-center justify-center p-3 text-center">
+                                <i class="fa-solid fa-image-portrait text-4xl text-slate-600 group-hover:text-purple-400 mb-2 transition-colors"></i>
+                                <span class="text-xs font-semibold text-slate-400 group-hover:text-white">Foto Belum Dipasang</span>
+                                <span class="text-[10px] text-purple-400 mt-1">Klik untuk upload / foto</span>
                             </div>
                         </div>
 
                         <div class="text-center space-y-1 mb-5">
-                            <!-- [EDIT DISINI: NAMA] -->
-                            <h3 class="text-xl font-bold text-white">Muhammad Fazry</h3>
-                            <p class="text-xs text-purple-400 font-medium">Hukum Tatanegara Islam (Siyasah Syar'iyyah)</p>
+                            <h3 class="text-xl font-bold text-white">Fazry ilham sulaeman</h3>
+                            <p class="text-xs text-purple-400 font-medium">Hukum Tata Negara (HTN 1B)</p>
                         </div>
 
-                        <!-- Mini Highlights -->
-                        <div class="grid grid-cols-3 gap-2 bg-slate-900/80 rounded-xl p-3 text-center border border-slate-700/60 text-xs">
-                            <div>
-                                <span class="text-blue-400 block font-bold text-sm">3.8+</span>
-                                <span class="text-slate-400 text-[10px]">Indeks Prestasi</span>
-                            </div>
-                            <div class="border-x border-slate-700/80">
-                                <span class="text-purple-400 block font-bold text-sm">10+</span>
-                                <span class="text-slate-400 text-[10px]">Istilah Siyasah</span>
-                            </div>
-                            <div>
-                                <span class="text-pink-400 block font-bold text-sm">Aktif</span>
-                                <span class="text-slate-400 text-[10px]">Semester 3</span>
-                            </div>
+                        <!-- Status Badge -->
+                        <div class="bg-slate-900/80 rounded-xl p-3 text-center border border-slate-700/60 text-xs">
+                            <span class="text-emerald-400 font-bold block"><i class="fa-solid fa-circle-check"></i> Status: Aktif</span>
+                            <span class="text-slate-400 text-[11px]">Mahasiswa Semester 1 &bull; Kelas HTN 1B</span>
                         </div>
                     </div>
                 </div>
@@ -426,46 +374,48 @@
                     <!-- Biodata Details -->
                     <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md shadow-xl">
                         <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-4 pb-2 border-b border-slate-700">
-                            <i class="fa-solid fa-graduation-cap text-blue-400"></i> Informasi Perguruan Tinggi
+                            <i class="fa-solid fa-graduation-cap text-blue-400"></i> Informasi Akademik Mahasiswa
                         </h4>
 
-                        <!-- [EDIT DISINI: DATA PRIBADI] -->
                         <dl class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
                             <div>
                                 <dt class="text-xs text-slate-400 uppercase font-semibold">Nama Lengkap</dt>
-                                <dd class="font-bold text-white mt-0.5">Muhammad Fazry</dd>
+                                <dd class="font-bold text-white mt-0.5">Fazry ilham sulaeman</dd>
                             </div>
                             <div>
                                 <dt class="text-xs text-slate-400 uppercase font-semibold">NIM</dt>
-                                <dd class="font-bold text-purple-400 font-mono mt-0.5">123456789</dd>
+                                <dd class="font-bold text-purple-400 font-mono mt-0.5">1263030076</dd>
                             </div>
                             <div>
                                 <dt class="text-xs text-slate-400 uppercase font-semibold">Program Studi</dt>
-                                <dd class="text-slate-200 mt-0.5">Hukum Tatanegara Islam</dd>
+                                <dd class="text-slate-200 mt-0.5">Hukum Tata Negara (HTN)</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs text-slate-400 uppercase font-semibold">Kelas</dt>
+                                <dd class="text-slate-200 mt-0.5">HTN 1B</dd>
                             </div>
                             <div>
                                 <dt class="text-xs text-slate-400 uppercase font-semibold">Fakultas</dt>
-                                <dd class="text-slate-200 mt-0.5">Syari'ah dan Hukum</dd>
+                                <dd class="text-slate-200 mt-0.5">Fakultas Syari'ah dan Hukum</dd>
                             </div>
                             <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Universitas</dt>
-                                <dd class="text-slate-200 mt-0.5">Universitas Islam Negeri (UIN)</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Kelas & Semester</dt>
-                                <dd class="text-slate-200 mt-0.5">Kelas A / Semester Ganjil</dd>
+                                <dt class="text-xs text-slate-400 uppercase font-semibold">Mata Kuliah</dt>
+                                <dd class="text-slate-200 mt-0.5">Bahasa Arab / Siyasah Syar'iyyah</dd>
                             </div>
                         </dl>
                     </div>
 
-                    <!-- Narrative -->
+                    <!-- Narrative Placeholder -->
                     <div class="bg-slate-800/40 border border-slate-700/70 rounded-2xl p-6 backdrop-blur-md">
-                        <h4 class="text-sm font-bold text-purple-300 flex items-center gap-2 mb-2">
-                            <i class="fa-solid fa-compass text-pink-400"></i> Motivasi & Minat Kajian
-                        </h4>
-                        <!-- [EDIT DISINI: PARAGRAF PERKENALAN] -->
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Mempelajari bahasa Arab merupakan fondasi fundamental dalam mendalami hukum tatanegara Islam (*Siyasah Syar'iyyah*). Melalui portofolio interaktif bergaya modern ini, saya mengintegrasikan keilmuan teks turats dengan visual kontemporer agar khazanah fiqh politik Islam dapat dipelajari secara dinamis dan menarik.
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="text-sm font-bold text-purple-300 flex items-center gap-2">
+                                <i class="fa-solid fa-pen-nib text-pink-400"></i> Deskripsi & Perkenalan Singkat
+                            </h4>
+                            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Dapat Dikustomisasi</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            <!-- [EDIT DISINI: MASUKKAN PARAGRAF PERKENALAN DAN MOTIVASI ANDA] -->
+                            "Saya Fazry Ilham Sulaeman, mahasiswa Program Studi Hukum Tata Negara (HTN 1B). Website ini disusun sebagai wadah dokumentasi akademik mandiri dalam mendalami literatur hukum ketatanegaraan Islam dan penguasaan bahasa Arab..."
                         </p>
                     </div>
 
@@ -477,35 +427,42 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 3. TUGAS 1: 10 MUFRADAT ARAB-INDONESIA SIYASAH            -->
+    <!-- 3. TUGAS 1: 10 MUFRADAT ARAB-INDONESIA (CUSTOMIZABLE)      -->
     <!-- ======================================================== -->
     <section id="mufradat" class="py-20 border-b border-slate-800/80 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-center max-w-3xl mx-auto mb-10">
                 <span class="text-xs font-bold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/60">
-                    Tugas 1 &bull; 10 Mufradat Politik
+                    Tugas 1 &bull; Kosakata Mandiri
                 </span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Kosakata <span class="gradient-text-snap">Siyasah Syar'iyyah</span>
+                    10 Slot Kosakata <span class="gradient-text-snap">Mufradat</span>
                 </h2>
                 <p class="font-arabic text-xl sm:text-2xl text-purple-300 font-bold mt-2" dir="rtl">
-                    المُفْرَدَاتُ اللُّغَوِيَّةُ فِي السِّيَاسَةِ وَالدَّوْلَةِ
+                    المُفْرَدَاتُ اللُّغَوِيَّةُ (قَابِلَةٌ لِلتَّعْدِيْلِ)
                 </p>
                 <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
             </div>
 
+            <!-- Customization Info Box -->
+            <div class="max-w-5xl mx-auto mb-8 bg-blue-950/40 border border-blue-800/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-blue-200">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-info text-blue-400 text-base"></i>
+                    <span><strong>Slot Siap Diisi:</strong> Seluruh 10 kartu mufradat di bawah telah dikosongkan/diberikan template agar siap Anda isi sesuai kosakata pilihan Anda.</span>
+                </div>
+                <span class="bg-blue-900/60 text-blue-300 px-2.5 py-1 rounded-md font-mono shrink-0">10 Kosakata</span>
+            </div>
+
             <!-- Interactive Toolbar: Live Search & View Switcher -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/80 backdrop-blur-md shadow-lg max-w-5xl mx-auto">
-                <!-- Search input with Snapbooth dark styling -->
                 <div class="relative w-full sm:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
                     <input type="text" id="mufradatSearch" placeholder="Cari mufradat, latin, atau arti..." 
                            class="w-full pl-10 pr-4 py-2 text-sm rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
                 </div>
 
-                <!-- View Switcher Buttons -->
                 <div class="flex items-center gap-2 self-end sm:self-auto">
                     <span class="text-xs font-semibold text-slate-400 hidden sm:inline">Tampilan:</span>
                     <button id="viewGridBtn" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md flex items-center gap-1.5 transition-all">
@@ -517,12 +474,12 @@
                 </div>
             </div>
 
-            <!-- GRID VIEW (Default) -->
+            <!-- GRID VIEW -->
             <div id="mufradatGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Populated via JS with Snapbooth dark cards -->
+                <!-- Rendered dynamically by JS with customizable template data -->
             </div>
 
-            <!-- TABLE VIEW (Hidden by default) -->
+            <!-- TABLE VIEW -->
             <div id="mufradatTableContainer" class="hidden max-w-5xl mx-auto bg-slate-800/70 rounded-2xl border border-slate-700 shadow-xl overflow-hidden backdrop-blur-md">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
@@ -546,14 +503,13 @@
             <div id="emptyNotice" class="hidden text-center py-12 bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 max-w-5xl mx-auto">
                 <i class="fa-regular fa-folder-open text-4xl text-slate-500 mb-3 block"></i>
                 <p class="text-slate-300 font-medium">Kosakata tidak ditemukan.</p>
-                <p class="text-xs text-slate-500 mt-1">Coba gunakan kata kunci Arab, transliterasi Latin, atau arti bahasa Indonesia.</p>
             </div>
 
         </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- 4. TUGAS 2: TUGAS BACA TEKS (QIRA'AH)                     -->
+    <!-- 4. TUGAS 2: TUGAS BACA TEKS (QIRA'AH - CUSTOMIZABLE)      -->
     <!-- ======================================================== -->
     <section id="qiraah" class="py-20 border-b border-slate-800/80 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -564,12 +520,12 @@
                     Tugas 2 &bull; Kemampuan Qira'ah
                 </span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Teks Bacaan & <span class="gradient-text-snap">Audio Player</span>
+                    Teks Bacaan & <span class="gradient-text-snap">Rekaman Audio</span>
                 </h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
             </div>
 
-            <!-- Qira'ah Card Snapbooth Dark Glass -->
+            <!-- Qira'ah Card -->
             <div class="bg-slate-800/60 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-md overflow-hidden">
                 
                 <!-- Card Header -->
@@ -579,63 +535,54 @@
                             <i class="fa-solid fa-microphone-lines"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-sm sm:text-base text-white">Teks Qira'ah: Siyasah Syar'iyyah</h3>
-                            <p class="text-xs text-slate-400">Rekaman Audio Suara Mahasiswa</p>
+                            <h3 class="font-bold text-sm sm:text-base text-white">Teks Qira'ah Mandiri</h3>
+                            <p class="text-xs text-slate-400">Wadah Teks Bacaan & Pemutar Audio</p>
                         </div>
                     </div>
                     <span class="font-arabic text-purple-400 text-lg font-bold">النَّصُّ المُخْتَارُ</span>
                 </div>
 
-                <!-- Custom Styled Audio Player Component -->
+                <!-- Audio Player Placeholder Component -->
                 <div class="p-6 bg-slate-900/60 border-b border-slate-700/80">
-                    <div class="max-w-xl mx-auto bg-slate-800/90 p-4 rounded-2xl border border-slate-700 shadow-inner">
+                    <div class="max-w-xl mx-auto bg-slate-800/90 p-4 rounded-2xl border border-dashed border-slate-700 shadow-inner">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-purple-300 flex items-center gap-2">
-                                <i class="fa-solid fa-volume-high text-blue-400"></i> Pemutar Rekaman Suara
+                                <i class="fa-solid fa-volume-high text-blue-400"></i> Rekaman Audio Suara Anda
                             </span>
                             <span class="text-[11px] text-slate-400 font-mono" id="audioTimer">00:00 / 00:00</span>
                         </div>
 
                         <!-- [EDIT DISINI: GANTI AUDIO SRC DENGAN FILE REKAMAN ANDA (misal: "audio.mp3")] -->
                         <audio id="readingAudio" preload="metadata" class="w-full h-10 rounded-lg filter invert-[0.85] hue-rotate-180" controls>
-                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                            <source src="" type="audio/mpeg">
                             Browser Anda tidak mendukung pemutar audio.
                         </audio>
 
                         <div class="flex items-center justify-between text-[11px] text-slate-400 mt-2 px-1">
-                            <span><i class="fa-solid fa-circle-check text-emerald-400"></i> Format: MP3 / WAV</span>
-                            <span>Pelafalan: Harakat Lengkap</span>
+                            <span class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Belum ada file audio dihubungkan</span>
+                            <span>Format: MP3 / WAV / M4A</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Arabic Reading Text Box -->
+                <!-- Arabic Reading Text Box Placeholder -->
                 <div class="p-6 sm:p-10 space-y-8">
                     
                     <div>
                         <div class="text-center mb-6">
+                            <!-- [EDIT DISINI: JUDUL TEKS ARAB ANDA] -->
                             <h4 class="font-arabic text-2xl sm:text-3xl font-bold text-white leading-loose" dir="rtl">
-                                مَفْهُوْمُ السِّيَاسَةِ الشَّرْعِيَّةِ فِي الإِسْلَامِ
+                                [عُنْوَانُ النَّصِّ العَرَبِيِّ هُنَا]
                             </h4>
-                            <p class="text-xs text-purple-400 mt-1 italic font-medium">Urgensi dan Esensi Politik Kemaslahatan dalam Islam</p>
+                            <p class="text-xs text-purple-400 mt-1 italic font-medium">Tema: [Masukkan Tema Teks Bacaan Anda di Sini]</p>
                         </div>
 
-                        <!-- Arabic Paragraph -->
-                        <div class="bg-slate-900/70 border border-slate-700/80 rounded-2xl p-6 sm:p-8 text-right shadow-inner">
-                            <p class="font-arabic text-2xl sm:text-3xl text-slate-100 leading-[2.3] tracking-wide" dir="rtl">
-                                تُعَدُّ <span class="text-blue-400 font-bold">السِّيَاسَةُ الشَّرْعِيَّةُ</span> مِنْ أَجَلِّ أَبْوَابِ الفِقْهِ الإِسْلَامِيِّ المُرْتَبِطَةِ بِتَدْبِيْرِ شُؤُوْنِ الرَّعِيَّةِ وَالدَّوْلَةِ. وَهِيَ تَعْنِي فِعْلَ مَا يَكُوْنُ النَّاسُ مَعَهُ أَقْرَبَ إِلَى الصَّلَاحِ وَأَبْعَدَ عَنِ الفَسَادِ، وَإِنْ لَمْ يَضَعْهُ الرَّسُوْلُ ﷺ وَلَا نَزَلَ بِهِ وَحْيٌ خَاصٌّ، مَا دَامَ يَنْطَلِقُ مِنْ رُوْحِ الشَّرِيْعَةِ وَيُحَقِّقُ <span class="text-purple-400 font-bold">مَقَاصِدَهَا الغَرَّاءَ</span>.
+                        <!-- Arabic Paragraph Customizable Placeholder -->
+                        <div class="bg-slate-900/70 border border-dashed border-slate-700/80 rounded-2xl p-6 sm:p-8 text-right shadow-inner">
+                            <p class="font-arabic text-2xl sm:text-3xl text-slate-200 leading-[2.3] tracking-wide" dir="rtl">
+                                <!-- [EDIT DISINI: MASUKKAN TEKS BACAAN ARAB LENGKAP DENGAN HARAKAT] -->
+                                [اُكْتُبْ هُنَا نَصَّ القِرَاءَةِ بِاللُّغَةِ العَرَبِيَّةِ مَعَ الحَرَكَاتِ الكَامِلَةِ لِأَدَاءِ الوَاجِبِ الدِّرَاسِيِّ... أَدْخِلْ فَقَرَاتِ المَوْضُوْعِ الَّذِي تَمَّ اخْتِيَارُهُ هُنَا.]
                             </p>
-                            <p class="font-arabic text-2xl sm:text-3xl text-slate-100 leading-[2.3] tracking-wide mt-6" dir="rtl">
-                                وَإِنَّ رَأْسَ الأَمْرِ فِي ذَلِكَ هُوَ إِقَامَةُ <span class="text-pink-400 font-bold">العَدْلِ</span> بَيْنَ النَّاسِ، وَأَدَاءُ الأَمَانَاتِ إِلَى أَهْلِهَا، وَحِمَايَةُ حُقُوْقِ المُواطِنِيْنَ، كَمَا قَالَ اللهُ تَبَارَكَ وَتَعَالَى:
-                            </p>
-                            
-                            <!-- Quran Quote Box -->
-                            <div class="mt-6 p-5 rounded-xl bg-purple-950/40 border-r-4 border-purple-500 text-right">
-                                <p class="font-arabic text-2xl sm:text-3xl text-purple-200 font-bold leading-loose" dir="rtl">
-                                    ﴿ إِنَّ اللَّهَ يَأْمُرُكُمْ أَنْ تُؤَدُّوا الْأَمَانَاتِ إِلَىٰ أَهْلِهَا وَإِذَا حَكَمْتُمْ بَيْنَ النَّاسِ أَنْ تَحْكُمُوا بِالْعَدْلِ ﴾
-                                </p>
-                                <span class="text-xs text-purple-400 font-sans font-semibold mt-1 block">[سُوْرَةُ النِّسَاءِ : ٥٨]</span>
-                            </div>
                         </div>
                     </div>
 
@@ -650,18 +597,15 @@
                             <span class="text-xs text-slate-400 font-medium">Bahasa Indonesia</span>
                         </div>
 
-                        <!-- Translation Dropdown Container -->
+                        <!-- Translation Dropdown Container Placeholder -->
                         <div id="translationContainer" class="hidden transition-all duration-300">
-                            <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-6 sm:p-7 space-y-3 text-slate-300 text-sm sm:text-base leading-relaxed">
+                            <div class="bg-slate-900/80 border border-dashed border-slate-700 rounded-2xl p-6 sm:p-7 space-y-3 text-slate-300 text-sm sm:text-base leading-relaxed">
                                 <h5 class="text-xs uppercase font-bold text-purple-400 tracking-wider flex items-center gap-2">
-                                    <i class="fa-solid fa-book-bookmark"></i> Terjemahan Resmi:
+                                    <i class="fa-solid fa-book-bookmark"></i> Terjemahan Bahasa Indonesia:
                                 </h5>
-                                <p>
-                                    <strong>"Konsep Siyasah Syar'iyyah dalam Islam:</strong><br>
-                                    Siyasah Syar'iyyah dipandang sebagai salah satu bab terpenting dalam fikih Islam yang berkaitan erat dengan tata kelola urusan rakyat dan negara. Maknanya adalah segala tindakan atau kebijakan yang membawa manusia lebih dekat kepada kemaslahatan (kebaikan) dan menjauhkan mereka dari mafsadat (kerusakan), meskipun tindakan tersebut tidak diatur secara eksplisit oleh Rasulullah SAW maupun wahyu khusus, selama kebijakan itu berpijak pada ruh syariat dan merealisasikan tujuan-tujuan agungnya (*Maqashid asy-Syari'ah*)."
-                                </p>
-                                <p>
-                                    "Dan pokok utama dari hal tersebut adalah menegakkan <strong>keadilan</strong> di antara sesama manusia, menunaikan amanah kepada yang berhak menerimanya, serta melindungi hak-hak seluruh warga negara, sebagaimana firman Allah Tabaraka wa Ta'ala: <em>'Sungguh, Allah menyuruhmu menyampaikan amanat kepada yang berhak menerimanya, dan apabila kamu menetapkan hukum di antara manusia hendaknya kamu menetapkannya dengan adil.'</em> (QS. An-Nisa': 58)."
+                                <!-- [EDIT DISINI: MASUKKAN TERJEMAHAN TEKS ANDA DI SINI] -->
+                                <p class="italic text-slate-400">
+                                    "[Silakan masukkan terjemahan bahasa Indonesia dari teks bacaan bahasa Arab Anda di sini. Buka index.html pada bagian #qiraah untuk mengganti teks ini.]"
                                 </p>
                             </div>
                         </div>
@@ -675,7 +619,7 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 5. TUGAS 3: PORTOFOLIO TUGAS UAS                          -->
+    <!-- 5. TUGAS 3: PORTOFOLIO TUGAS UAS (CUSTOMIZABLE)          -->
     <!-- ======================================================== -->
     <section id="uas" class="py-20 border-b border-slate-800/80 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -683,15 +627,15 @@
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-14">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-blue-800/60">
-                    Tugas 3 &bull; Proyek UAS
+                    Tugas 3 &bull; Evaluasi Akhir
                 </span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Laporan & Makalah <span class="gradient-text-snap">Akhir Semester</span>
+                    Portofolio Tugas <span class="gradient-text-snap">Akhir Semester (UAS)</span>
                 </h2>
                 <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
             </div>
 
-            <!-- Showcase Card -->
+            <!-- Showcase Card Placeholder -->
             <div class="bg-slate-800/60 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-md overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-12">
                     
@@ -699,62 +643,60 @@
                     <div class="md:col-span-5 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-950 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-700">
                         <div>
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
-                                <i class="fa-solid fa-file-pdf"></i> Dokumen PDF
+                                <i class="fa-solid fa-file-pdf"></i> Dokumen Tugas UAS
                             </span>
+                            <!-- [EDIT DISINI: JUDUL MAKALAH UAS] -->
                             <h4 class="text-xl font-bold text-white mt-4 leading-snug">
-                                Analisis Terminologi Siyasah dalam Naskah Piagam Madinah
+                                [Judul Makalah / Tugas Akhir Semester Anda]
                             </h4>
                             <p class="text-xs text-slate-400 mt-2">
-                                Kajian Semantik & Konstitusionalitas Hukum Islam
+                                [Fokus Kajian / Sub-topik Tugas UAS]
                             </p>
                         </div>
 
                         <div class="space-y-2.5 mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400">
                             <div class="flex justify-between">
-                                <span>Format:</span>
+                                <span>Format Berkas:</span>
                                 <span class="font-bold text-white">PDF Document</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>Halaman:</span>
-                                <span class="font-bold text-white">18 Halaman</span>
-                            </div>
-                            <div class="flex justify-between">
                                 <span>Status:</span>
-                                <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-check"></i> Terverifikasi</span>
+                                <span class="text-amber-400 font-semibold"><i class="fa-solid fa-clock"></i> Siap Disesuaikan</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right: Abstract & Action Buttons -->
+                    <!-- Right: Abstract & Action Buttons Placeholder -->
                     <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
                         <div class="space-y-4">
-                            <!-- [EDIT DISINI: NAMA DOSEN PENGAMPU] -->
+                            <!-- [EDIT DISINI: DOSEN PENGAMPU] -->
                             <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-700 pb-3">
-                                <span>Dosen: <strong>Dosen Pengampu, M.A.</strong></span>
-                                <span class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded font-mono border border-slate-700">T.A 2026/2027</span>
+                                <span>Dosen Pengampu: <strong>[Nama Dosen Pengampu, M.A.]</strong></span>
+                                <span class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded font-mono border border-slate-700">HTN 1B</span>
                             </div>
 
                             <h3 class="text-lg font-bold text-white">
-                                Intisari Karya Ilmiah UAS
+                                Ringkasan / Abstrak Tugas UAS
                             </h3>
 
-                            <p class="text-slate-300 text-sm leading-relaxed">
-                                Makalah ini mengkaji pergeseran makna semantik istilah-istilah ketatanegaraan Islam (*Siyasah Syar'iyyah*) sejak era Piagam Madinah hingga adopsi hukum tatanegara di era negara-bangsa modern (*nation-state*). Dilengkapi dengan komparasi 10 istilah siyasah dan kaidah aplikasinya dalam perundang-undangan.
+                            <!-- [EDIT DISINI: ABSTRAK MAKALAH] -->
+                            <p class="text-slate-400 text-sm leading-relaxed italic">
+                                "[Silakan masukkan intisari, ringkasan, atau abstrak laporan makalah tugas UAS Anda di sini. Tuliskan ringkasan pokok permasalahan dan hasil analisis yang Anda lakukan.]"
                             </p>
 
                             <div class="flex flex-wrap gap-2 pt-1">
-                                <span class="px-2.5 py-1 rounded-md bg-blue-950/60 text-blue-300 text-xs font-medium border border-blue-800/60">#FiqhSiyasah</span>
-                                <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-xs font-medium border border-purple-800/60">#PiagamMadinah</span>
-                                <span class="px-2.5 py-1 rounded-md bg-pink-950/60 text-pink-300 text-xs font-medium border border-pink-800/60">#TugasUAS</span>
+                                <span class="px-2.5 py-1 rounded-md bg-blue-950/60 text-blue-300 text-xs font-medium border border-blue-800/60">#TugasUAS</span>
+                                <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-xs font-medium border border-purple-800/60">#HTN1B</span>
+                                <span class="px-2.5 py-1 rounded-md bg-pink-950/60 text-pink-300 text-xs font-medium border border-pink-800/60">#BahasaArab</span>
                             </div>
                         </div>
 
                         <!-- Buttons -->
                         <div class="pt-4 border-t border-slate-700 flex flex-col sm:flex-row gap-3">
-                            <!-- [EDIT DISINI: GANTI HREF DENGAN LINK FILE PDF ANDA] -->
-                            <a id="downloadPdfBtn" href="#" download="Tugas_UAS_Bahasa_Arab_Siyasah.pdf" 
+                            <!-- [EDIT DISINI: TAUTKAN LINK PDF ANDA PADA HREF] -->
+                            <a id="downloadPdfBtn" href="#" download="Tugas_UAS_Fazry_Ilham_Sulaeman.pdf" 
                                class="flex-1 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-sm text-center shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-download"></i> Unduh PDF
+                                <i class="fa-solid fa-download"></i> Unduh Dokumen PDF
                             </a>
 
                             <button id="openPreviewModalBtn" type="button" 
@@ -771,20 +713,19 @@
     </section>
 
     <!-- ======================================================== -->
-    <!-- 6. SNAPBOOTH WEBCAM MODAL (Interactive Photo Booth!)     -->
+    <!-- 6. SNAPBOOTH WEBCAM MODAL                                -->
     <!-- ======================================================== -->
     <div id="snapboothModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative space-y-5">
             
-            <!-- Modal Header -->
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div class="flex items-center gap-2.5">
                     <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white">
                         <i class="fa-solid fa-camera"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-white text-base">Snapbooth Experience</h3>
-                        <p class="text-xs text-slate-400">Ambil foto profil dengan webcam & filter estetik</p>
+                        <h3 class="font-bold text-white text-base">Snapbooth & Pasang Foto</h3>
+                        <p class="text-xs text-slate-400">Gunakan webcam atau unggah foto untuk profil Anda</p>
                     </div>
                 </div>
                 <button onclick="closeSnapboothModal();" class="text-slate-400 hover:text-white p-1">
@@ -802,17 +743,17 @@
                     3
                 </div>
 
-                <!-- Fallback Notice if camera disabled -->
+                <!-- Camera Prompt -->
                 <div id="cameraPrompt" class="absolute inset-0 bg-slate-900/90 flex flex-col items-center justify-center p-6 text-center space-y-3">
                     <i class="fa-solid fa-video text-4xl text-purple-400"></i>
-                    <p class="text-sm text-slate-300">Klik "Aktifkan Kamera" untuk mulai mengambil foto atau gunakan berkas dari komputer.</p>
+                    <p class="text-sm text-slate-300">Klik "Aktifkan Kamera" untuk mengambil foto atau gunakan opsi unggah berkas dari komputer.</p>
                     <button onclick="startWebcam();" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-xs shadow-lg">
                         <i class="fa-solid fa-power-off"></i> Aktifkan Kamera
                     </button>
                 </div>
             </div>
 
-            <!-- Filters Selector -->
+            <!-- Filters -->
             <div>
                 <span class="text-xs font-semibold text-slate-400 block mb-2">Pilih Filter Efek:</span>
                 <div class="grid grid-cols-5 gap-2 text-center text-[11px]">
@@ -853,7 +794,7 @@
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div class="flex items-center gap-2.5">
                     <i class="fa-regular fa-file-lines text-purple-400 text-lg"></i>
-                    <h3 class="font-bold text-white text-base">Pratinjau Makalah UAS</h3>
+                    <h3 class="font-bold text-white text-base">Pratinjau Dokumen UAS</h3>
                 </div>
                 <button id="closeModalBtn" class="text-slate-400 hover:text-white p-1">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -863,20 +804,17 @@
             <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
                 <div>
                     <h4 class="font-bold text-white text-base">
-                        Analisis Terminologi Fiqh Siyasah dalam Naskah Piagam Madinah
+                        [Judul Makalah / Laporan Tugas UAS Anda]
                     </h4>
                     <p class="text-xs text-purple-400 mt-1">
-                        Penyusun: <strong>Muhammad Fazry</strong> | NIM: <strong>123456789</strong>
+                        Penyusun: <strong>Fazry ilham sulaeman</strong> | NIM: <strong>1263030076</strong> | Kelas: <strong>HTN 1B</strong>
                     </p>
                 </div>
 
                 <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
-                    <h5 class="font-bold text-xs uppercase tracking-wider text-white">Abstrak Dokumen:</h5>
-                    <p class="text-xs text-slate-300">
-                        Penelitian ini menelaah struktur kebahasaan dan semantik istilah siyasah yang terkandung di dalam Piagam Madinah (*Shahifah al-Madinah*). Pendekatan yang digunakan adalah analisis teks linguistik Arab klasik yang dihubungkan dengan konsep ketatanegaraan modern.
-                    </p>
-                    <p class="text-xs text-slate-300">
-                        Hasil analisis membuktikan bahwa formulasi <em>Al-Ummah</em>, <em>Al-Muwathanah</em>, dan <em>Al-'Adalah</em> mendahului konstitusi modern dalam menjamin kesetaraan hak sipil dalam bingkai negara yang adil.
+                    <h5 class="font-bold text-xs uppercase tracking-wider text-white">Ringkasan Dokumen:</h5>
+                    <p class="text-xs text-slate-400 italic">
+                        [Pratinjau naskah tugas UAS Anda akan tampil di bagian ini. Anda dapat mengedit ringkasan atau menambahkan tautan file dokumen makalah Anda.]
                     </p>
                 </div>
             </div>
@@ -893,7 +831,7 @@
     <!-- Toast Notification -->
     <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-slate-800 border border-purple-500/50 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
         <i class="fa-solid fa-circle-check text-purple-400"></i>
-        <span id="toastMessage">Teks Arab berhasil disalin!</span>
+        <span id="toastMessage">Teks berhasil disalin!</span>
     </div>
 
     <!-- Floating Back to Top Button -->
@@ -908,27 +846,26 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-900">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white">
-                        <i class="fa-solid fa-camera text-sm"></i>
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs">
+                        FIS
                     </div>
                     <div>
-                        <span class="font-bold text-white">Muhammad Fazry</span>
-                        <p class="text-xs text-slate-500">Portofolio Akademik Bahasa Arab Siyasah</p>
+                        <span class="font-bold text-white">Fazry ilham sulaeman</span>
+                        <p class="text-xs text-slate-500">NIM 1263030076 &bull; Kelas HTN 1B</p>
                     </div>
                 </div>
 
                 <!-- [EDIT DISINI: KONTAK & SOSIAL MEDIA] -->
                 <div class="flex items-center gap-4 text-slate-400 text-sm">
-                    <a href="mailto:fazry.mahasiswa@example.com" class="hover:text-purple-400 transition-colors"><i class="fa-regular fa-envelope"></i> Email</a>
-                    <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:fazry@example.com" class="hover:text-purple-400 transition-colors"><i class="fa-regular fa-envelope"></i> Email</a>
+                    <a href="https://wa.me/" target="_blank" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                     <a href="https://github.com/aetheriashop/fazry-portofolio" target="_blank" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
             </div>
 
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
-                <!-- [EDIT DISINI: COPYRIGHT] -->
-                <p>&copy; 2026 <strong>Muhammad Fazry</strong>. Inspired by Snapbooth UI.</p>
-                <p>Mata Kuliah Bahasa Arab / Siyasah Syar'iyyah</p>
+                <p>&copy; 2026 <strong>Fazry ilham sulaeman</strong>. All rights reserved.</p>
+                <p>Program Studi Hukum Tata Negara (HTN 1B)</p>
             </div>
         </div>
     </footer>
@@ -938,88 +875,89 @@
     <!-- ======================================================== -->
     <script>
         // ----------------------------------------------------
-        // 1. DATA 10 MUFRADAT SIYASAH
+        // 1. DATA 10 MUFRADAT (TEMPLATE KOSONG SIAP DI-CUSTOM)
+        // [EDIT DISINI: Ganti nilai teks Arab, transliterasi, arti, dan contoh kalimat di bawah]
         // ----------------------------------------------------
         const mufradatData = [
             {
                 no: 1,
-                arab: "السِّيَاسَةُ",
-                transliterasi: "As-Siyāsah",
-                arti: "Politik / Kebijakan",
-                contohArab: "السِّيَاسَةُ الشَّرْعِيَّةُ تَهْدِفُ إِلَى تَحْقِيْقِ المَصْلَحَةِ وَدَرْءِ المَفْسَدَةِ.",
-                contohArti: "Politik syar'i bertujuan mewujudkan kemaslahatan dan menolak kerusakan."
+                arab: "[كَلِمَة ١]",
+                transliterasi: "[Transliterasi 1]",
+                arti: "[Arti Kosakata 1]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ١]",
+                contohArti: "[Arti contoh kalimat 1]"
             },
             {
                 no: 2,
-                arab: "الدَّوْلَةُ",
-                transliterasi: "Ad-Daulah",
-                arti: "Negara",
-                contohArab: "الدَّوْلَةُ العَادِلَةُ تَحْمِي حُقُوْقَ جَمِيْعِ المُواطِنِيْنَ بِلَا تَمْيِيْزٍ.",
-                contohArti: "Negara yang adil melindungi hak semua warga negara tanpa diskriminasi."
+                arab: "[كَلِمَة ٢]",
+                transliterasi: "[Transliterasi 2]",
+                arti: "[Arti Kosakata 2]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٢]",
+                contohArti: "[Arti contoh kalimat 2]"
             },
             {
                 no: 3,
-                arab: "الحُكُوْمَةُ",
-                transliterasi: "Al-Hukūmah",
-                arti: "Pemerintah",
-                contohArab: "تَعْمَلُ الحُكُوْمَةُ لِخِدْمَةِ الشَّعْبِ وَتَحْقِيْقِ التَّنْمِيَةِ.",
-                contohArti: "Pemerintah bekerja untuk melayani rakyat dan mewujudkan pembangunan."
+                arab: "[كَلِمَة ٣]",
+                transliterasi: "[Transliterasi 3]",
+                arti: "[Arti Kosakata 3]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٣]",
+                contohArti: "[Arti contoh kalimat 3]"
             },
             {
                 no: 4,
-                arab: "الدُّسْتُوْرُ",
-                transliterasi: "Ad-Dustūr",
-                arti: "Konstitusi / UUD",
-                contohArab: "الدُّسْتُوْرُ هُوَ القَانُوْنُ الأَسَاسِيُّ الَّذِي يُنَظِّمُ سُلْطَاتِ الدَّوْلَةِ.",
-                contohArti: "Konstitusi adalah hukum dasar yang mengatur kekuasaan negara."
+                arab: "[كَلِمَة ٤]",
+                transliterasi: "[Transliterasi 4]",
+                arti: "[Arti Kosakata 4]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٤]",
+                contohArti: "[Arti contoh kalimat 4]"
             },
             {
                 no: 5,
-                arab: "الانْتِخَابَاتُ",
-                transliterasi: "Al-Intikhābāt",
-                arti: "Pemilihan Umum (Pemilu)",
-                contohArab: "تُعْقَدُ الانْتِخَابَاتُ لِاخْتِيَارِ مُمَثِّلِي الشَّعْبِ فِي البَرْلَمَانِ.",
-                contohArti: "Pemilu diselenggarakan untuk memilih perwakilan rakyat di parlemen."
+                arab: "[كَلِمَة ٥]",
+                transliterasi: "[Transliterasi 5]",
+                arti: "[Arti Kosakata 5]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٥]",
+                contohArti: "[Arti contoh kalimat 5]"
             },
             {
                 no: 6,
-                arab: "البَرْلَمَانُ",
-                transliterasi: "Al-Barlamān",
-                arti: "Parlemen / Lembaga Legislatif",
-                contohArab: "يُنَاقِشُ البَرْلَمَانُ مَشَارِيْعَ القَوَانِيْنِ وَيُرَاقِبُ أَعْمَالَ الحُكُوْمَةِ.",
-                contohArti: "Parlemen mendiskusikan rancangan undang-undang dan mengawasi kinerja pemerintah."
+                arab: "[كَلِمَة ٦]",
+                transliterasi: "[Transliterasi 6]",
+                arti: "[Arti Kosakata 6]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٦]",
+                contohArti: "[Arti contoh kalimat 6]"
             },
             {
                 no: 7,
-                arab: "القَضَاءُ",
-                transliterasi: "Al-Qadhā'",
-                arti: "Peradilan / Yudikatif",
-                contohArab: "يَسْتَقِلُّ سُلْطَانُ القَضَاءِ لِإِقَامَةِ العَدْلِ بَيْنَ النَّاسِ.",
-                contohArti: "Kekuasaan peradilan bersifat independen untuk menegakkan keadilan di antara manusia."
+                arab: "[كَلِمَة ٧]",
+                transliterasi: "[Transliterasi 7]",
+                arti: "[Arti Kosakata 7]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٧]",
+                contohArti: "[Arti contoh kalimat 7]"
             },
             {
                 no: 8,
-                arab: "العَدَالَةُ",
-                transliterasi: "Al-'Adālah",
-                arti: "Keadilan",
-                contohArab: "العَدَالَةُ هِيَ أَسَاسُ المُلْكِ وَرَكِيْزَةُ الاسْتِقْرَارِ فِي المُجْتَمَعِ.",
-                contohArti: "Keadilan adalah fondasi kekuasaan dan pilar stabilitas di tengah masyarakat."
+                arab: "[كَلِمَة ٨]",
+                transliterasi: "[Transliterasi 8]",
+                arti: "[Arti Kosakata 8]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٨]",
+                contohArti: "[Arti contoh kalimat 8]"
             },
             {
                 no: 9,
-                arab: "المُوَاطَنَةُ",
-                transliterasi: "Al-Muwāthanah",
-                arti: "Kewarganegaraan",
-                contohArab: "تَقُوْمُ المُوَاطَنَةُ عَلَى تَسَاوِي الحُقُوْقِ وَالوَاجِبَاتِ لِكُلِّ فَرْدٍ.",
-                contohArti: "Kewarganegaraan berlandaskan pada kesetaraan hak dan kewajiban bagi setiap individu."
+                arab: "[كَلِمَة ٩]",
+                transliterasi: "[Transliterasi 9]",
+                arti: "[Arti Kosakata 9]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٩]",
+                contohArti: "[Arti contoh kalimat 9]"
             },
             {
                 no: 10,
-                arab: "الإِمَامَةُ / الخِلَافَةُ",
-                transliterasi: "Al-Imāmah / Al-Khilāfah",
-                arti: "Kepemimpinan Negara / Kekhalifahan",
-                contohArab: "الإِمَامَةُ مَوْضُوْعَةٌ لِخِلَافَةِ النُّبُوَّةِ فِي حِرَاسَةِ الدِّيْنِ وَسِيَاسَةِ الدُّنْيَا.",
-                contohArti: "Kepemimpinan ditegakkan untuk menggantikan kenabian dalam menjaga agama dan mengatur urusan dunia."
+                arab: "[كَلِمَة ١٠]",
+                transliterasi: "[Transliterasi 10]",
+                arti: "[Arti Kosakata 10]",
+                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ١٠]",
+                contohArti: "[Arti contoh kalimat 10]"
             }
         ];
 
@@ -1044,7 +982,7 @@
             items.forEach(item => {
                 // Card View
                 const card = document.createElement('div');
-                card.className = "bg-slate-800/60 rounded-2xl border border-slate-700/80 p-5 shadow-xl hover:border-purple-500/60 transition-all duration-300 flex flex-col justify-between group backdrop-blur-md";
+                card.className = "bg-slate-800/60 rounded-2xl border border-dashed border-slate-700/80 p-5 shadow-xl hover:border-purple-500/60 transition-all duration-300 flex flex-col justify-between group backdrop-blur-md";
                 card.innerHTML = `
                     <div>
                         <div class="flex items-center justify-between border-b border-slate-700/80 pb-3 mb-4">
@@ -1062,7 +1000,7 @@
                         </div>
 
                         <div class="text-right mb-3">
-                            <h3 class="font-arabic text-3xl font-bold text-white group-hover:text-purple-300 transition-colors leading-relaxed" dir="rtl">
+                            <h3 class="font-arabic text-3xl font-bold text-slate-200 group-hover:text-purple-300 transition-colors leading-relaxed" dir="rtl">
                                 ${item.arab}
                             </h3>
                             <p class="text-xs font-semibold text-blue-400 italic font-sans mt-0.5">${item.transliterasi}</p>
@@ -1070,12 +1008,12 @@
 
                         <div class="mb-4">
                             <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Arti:</span>
-                            <p class="text-sm font-bold text-slate-200">${item.arti}</p>
+                            <p class="text-sm font-bold text-slate-300">${item.arti}</p>
                         </div>
 
                         <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-700/70 text-xs">
                             <span class="text-[10px] uppercase font-bold text-purple-400 block mb-1">Contoh:</span>
-                            <p class="font-arabic text-base text-slate-200 text-right leading-loose mb-1" dir="rtl">${item.contohArab}</p>
+                            <p class="font-arabic text-base text-slate-300 text-right leading-loose mb-1" dir="rtl">${item.contohArab}</p>
                             <p class="text-slate-400 text-[11px] italic mt-1">${item.contohArti}</p>
                         </div>
                     </div>
@@ -1087,11 +1025,11 @@
                 tr.className = "hover:bg-slate-700/40 transition-colors";
                 tr.innerHTML = `
                     <td class="py-3 px-4 text-center text-xs font-bold text-slate-400">${item.no}</td>
-                    <td class="py-3 px-6 text-right font-arabic text-xl font-bold text-white" dir="rtl">${item.arab}</td>
+                    <td class="py-3 px-6 text-right font-arabic text-xl font-bold text-slate-200" dir="rtl">${item.arab}</td>
                     <td class="py-3 px-5 text-xs font-semibold text-blue-400 italic">${item.transliterasi}</td>
-                    <td class="py-3 px-5 text-xs font-bold text-slate-200">${item.arti}</td>
+                    <td class="py-3 px-5 text-xs font-bold text-slate-300">${item.arti}</td>
                     <td class="py-3 px-6 text-xs text-slate-300">
-                        <div class="font-arabic text-base text-slate-100 text-right leading-loose" dir="rtl">${item.contohArab}</div>
+                        <div class="font-arabic text-base text-slate-200 text-right leading-loose" dir="rtl">${item.contohArab}</div>
                         <div class="text-[11px] text-slate-400 italic mt-0.5">${item.contohArti}</div>
                     </td>
                 `;
@@ -1132,23 +1070,20 @@
             viewGridBtn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5 transition-all";
         });
 
-        // ----------------------------------------------------
-        // 3. COPY & AUDIO SPEECH
-        // ----------------------------------------------------
+        // Copy
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast(`Mufradat "${text}" disalin!`);
+                showToast(`Mufradat disalin: ${text}`);
             }).catch(() => {
                 showToast("Gagal menyalin.");
             });
         }
 
+        // Voice
         function speakArabic(text) {
             if ('speechSynthesis' in window) {
-                const cleanText = text.replace(/[\u064B-\u065F]/g, "");
-                const utterance = new SpeechSynthesisUtterance(cleanText);
+                const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = 'ar-SA';
-                utterance.rate = 0.85;
                 window.speechSynthesis.speak(utterance);
                 showToast(`Pelafalan: ${text}`);
             } else {
@@ -1173,7 +1108,7 @@
         }
 
         // ----------------------------------------------------
-        // 4. QIRA'AH ACCORDION & AUDIO TIMER
+        // 3. QIRA'AH ACCORDION & AUDIO TIMER
         // ----------------------------------------------------
         const toggleTranslationBtn = document.getElementById('toggleTranslationBtn');
         const translationContainer = document.getElementById('translationContainer');
@@ -1213,7 +1148,7 @@
         });
 
         // ----------------------------------------------------
-        // 5. PREVIEW MODAL (TUGAS UAS)
+        // 4. PREVIEW MODAL (TUGAS UAS)
         // ----------------------------------------------------
         const previewModal = document.getElementById('previewModal');
         const openPreviewModalBtn = document.getElementById('openPreviewModalBtn');
@@ -1237,7 +1172,7 @@
         });
 
         // ----------------------------------------------------
-        // 6. SNAPBOOTH WEBCAM & PHOTO LOGIC
+        // 5. SNAPBOOTH WEBCAM & PHOTO LOGIC
         // ----------------------------------------------------
         const snapboothModal = document.getElementById('snapboothModal');
         const webcamVideo = document.getElementById('webcamVideo');
@@ -1248,6 +1183,8 @@
         const savePhotoBtn = document.getElementById('savePhotoBtn');
         const avatarImage = document.getElementById('avatarImage');
         const avatarImageSecondary = document.getElementById('avatarImageSecondary');
+        const avatarPlaceholderIcon = document.getElementById('avatarPlaceholderIcon');
+        const avatarPlaceholderIconSecondary = document.getElementById('avatarPlaceholderIconSecondary');
         const uploadPhotoInput = document.getElementById('uploadPhotoInput');
         let currentFilter = 'none';
         let mediaStream = null;
@@ -1275,7 +1212,7 @@
                 webcamVideo.srcObject = mediaStream;
                 cameraPrompt.classList.add('hidden');
             } catch (err) {
-                alert("Tidak dapat mengakses kamera. Pastikan Anda mengizinkan akses kamera atau gunakan tombol unggah gambar.");
+                alert("Tidak dapat mengakses kamera. Pastikan Anda mengizinkan akses kamera atau gunakan opsi unggah berkas gambar.");
             }
         }
 
@@ -1323,14 +1260,23 @@
 
         function saveAsAvatar() {
             const dataUrl = photoCanvas.toDataURL('image/png');
-            avatarImage.src = dataUrl;
-            avatarImage.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
-            if (avatarImageSecondary) {
-                avatarImageSecondary.src = dataUrl;
-                avatarImageSecondary.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
-            }
+            applyNewAvatar(dataUrl);
             closeSnapboothModal();
             showToast("Foto profil diperbarui!");
+        }
+
+        function applyNewAvatar(url) {
+            avatarImage.src = url;
+            avatarImage.classList.remove('hidden');
+            avatarImage.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
+            if (avatarPlaceholderIcon) avatarPlaceholderIcon.classList.add('hidden');
+
+            if (avatarImageSecondary) {
+                avatarImageSecondary.src = url;
+                avatarImageSecondary.classList.remove('hidden');
+                avatarImageSecondary.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
+            }
+            if (avatarPlaceholderIconSecondary) avatarPlaceholderIconSecondary.classList.add('hidden');
         }
 
         uploadPhotoInput.addEventListener('change', (e) => {
@@ -1338,18 +1284,15 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    avatarImage.src = event.target.result;
-                    if (avatarImageSecondary) avatarImageSecondary.src = event.target.result;
+                    applyNewAvatar(event.target.result);
                     closeSnapboothModal();
-                    showToast("Foto profil berhasil diunggah!");
+                    showToast("Foto berhasil diunggah!");
                 };
                 reader.readAsDataURL(file);
             }
         });
 
-        // ----------------------------------------------------
-        // 7. MOBILE MENU & BACK TO TOP
-        // ----------------------------------------------------
+        // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuIcon = document.getElementById('menuIcon');
@@ -1376,6 +1319,7 @@
             });
         });
 
+        // Back to Top
         const backToTopBtn = document.getElementById('backToTopBtn');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) {
