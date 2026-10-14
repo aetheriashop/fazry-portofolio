@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="dark scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fazry Ilham Sulaeman | Portofolio Akademik HTN 1B</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Photo Booth & Portofolio | Fazry Ilham Sulaeman</title>
+    <meta name="description" content="Photo Booth & Portofolio Akademik - Fazry Ilham Sulaeman (HTN 1B)"/>
     
-    <!-- Google Fonts: Inter / Poppins (Latin) & Amiri (Arabic) -->
+    <!-- Google Fonts: Inter (Latin / Snapbooth Style) & Amiri (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,25 +18,17 @@
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    },
                     colors: {
                         slate: {
-                            750: '#243044',
-                            850: '#151f32',
+                            750: '#233044',
+                            850: '#141d2e',
                             900: '#0f172a',
-                            950: '#090d16',
-                        },
-                        brand: {
-                            blue: '#3b82f6',
-                            purple: '#8b5cf6',
-                            pink: '#ec4899',
-                            emerald: '#10b981',
-                            gold: '#f59e0b',
+                            950: '#080d1a',
                         }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        arabic: ['Amiri', 'serif'],
-                        quran: ['"Scheherazade New"', 'Amiri', 'serif']
                     }
                 }
             }
@@ -50,16 +40,27 @@
             font-family: 'Amiri', serif;
             direction: rtl;
         }
-        /* Snapbooth Signature Gradient Text */
-        .gradient-text-snap {
-            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Snapbooth Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #334155;
+            height: 6px;
+            border-radius: 9999px;
+            outline: none;
         }
-        .gradient-text-blue-purple {
-            background: linear-gradient(to right, #60a5fa, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+            border: 2px solid #ffffff;
+            transition: transform 0.1s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
         }
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -75,1261 +76,658 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #64748b;
         }
-        /* Photo Filter Classes */
-        .filter-vintage {
-            filter: sepia(0.65) contrast(1.15) brightness(0.95);
-        }
-        .filter-emerald {
-            filter: hue-rotate(60deg) saturate(1.4) contrast(1.1);
-        }
-        .filter-cyber {
-            filter: hue-rotate(180deg) saturate(1.6) contrast(1.2);
-        }
-        .filter-bw {
-            filter: grayscale(1) contrast(1.25);
-        }
     </style>
 </head>
-<body class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans antialiased selection:bg-purple-500/30 selection:text-purple-200 min-h-screen">
+<body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white font-sans antialiased selection:bg-purple-500/30 selection:text-purple-200">
 
     <!-- ======================================================== -->
-    <!-- STICKY NAVBAR (Snapbooth Glassmorphism)                   -->
+    <!-- TOP NAVIGATION BAR (Snapbooth Minimalist Header)         -->
     <!-- ======================================================== -->
-    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo & Brand Badge -->
-                <a href="#beranda" class="flex items-center gap-3 group">
-                    <div class="relative">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
-                        <div class="relative w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform font-bold text-sm tracking-wider">
-                            FIS
-                        </div>
-                    </div>
-                    <div>
-                        <!-- NAMA & KELAS -->
-                        <span class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-                            Fazry Ilham Sulaeman
-                            <span class="text-[10px] uppercase tracking-wider bg-purple-950/80 text-purple-300 font-semibold px-2 py-0.5 rounded-full border border-purple-700/50">HTN 1B</span>
-                        </span>
-                        <p class="text-xs text-slate-400">Portofolio Akademik &bull; Bahasa Arab</p>
-                    </div>
-                </a>
-
-                <!-- Desktop Navigation Links -->
-                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
-                    <a href="#beranda" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all duration-200">Beranda</a>
-                    <a href="#profil" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all duration-200">Profil</a>
-                    <a href="#mufradat" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all duration-200">Mufradat</a>
-                    <a href="#qiraah" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all duration-200">Baca Teks</a>
-                    <a href="#uas" class="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg transition-all duration-200">Tugas UAS</a>
-                    
-                    <!-- Snapbooth Mode Button -->
-                    <button id="openPhotoBoothNavBtn" type="button" class="ml-2 relative group p-0.5 rounded-lg overflow-hidden">
-                        <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
-                        <span class="relative px-4 py-2 rounded-[7px] text-xs font-bold text-white bg-slate-900 group-hover:bg-transparent flex items-center gap-2 transition duration-300">
-                            <i class="fa-solid fa-camera text-blue-400"></i> Pasang Foto
-                        </span>
-                    </button>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex md:hidden">
-                    <button id="mobileMenuBtn" type="button" class="p-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none" aria-label="Buka Menu Navigasi">
-                        <i id="menuIcon" class="fa-solid fa-bars text-xl"></i>
-                    </button>
+    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700/80">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-2.5 group">
+                <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white shadow-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
                 </div>
-            </div>
-        </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-base leading-none bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">Snapbooth</span>
+                    <span class="text-[10px] text-slate-400 font-medium tracking-tight">Fazry Ilham Sulaeman &bull; HTN 1B</span>
+                </div>
+            </a>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-950/95 px-4 pt-3 pb-6 space-y-2 shadow-2xl backdrop-blur-xl transition-all duration-300">
-            <a href="#beranda" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Beranda</a>
-            <a href="#profil" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Profil Mahasiswa</a>
-            <a href="#mufradat" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Tugas 1: Mufradat</a>
-            <a href="#qiraah" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Tugas 2: Baca Teks</a>
-            <a href="#uas" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white">Tugas 3: Tugas UAS</a>
-            <button onclick="openSnapboothModal();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-bold text-purple-300 bg-purple-950/40 border border-purple-800/50 flex items-center gap-2">
-                <i class="fa-solid fa-camera text-blue-400"></i> Ambil / Unggah Foto Profil
-            </button>
+            <!-- Navigation Links -->
+            <nav class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium">
+                <a href="#home" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Home</a>
+                <a href="#photo-booth" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Photo Booth</a>
+                <a href="#akademik" class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition">Tugas Akademik</a>
+                <a href="#photo-booth" class="hidden sm:inline-flex items-center justify-center rounded-md bg-gradient-to-r from-blue-500 to-purple-600 px-3.5 py-1.5 text-xs font-bold text-white shadow hover:from-blue-600 hover:to-purple-700 transition">
+                    Buka Kamera
+                </a>
+            </nav>
+
         </div>
     </header>
 
     <!-- ======================================================== -->
-    <!-- 1. HERO SECTION (Snapbooth Dark Experience)               -->
+    <!-- 1. SNAPBOOTH HOMEPAGE HERO (EXACT SNAPBOOTH CLONE)       -->
     <!-- ======================================================== -->
-    <section id="beranda" class="relative overflow-hidden py-16 md:py-24 border-b border-slate-800/80">
-        <!-- Radial Glow Background -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-blue-600/20 via-purple-600/20 to-pink-600/15 rounded-full blur-[100px] pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <main id="home" class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+        <div class="container mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)]">
             
-            <!-- Hero Title & Slogan -->
-            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
-                
-                <!-- Pill Tag -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs sm:text-sm font-medium text-slate-300 backdrop-blur-sm shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Portofolio Akademik &bull; Kelas HTN 1B</span>
-                </div>
-
-                <!-- Main Gradient Header -->
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                    Portofolio Akademik <br class="hidden sm:inline">
-                    <span class="gradient-text-snap">Bahasa Arab & Siyasah</span>
+            <!-- Hero Title -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                    Photo Booth Experience
                 </h1>
-
-                <!-- Subtitle -->
-                <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                    Website dokumentasi akademik tugas perkuliahan Bahasa Arab untuk Program Studi Hukum Tata Negara (HTN 1B), siap dikustomisasi dengan data tugas mandiri Anda.
+                <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto">
+                    Capture moments, add creative filters, and create beautiful photo strips to share with friends and family.
                 </p>
-            </div>
-
-            <!-- Student Identity Box & Empty Profile Photo Placeholder -->
-            <div class="max-w-4xl mx-auto mb-12">
-                <div class="bg-slate-800/60 rounded-2xl border border-slate-700/80 p-6 backdrop-blur-md shadow-2xl">
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                        
-                        <!-- Empty Profile Avatar Placeholder with Upload/Snap Trigger -->
-                        <div class="md:col-span-4 flex flex-col items-center text-center">
-                            <div class="relative group cursor-pointer" onclick="openSnapboothModal();" title="Klik untuk pasang / jepret foto profil Anda">
-                                <div class="absolute -inset-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
-                                
-                                <!-- Empty Avatar Frame with Initials / Camera Icon -->
-                                <div class="relative w-32 h-32 rounded-full overflow-hidden border-2 border-dashed border-purple-400/60 bg-slate-900 flex flex-col items-center justify-center text-slate-400 group-hover:border-purple-400 group-hover:text-purple-300 transition-all shadow-xl">
-                                    <img id="avatarImage" src="" alt="Foto Profil" class="hidden w-full h-full object-cover">
-                                    <div id="avatarPlaceholderIcon" class="flex flex-col items-center justify-center p-2">
-                                        <i class="fa-solid fa-camera text-2xl text-purple-400 mb-1"></i>
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pasang Foto</span>
-                                    </div>
-                                </div>
-
-                                <!-- Camera Overlay Button -->
-                                <div class="absolute bottom-0 right-0 w-9 h-9 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 text-white flex items-center justify-center shadow-lg border-2 border-slate-900 text-xs">
-                                    <i class="fa-solid fa-plus"></i>
-                                </div>
-                            </div>
-                            <button onclick="openSnapboothModal();" class="mt-3 text-xs text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1.5">
-                                <i class="fa-solid fa-camera"></i> Ambil / Unggah Foto
-                            </button>
-                        </div>
-
-                        <!-- Info Details -->
-                        <div class="md:col-span-8 space-y-4 text-center md:text-left">
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                
-                                <!-- NAMA -->
-                                <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
-                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Nama Mahasiswa</span>
-                                    <p class="text-base font-bold text-white tracking-wide mt-0.5">Fazry ilham sulaeman</p>
-                                </div>
-
-                                <!-- NIM -->
-                                <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
-                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">NIM</span>
-                                    <p class="text-base font-mono font-bold text-blue-400 mt-0.5">1263030076</p>
-                                </div>
-
-                                <!-- KELAS -->
-                                <div class="bg-slate-900/70 p-3.5 rounded-xl border border-slate-700/60">
-                                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Kelas</span>
-                                    <p class="text-base font-bold text-purple-300 mt-0.5">HTN 1B</p>
-                                </div>
-
-                            </div>
-
-                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                                Mahasiswa Program Studi Hukum Tata Negara (HTN 1B), Fakultas Syari'ah dan Hukum. Media portofolio tugas Bahasa Arab dan literasi hukum ketatanegaraan Islam.
-                            </p>
-                        </div>
-
-                    </div>
+                <!-- Student Identity Pill -->
+                <div class="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs text-purple-300 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Fazry ilham sulaeman &bull; NIM: 1263030076 &bull; Kelas: HTN 1B</span>
                 </div>
             </div>
 
-            <!-- Snapbooth 3-Card Feature Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 w-full max-w-5xl mx-auto">
+            <!-- 3 Exact Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 w-full max-w-4xl">
                 
-                <!-- Card 1: Mufradat -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700/80 hover:border-blue-500/50 transition-all duration-300 hover:scale-[1.02] group">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500/20 transition-colors">
-                        <i class="fa-solid fa-book-bookmark text-2xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 1: Mufradat</h2>
-                    <p class="text-sm text-slate-300 mb-4">10 Slot kosakata politik & ketatanegaraan siap diisi dan disesuaikan dengan tugas Anda.</p>
-                    <a href="#mufradat" class="mt-auto text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1">
-                        Buka Kosakata <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
+                <!-- Card 1: Capture Photos -->
+                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-blue-500/50 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera h-12 w-12 mb-4 text-blue-400">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                        <circle cx="12" cy="13" r="3"></circle>
+                    </svg>
+                    <h2 class="text-xl font-bold mb-2">Capture Photos</h2>
+                    <p class="text-slate-300">Take high-quality photos using your device's webcam with just a click.</p>
                 </div>
 
-                <!-- Card 2: Qira'ah -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700/80 hover:border-purple-500/50 transition-all duration-300 hover:scale-[1.02] group">
-                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
-                        <i class="fa-solid fa-headphones text-2xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 2: Baca Teks</h2>
-                    <p class="text-sm text-slate-300 mb-4">Wadah teks bacaan Arab (qira'ah), terjemahan, dan pemutar audio rekaman suara mandiri.</p>
-                    <a href="#qiraah" class="mt-auto text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1">
-                        Buka Teks Bacaan <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
+                <!-- Card 2: Apply Filters -->
+                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-purple-500/50 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-filter h-12 w-12 mb-4 text-purple-400">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                    <h2 class="text-xl font-bold mb-2">Apply Filters</h2>
+                    <p class="text-slate-300">Enhance your photos with various filters and adjustable intensity.</p>
                 </div>
 
-                <!-- Card 3: UAS Showcase -->
-                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700/80 hover:border-pink-500/50 transition-all duration-300 hover:scale-[1.02] group">
-                    <div class="w-14 h-14 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 mb-4 group-hover:bg-pink-500/20 transition-colors">
-                        <i class="fa-solid fa-file-lines text-2xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold mb-2 text-white">Tugas 3: Portofolio UAS</h2>
-                    <p class="text-sm text-slate-300 mb-4">Slot dokumen makalah / karya ilmiah UAS dengan tombol unduh PDF dan pratinjau naskah.</p>
-                    <a href="#uas" class="mt-auto text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center gap-1">
-                        Lihat Slot Tugas <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </a>
+                <!-- Card 3: Create Photo Strips -->
+                <div class="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-xl backdrop-blur-sm border border-slate-700 hover:border-pink-500/50 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image h-12 w-12 mb-4 text-pink-400">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <circle cx="9" cy="9" r="2"></circle>
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                    </svg>
+                    <h2 class="text-xl font-bold mb-2">Create Photo Strips</h2>
+                    <p class="text-slate-300">Generate and download memorable photo strips to keep or share.</p>
                 </div>
 
             </div>
 
-            <!-- Snapbooth Launch Card -->
-            <div class="w-full max-w-md mx-auto">
-                <div class="text-card-foreground flex flex-col gap-6 rounded-2xl border py-6 shadow-2xl bg-slate-800/70 border-slate-700/90 backdrop-blur-md">
-                    <div class="flex flex-col gap-1.5 px-6 pb-2 text-center">
-                        <div class="font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-                            Kelola & Kustomisasi Tugas
+            <!-- Exact "Ready to Get Started?" Card with Gradient Glow Button -->
+            <div class="w-full max-w-md">
+                <div data-slot="card" class="text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm bg-slate-800/70 border-slate-700 backdrop-blur-sm">
+                    <div data-slot="card-header" class="flex flex-col gap-1.5 px-6 pb-4">
+                        <div data-slot="card-title" class="font-semibold text-2xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                            Ready to Get Started?
                         </div>
-                        <div class="text-sm text-slate-300">
-                            Template portofolio bersih siap dikustomisasi sesuai kebutuhan Anda
+                        <div data-slot="card-description" class="text-sm text-center text-slate-300">
+                            Experience the fun of a photo booth right from your browser
                         </div>
                     </div>
                     
-                    <div class="px-6">
+                    <div data-slot="card-content" class="px-6">
                         <div class="relative">
-                            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-75 animate-pulse"></div>
-                            <a href="#mufradat" class="relative block w-full">
-                                <button type="button" class="inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-lg transition-all duration-200">
-                                    <i class="fa-solid fa-pen-to-square"></i> Mulai Kustomisasi Konten
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-75"></div>
+                            <a class="relative block w-full" href="#photo-booth">
+                                <button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm shadow-xs hover:bg-primary/90 h-10 rounded-md px-6 w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 transition">
+                                    Launch Photo Booth
                                 </button>
                             </a>
                         </div>
+                        <div class="mt-4 text-center text-slate-400 text-sm">
+                            No signup required. Just allow camera access when prompted.
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Exact 4 Gradient Blocks -->
+            <div class="mt-16 grid grid-cols-4 gap-2 w-full max-w-2xl">
+                <div class="rounded-lg overflow-hidden h-28 sm:h-32 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center font-bold text-white/40 text-xs">#SNAP</div>
+                <div class="rounded-lg overflow-hidden h-28 sm:h-32 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center font-bold text-white/40 text-xs">#FILTER</div>
+                <div class="rounded-lg overflow-hidden h-28 sm:h-32 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center font-bold text-white/40 text-xs">#STRIP</div>
+                <div class="rounded-lg overflow-hidden h-28 sm:h-32 bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center font-bold text-white/40 text-xs">#SHARE</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ======================================================== -->
+    <!-- 2. EXACT SNAPBOOTH PHOTO BOOTH PAGE (/photo-booth)       -->
+    <!-- ======================================================== -->
+    <section id="photo-booth" class="py-16 px-4 bg-slate-900 border-t border-b border-slate-700/80">
+        <div class="container mx-auto max-w-5xl">
+            
+            <h1 class="text-3xl font-bold text-center mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                Next.js Photo Booth
+            </h1>
+            <p class="text-center text-slate-400 text-sm mb-8">Ambil foto webcam, atur filter & intensitas, lalu buat photo strip otomatis</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Left Column: Camera Viewport & Controls -->
+                <div class="flex flex-col space-y-4">
+                    
+                    <!-- Video Card -->
+                    <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-4 shadow-sm bg-slate-800/70 border-slate-700 backdrop-blur-sm">
+                        <div data-slot="card-content" class="p-4">
+                            <div class="relative rounded-md overflow-hidden bg-black aspect-video flex items-center justify-center" id="videoWrapper">
+                                <video id="webcamVideo" autoplay muted playsinline class="w-full h-full object-cover -scale-x-100"></video>
+                                <canvas id="captureCanvas" class="hidden"></canvas>
+                                
+                                <!-- Empty Camera Overlay (Before start) -->
+                                <div id="cameraStartOverlay" class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center p-4 text-center space-y-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-400"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                    <p class="text-xs text-slate-300">Klik tombol di bawah untuk mengaktifkan webcam Anda</p>
+                                    <button onclick="startCamera();" class="px-4 py-2 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-xs shadow hover:from-blue-600 hover:to-purple-700">
+                                        Aktifkan Webcam
+                                    </button>
+                                </div>
+
+                                <!-- Countdown -->
+                                <div id="countdownBox" class="hidden absolute inset-0 bg-black/60 flex items-center justify-center text-7xl font-extrabold text-white animate-pulse">
+                                    3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex space-x-2">
+                            <button id="captureBtn" onclick="snapPhoto();" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-9 px-4 py-2 flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold shadow transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera mr-2 h-4 w-4">
+                                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                                    <circle cx="12" cy="13" r="3"></circle>
+                                </svg>
+                                Capture Photo
+                            </button>
+                            
+                            <button id="resetBtn" onclick="resetStrip();" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 h-9 px-4 py-2 shadow transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-cw mr-2 h-4 w-4">
+                                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                    <path d="M21 3v5h-5"></path>
+                                    <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                    <path d="M8 16H3v5"></path>
+                                </svg>
+                                Reset
+                            </button>
+                        </div>
+
+                        <!-- Filter & Intensity Controls -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                            
+                            <!-- Filter Selector -->
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-slate-200">Filter</label>
+                                <select id="filterSelect" onchange="updateFilter();" class="w-full h-9 rounded-md border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:border-purple-500">
+                                    <option value="none">Normal</option>
+                                    <option value="grayscale">Grayscale</option>
+                                    <option value="sepia">Sepia (Vintage)</option>
+                                    <option value="invert">Invert</option>
+                                    <option value="hue-rotate">Hue Rotate</option>
+                                    <option value="contrast">High Contrast</option>
+                                </select>
+                            </div>
+
+                            <!-- Intensity Slider -->
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <label class="text-sm font-medium text-slate-200">Intensity:</label>
+                                    <span id="intensityVal" class="text-sm font-mono text-purple-400">100%</span>
+                                </div>
+                                <input type="range" id="intensitySlider" min="0" max="100" value="100" oninput="updateFilter();" class="w-full">
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Photo Strip Box -->
+                <div class="flex flex-col space-y-4">
+                    <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm bg-slate-800/70 border-slate-700 backdrop-blur-sm">
+                        <div data-slot="card-content" class="p-4">
+                            <div class="flex flex-col items-center">
+                                
+                                <div class="flex items-center justify-between w-full mb-4 px-2">
+                                    <h2 class="text-xl font-bold">Photo Strip</h2>
+                                    <span id="photoCountBadge" class="text-xs bg-slate-900 text-purple-400 px-2.5 py-1 rounded-full border border-slate-700 font-mono">0 / 4 Foto</span>
+                                </div>
+
+                                <!-- Empty State -->
+                                <div id="emptyStripBox" class="flex flex-col items-center justify-center h-64 border-2 border-dashed border-slate-600 rounded-md p-4 w-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image h-16 w-16 text-slate-500 mb-2">
+                                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                                        <circle cx="9" cy="9" r="2"></circle>
+                                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                                    </svg>
+                                    <p class="text-slate-400 text-center text-sm">Capture photos to create your photo strip</p>
+                                </div>
+
+                                <!-- Active Strip Container (Hidden when empty) -->
+                                <div id="activeStripBox" class="hidden w-full max-w-[260px] bg-white text-slate-900 p-3 rounded-lg shadow-2xl flex flex-col gap-2 items-center">
+                                    <div id="stripPhotosList" class="flex flex-col gap-2 w-full">
+                                        <!-- Captured photos added here -->
+                                    </div>
+                                    
+                                    <!-- Photo Strip Footer Tag -->
+                                    <div class="text-center pt-2 border-t border-slate-200 w-full">
+                                        <p class="font-bold text-[11px] tracking-wider uppercase text-slate-900">Fazry Ilham Sulaeman</p>
+                                        <p class="text-[9px] text-slate-500 font-mono">1263030076 &bull; HTN 1B</p>
+                                    </div>
+                                </div>
+
+                                <!-- Strip Action Button -->
+                                <div id="stripActions" class="hidden w-full mt-4 flex gap-2">
+                                    <button onclick="downloadStrip();" class="flex-1 py-2 px-3 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                        Download Strip
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- 2. PROFIL SAYA (ABOUT ME)                                 -->
+    <!-- 3. PORTOFOLIO AKADEMIK (HTN 1B - CUSTOMIZABLE TEMPLATES) -->
     <!-- ======================================================== -->
-    <section id="profil" class="py-20 border-b border-slate-800/80 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="akademik" class="py-16 px-4 bg-slate-900/60 border-b border-slate-800">
+        <div class="container mx-auto max-w-5xl">
             
             <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-blue-800/60">
-                    Biodata Akademik
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-800/60 font-semibold">
+                    Akademik HTN 1B
                 </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Profil <span class="gradient-text-blue-purple">Mahasiswa</span>
+                <h2 class="text-3xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                    Portofolio Tugas Bahasa Arab
                 </h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
+                <p class="text-slate-400 text-sm mt-1">
+                    Slot template bersih untuk tugas mandiri Mahasiswa: <strong>Fazry ilham sulaeman</strong> (NIM: <strong>1263030076</strong> - <strong>HTN 1B</strong>)
+                </p>
             </div>
 
-            <!-- Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+            <div class="space-y-12">
                 
-                <!-- Left: Profile Frame (Customizable / Empty Placeholder) -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="w-full bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md shadow-2xl relative">
-                        <div class="flex items-center justify-between border-b border-slate-700/80 pb-3 mb-5">
-                            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Foto Mahasiswa</span>
-                            <span class="font-arabic text-purple-300 font-bold text-base">الصُّوْرَةُ الشَّخْصِيَّةُ</span>
-                        </div>
+                <!-- 1. BIODATA MAHASISWA CARD -->
+                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span> Identitas Mahasiswa
+                        </h3>
+                        <span class="text-xs text-purple-400 font-mono">HTN 1B</span>
+                    </div>
 
-                        <!-- Empty Photo Box -->
-                        <div class="relative w-48 h-48 mx-auto rounded-2xl overflow-hidden border-2 border-dashed border-slate-600 bg-slate-900/90 flex flex-col items-center justify-center text-slate-400 mb-5 group cursor-pointer hover:border-purple-500 transition-all" onclick="openSnapboothModal();">
-                            <img id="avatarImageSecondary" src="" alt="Foto Profil" class="hidden w-full h-full object-cover">
-                            <div id="avatarPlaceholderIconSecondary" class="flex flex-col items-center justify-center p-3 text-center">
-                                <i class="fa-solid fa-image-portrait text-4xl text-slate-600 group-hover:text-purple-400 mb-2 transition-colors"></i>
-                                <span class="text-xs font-semibold text-slate-400 group-hover:text-white">Foto Belum Dipasang</span>
-                                <span class="text-[10px] text-purple-400 mt-1">Klik untuk upload / foto</span>
-                            </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
+                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">Nama Mahasiswa</span>
+                            <span class="font-bold text-white text-base">Fazry ilham sulaeman</span>
                         </div>
-
-                        <div class="text-center space-y-1 mb-5">
-                            <h3 class="text-xl font-bold text-white">Fazry ilham sulaeman</h3>
-                            <p class="text-xs text-purple-400 font-medium">Hukum Tata Negara (HTN 1B)</p>
+                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
+                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">NIM</span>
+                            <span class="font-bold text-blue-400 font-mono text-base">1263030076</span>
                         </div>
-
-                        <!-- Status Badge -->
-                        <div class="bg-slate-900/80 rounded-xl p-3 text-center border border-slate-700/60 text-xs">
-                            <span class="text-emerald-400 font-bold block"><i class="fa-solid fa-circle-check"></i> Status: Aktif</span>
-                            <span class="text-slate-400 text-[11px]">Mahasiswa Semester 1 &bull; Kelas HTN 1B</span>
+                        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-700/60">
+                            <span class="text-[11px] uppercase tracking-wider text-slate-400 block font-semibold">Program Studi & Kelas</span>
+                            <span class="font-bold text-purple-300 text-base">HTN 1B</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Biodata Details & Narrative -->
-                <div class="lg:col-span-7 space-y-6">
-                    
-                    <!-- Biodata Details -->
-                    <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 backdrop-blur-md shadow-xl">
-                        <h4 class="text-sm font-bold text-white flex items-center gap-2 mb-4 pb-2 border-b border-slate-700">
-                            <i class="fa-solid fa-graduation-cap text-blue-400"></i> Informasi Akademik Mahasiswa
+                <!-- 2. TUGAS 1: 10 MUFRADAT (SLOT TEMPLATE) -->
+                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="mufradat">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-700 pb-3 mb-6 gap-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span> Tugas 1: 10 Mufradat Siyasah
+                            </h3>
+                            <p class="text-xs text-slate-400">10 Slot kosakata Arab, transliterasi, arti, dan contoh kalimat (siap di-custom)</p>
+                        </div>
+                        <span class="text-xs text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded-md border border-purple-800 self-start sm:self-auto">
+                            Template Kosong
+                        </span>
+                    </div>
+
+                    <!-- 10 Slots Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="mufradatContainer">
+                        <!-- Populated via script with customizable template slots 1-10 -->
+                    </div>
+                </div>
+
+                <!-- 3. TUGAS 2: BACA TEKS & AUDIO (SLOT TEMPLATE) -->
+                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="qiraah">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-pink-400"></span> Tugas 2: Baca Teks (Qira'ah)
+                        </h3>
+                        <span class="text-xs text-pink-300 bg-pink-950/60 px-2.5 py-1 rounded-md border border-pink-800">
+                            Audio & Naskah
+                        </span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Audio Player -->
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-dashed border-slate-700">
+                            <span class="text-xs text-purple-300 font-semibold block mb-2">Pemutar Audio Rekaman Suara Anda:</span>
+                            <!-- [EDIT DISINI: GANTI SRC DENGAN FILE REKAMAN MP3 ANDA] -->
+                            <audio id="qiraahAudio" controls class="w-full h-10 filter invert-[0.85] hue-rotate-180">
+                                <source src="" type="audio/mpeg">
+                                Browser Anda tidak mendukung pemutar audio.
+                            </audio>
+                            <span class="text-[11px] text-amber-400 block mt-2">
+                                ⚠ File audio belum dihubungkan. Masukkan nama file rekaman audio pada atribut <code>src=""</code> di berkas <code>index.html</code>.
+                            </span>
+                        </div>
+
+                        <!-- Arabic Text Box -->
+                        <div class="bg-slate-900/80 p-6 rounded-xl border border-dashed border-slate-700 text-right">
+                            <p class="text-xs text-purple-400 mb-2 font-mono text-left">[Slot Teks Qira'ah Berbahasa Arab]:</p>
+                            <!-- [EDIT DISINI: MASUKKAN TEKS BACAAN ARAB DENGAN HARAKAT] -->
+                            <p class="font-arabic text-2xl text-slate-300 leading-loose" dir="rtl">
+                                [اُكْتُبْ هُنَا نَصَّ القِرَاءَةِ بِاللُّغَةِ العَرَبِيَّةِ مَعَ الحَرَكَاتِ الكَامِلَةِ لِأَدَاءِ الوَاجِبِ الدِّرَاسِيِّ لِمَادَّةِ اللُّغَةِ العَرَبِيَّةِ...]
+                            </p>
+                        </div>
+
+                        <!-- Translation Box -->
+                        <div class="bg-slate-900/60 p-4 rounded-xl border border-dashed border-slate-700 text-xs text-slate-400">
+                            <span class="font-bold text-slate-300 block mb-1">[Slot Terjemahan Bahasa Indonesia]:</span>
+                            <p class="italic">"[Silakan masukkan terjemahan bahasa Indonesia teks bacaan Anda di sini.]"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. TUGAS 3: PORTOFOLIO UAS (SLOT TEMPLATE) -->
+                <div data-slot="card" class="rounded-xl border p-6 bg-slate-800/70 border-slate-700 backdrop-blur-sm shadow-sm" id="uas">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-3 mb-4">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Tugas 3: Portofolio UAS
+                        </h3>
+                        <span class="text-xs text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800">
+                            Dokumen Akhir
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-900/80 p-5 rounded-xl border border-dashed border-slate-700 space-y-3">
+                        <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800 pb-2">
+                            <span>Dosen Pengampu: <strong>[Nama Dosen Pengampu, M.A.]</strong></span>
+                            <span class="font-mono">Semester 1 &bull; HTN 1B</span>
+                        </div>
+
+                        <!-- [EDIT DISINI: JUDUL MAKALAH UAS] -->
+                        <h4 class="text-base font-bold text-white">
+                            [Judul Makalah / Tugas Akhir Semester (UAS) Anda]
                         </h4>
 
-                        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm">
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Nama Lengkap</dt>
-                                <dd class="font-bold text-white mt-0.5">Fazry ilham sulaeman</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">NIM</dt>
-                                <dd class="font-bold text-purple-400 font-mono mt-0.5">1263030076</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Program Studi</dt>
-                                <dd class="text-slate-200 mt-0.5">Hukum Tata Negara (HTN)</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Kelas</dt>
-                                <dd class="text-slate-200 mt-0.5">HTN 1B</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Fakultas</dt>
-                                <dd class="text-slate-200 mt-0.5">Fakultas Syari'ah dan Hukum</dd>
-                            </div>
-                            <div>
-                                <dt class="text-xs text-slate-400 uppercase font-semibold">Mata Kuliah</dt>
-                                <dd class="text-slate-200 mt-0.5">Bahasa Arab / Siyasah Syar'iyyah</dd>
-                            </div>
-                        </dl>
-                    </div>
-
-                    <!-- Narrative Placeholder -->
-                    <div class="bg-slate-800/40 border border-slate-700/70 rounded-2xl p-6 backdrop-blur-md">
-                        <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-sm font-bold text-purple-300 flex items-center gap-2">
-                                <i class="fa-solid fa-pen-nib text-pink-400"></i> Deskripsi & Perkenalan Singkat
-                            </h4>
-                            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded border border-slate-700">Dapat Dikustomisasi</span>
-                        </div>
-                        <p class="text-slate-300 text-sm leading-relaxed italic">
-                            <!-- [EDIT DISINI: MASUKKAN PARAGRAF PERKENALAN DAN MOTIVASI ANDA] -->
-                            "Saya Fazry Ilham Sulaeman, mahasiswa Program Studi Hukum Tata Negara (HTN 1B). Website ini disusun sebagai wadah dokumentasi akademik mandiri dalam mendalami literatur hukum ketatanegaraan Islam dan penguasaan bahasa Arab..."
+                        <!-- [EDIT DISINI: ABSTRAK MAKALAH] -->
+                        <p class="text-xs text-slate-400 italic">
+                            "[Masukkan intisari, ringkasan, atau abstrak laporan makalah tugas UAS Anda di bagian ini.]"
                         </p>
-                    </div>
 
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 3. TUGAS 1: 10 MUFRADAT ARAB-INDONESIA (CUSTOMIZABLE)      -->
-    <!-- ======================================================== -->
-    <section id="mufradat" class="py-20 border-b border-slate-800/80 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400 bg-purple-950/60 px-3.5 py-1.5 rounded-full border border-purple-800/60">
-                    Tugas 1 &bull; Kosakata Mandiri
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    10 Slot Kosakata <span class="gradient-text-snap">Mufradat</span>
-                </h2>
-                <p class="font-arabic text-xl sm:text-2xl text-purple-300 font-bold mt-2" dir="rtl">
-                    المُفْرَدَاتُ اللُّغَوِيَّةُ (قَابِلَةٌ لِلتَّعْدِيْلِ)
-                </p>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
-            </div>
-
-            <!-- Customization Info Box -->
-            <div class="max-w-5xl mx-auto mb-8 bg-blue-950/40 border border-blue-800/60 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-blue-200">
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-solid fa-circle-info text-blue-400 text-base"></i>
-                    <span><strong>Slot Siap Diisi:</strong> Seluruh 10 kartu mufradat di bawah telah dikosongkan/diberikan template agar siap Anda isi sesuai kosakata pilihan Anda.</span>
-                </div>
-                <span class="bg-blue-900/60 text-blue-300 px-2.5 py-1 rounded-md font-mono shrink-0">10 Kosakata</span>
-            </div>
-
-            <!-- Interactive Toolbar: Live Search & View Switcher -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/80 backdrop-blur-md shadow-lg max-w-5xl mx-auto">
-                <div class="relative w-full sm:w-80">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                    <input type="text" id="mufradatSearch" placeholder="Cari mufradat, latin, atau arti..." 
-                           class="w-full pl-10 pr-4 py-2 text-sm rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
-                </div>
-
-                <div class="flex items-center gap-2 self-end sm:self-auto">
-                    <span class="text-xs font-semibold text-slate-400 hidden sm:inline">Tampilan:</span>
-                    <button id="viewGridBtn" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md flex items-center gap-1.5 transition-all">
-                        <i class="fa-solid fa-grip"></i> Kartu
-                    </button>
-                    <button id="viewTableBtn" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5 transition-all">
-                        <i class="fa-solid fa-table-list"></i> Tabel
-                    </button>
-                </div>
-            </div>
-
-            <!-- GRID VIEW -->
-            <div id="mufradatGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Rendered dynamically by JS with customizable template data -->
-            </div>
-
-            <!-- TABLE VIEW -->
-            <div id="mufradatTableContainer" class="hidden max-w-5xl mx-auto bg-slate-800/70 rounded-2xl border border-slate-700 shadow-xl overflow-hidden backdrop-blur-md">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-900/90 text-slate-300 text-xs uppercase tracking-wider border-b border-slate-700">
-                                <th class="py-4 px-4 text-center w-14">No</th>
-                                <th class="py-4 px-6 text-right font-arabic text-base">المفردات (Arab)</th>
-                                <th class="py-4 px-5">Transliterasi</th>
-                                <th class="py-4 px-5">Arti Indonesia</th>
-                                <th class="py-4 px-6">Contoh Kalimat</th>
-                            </tr>
-                        </thead>
-                        <tbody id="mufradatTableBody" class="divide-y divide-slate-700/60 text-sm">
-                            <!-- Populated via JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Empty Notice -->
-            <div id="emptyNotice" class="hidden text-center py-12 bg-slate-800/40 rounded-2xl border border-dashed border-slate-700 max-w-5xl mx-auto">
-                <i class="fa-regular fa-folder-open text-4xl text-slate-500 mb-3 block"></i>
-                <p class="text-slate-300 font-medium">Kosakata tidak ditemukan.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 4. TUGAS 2: TUGAS BACA TEKS (QIRA'AH - CUSTOMIZABLE)      -->
-    <!-- ======================================================== -->
-    <section id="qiraah" class="py-20 border-b border-slate-800/80 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-pink-400 bg-pink-950/60 px-3.5 py-1.5 rounded-full border border-pink-800/60">
-                    Tugas 2 &bull; Kemampuan Qira'ah
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Teks Bacaan & <span class="gradient-text-snap">Rekaman Audio</span>
-                </h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
-            </div>
-
-            <!-- Qira'ah Card -->
-            <div class="bg-slate-800/60 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-md overflow-hidden">
-                
-                <!-- Card Header -->
-                <div class="bg-slate-900/90 border-b border-slate-700 px-6 py-4 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                            <i class="fa-solid fa-microphone-lines"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-sm sm:text-base text-white">Teks Qira'ah Mandiri</h3>
-                            <p class="text-xs text-slate-400">Wadah Teks Bacaan & Pemutar Audio</p>
-                        </div>
-                    </div>
-                    <span class="font-arabic text-purple-400 text-lg font-bold">النَّصُّ المُخْتَارُ</span>
-                </div>
-
-                <!-- Audio Player Placeholder Component -->
-                <div class="p-6 bg-slate-900/60 border-b border-slate-700/80">
-                    <div class="max-w-xl mx-auto bg-slate-800/90 p-4 rounded-2xl border border-dashed border-slate-700 shadow-inner">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-semibold text-purple-300 flex items-center gap-2">
-                                <i class="fa-solid fa-volume-high text-blue-400"></i> Rekaman Audio Suara Anda
-                            </span>
-                            <span class="text-[11px] text-slate-400 font-mono" id="audioTimer">00:00 / 00:00</span>
-                        </div>
-
-                        <!-- [EDIT DISINI: GANTI AUDIO SRC DENGAN FILE REKAMAN ANDA (misal: "audio.mp3")] -->
-                        <audio id="readingAudio" preload="metadata" class="w-full h-10 rounded-lg filter invert-[0.85] hue-rotate-180" controls>
-                            <source src="" type="audio/mpeg">
-                            Browser Anda tidak mendukung pemutar audio.
-                        </audio>
-
-                        <div class="flex items-center justify-between text-[11px] text-slate-400 mt-2 px-1">
-                            <span class="text-amber-400"><i class="fa-solid fa-triangle-exclamation"></i> Belum ada file audio dihubungkan</span>
-                            <span>Format: MP3 / WAV / M4A</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Arabic Reading Text Box Placeholder -->
-                <div class="p-6 sm:p-10 space-y-8">
-                    
-                    <div>
-                        <div class="text-center mb-6">
-                            <!-- [EDIT DISINI: JUDUL TEKS ARAB ANDA] -->
-                            <h4 class="font-arabic text-2xl sm:text-3xl font-bold text-white leading-loose" dir="rtl">
-                                [عُنْوَانُ النَّصِّ العَرَبِيِّ هُنَا]
-                            </h4>
-                            <p class="text-xs text-purple-400 mt-1 italic font-medium">Tema: [Masukkan Tema Teks Bacaan Anda di Sini]</p>
-                        </div>
-
-                        <!-- Arabic Paragraph Customizable Placeholder -->
-                        <div class="bg-slate-900/70 border border-dashed border-slate-700/80 rounded-2xl p-6 sm:p-8 text-right shadow-inner">
-                            <p class="font-arabic text-2xl sm:text-3xl text-slate-200 leading-[2.3] tracking-wide" dir="rtl">
-                                <!-- [EDIT DISINI: MASUKKAN TEKS BACAAN ARAB LENGKAP DENGAN HARAKAT] -->
-                                [اُكْتُبْ هُنَا نَصَّ القِرَاءَةِ بِاللُّغَةِ العَرَبِيَّةِ مَعَ الحَرَكَاتِ الكَامِلَةِ لِأَدَاءِ الوَاجِبِ الدِّرَاسِيِّ... أَدْخِلْ فَقَرَاتِ المَوْضُوْعِ الَّذِي تَمَّ اخْتِيَارُهُ هُنَا.]
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Translation Accordion Button -->
-                    <div class="border-t border-slate-700/80 pt-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <button id="toggleTranslationBtn" type="button" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold text-sm flex items-center gap-2 shadow-lg transition-all duration-200">
-                                <i class="fa-solid fa-language"></i>
-                                <span id="toggleTranslationText">Tampilkan Terjemahan</span>
-                                <i id="toggleChevron" class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
-                            </button>
-                            <span class="text-xs text-slate-400 font-medium">Bahasa Indonesia</span>
-                        </div>
-
-                        <!-- Translation Dropdown Container Placeholder -->
-                        <div id="translationContainer" class="hidden transition-all duration-300">
-                            <div class="bg-slate-900/80 border border-dashed border-slate-700 rounded-2xl p-6 sm:p-7 space-y-3 text-slate-300 text-sm sm:text-base leading-relaxed">
-                                <h5 class="text-xs uppercase font-bold text-purple-400 tracking-wider flex items-center gap-2">
-                                    <i class="fa-solid fa-book-bookmark"></i> Terjemahan Bahasa Indonesia:
-                                </h5>
-                                <!-- [EDIT DISINI: MASUKKAN TERJEMAHAN TEKS ANDA DI SINI] -->
-                                <p class="italic text-slate-400">
-                                    "[Silakan masukkan terjemahan bahasa Indonesia dari teks bacaan bahasa Arab Anda di sini. Buka index.html pada bagian #qiraah untuk mengganti teks ini.]"
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ======================================================== -->
-    <!-- 5. TUGAS 3: PORTOFOLIO TUGAS UAS (CUSTOMIZABLE)          -->
-    <!-- ======================================================== -->
-    <section id="uas" class="py-20 border-b border-slate-800/80 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-950/60 px-3.5 py-1.5 rounded-full border border-blue-800/60">
-                    Tugas 3 &bull; Evaluasi Akhir
-                </span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3 tracking-tight">
-                    Portofolio Tugas <span class="gradient-text-snap">Akhir Semester (UAS)</span>
-                </h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mt-3 rounded-full"></div>
-            </div>
-
-            <!-- Showcase Card Placeholder -->
-            <div class="bg-slate-800/60 rounded-3xl border border-slate-700/80 shadow-2xl backdrop-blur-md overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-12">
-                    
-                    <!-- Left: Metadata Banner -->
-                    <div class="md:col-span-5 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-950 p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-700">
-                        <div>
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
-                                <i class="fa-solid fa-file-pdf"></i> Dokumen Tugas UAS
-                            </span>
-                            <!-- [EDIT DISINI: JUDUL MAKALAH UAS] -->
-                            <h4 class="text-xl font-bold text-white mt-4 leading-snug">
-                                [Judul Makalah / Tugas Akhir Semester Anda]
-                            </h4>
-                            <p class="text-xs text-slate-400 mt-2">
-                                [Fokus Kajian / Sub-topik Tugas UAS]
-                            </p>
-                        </div>
-
-                        <div class="space-y-2.5 mt-8 pt-6 border-t border-slate-800 text-xs text-slate-400">
-                            <div class="flex justify-between">
-                                <span>Format Berkas:</span>
-                                <span class="font-bold text-white">PDF Document</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Status:</span>
-                                <span class="text-amber-400 font-semibold"><i class="fa-solid fa-clock"></i> Siap Disesuaikan</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right: Abstract & Action Buttons Placeholder -->
-                    <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-                        <div class="space-y-4">
-                            <!-- [EDIT DISINI: DOSEN PENGAMPU] -->
-                            <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-700 pb-3">
-                                <span>Dosen Pengampu: <strong>[Nama Dosen Pengampu, M.A.]</strong></span>
-                                <span class="bg-slate-900 text-purple-300 px-2 py-0.5 rounded font-mono border border-slate-700">HTN 1B</span>
-                            </div>
-
-                            <h3 class="text-lg font-bold text-white">
-                                Ringkasan / Abstrak Tugas UAS
-                            </h3>
-
-                            <!-- [EDIT DISINI: ABSTRAK MAKALAH] -->
-                            <p class="text-slate-400 text-sm leading-relaxed italic">
-                                "[Silakan masukkan intisari, ringkasan, atau abstrak laporan makalah tugas UAS Anda di sini. Tuliskan ringkasan pokok permasalahan dan hasil analisis yang Anda lakukan.]"
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 pt-1">
-                                <span class="px-2.5 py-1 rounded-md bg-blue-950/60 text-blue-300 text-xs font-medium border border-blue-800/60">#TugasUAS</span>
-                                <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-xs font-medium border border-purple-800/60">#HTN1B</span>
-                                <span class="px-2.5 py-1 rounded-md bg-pink-950/60 text-pink-300 text-xs font-medium border border-pink-800/60">#BahasaArab</span>
-                            </div>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="pt-4 border-t border-slate-700 flex flex-col sm:flex-row gap-3">
+                        <div class="pt-3 border-t border-slate-800 flex gap-3">
                             <!-- [EDIT DISINI: TAUTKAN LINK PDF ANDA PADA HREF] -->
-                            <a id="downloadPdfBtn" href="#" download="Tugas_UAS_Fazry_Ilham_Sulaeman.pdf" 
-                               class="flex-1 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-sm text-center shadow-lg transition-all duration-200 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-download"></i> Unduh Dokumen PDF
+                            <a href="#" download="Tugas_UAS_Fazry_Ilham_Sulaeman.pdf" class="py-2 px-4 rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-xs shadow flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Unduh Dokumen PDF
                             </a>
-
-                            <button id="openPreviewModalBtn" type="button" 
-                                    class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold text-sm border border-slate-700 transition-all duration-200 flex items-center justify-center gap-2">
-                                <i class="fa-regular fa-eye text-purple-400"></i> Pratinjau
-                            </button>
                         </div>
                     </div>
-
                 </div>
+
             </div>
 
         </div>
     </section>
 
     <!-- ======================================================== -->
-    <!-- 6. SNAPBOOTH WEBCAM MODAL                                -->
+    <!-- FOOTER (Snapbooth Minimalist)                            -->
     <!-- ======================================================== -->
-    <div id="snapboothModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-xl w-full p-6 shadow-2xl relative space-y-5">
-            
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-500 to-purple-600 flex items-center justify-center text-white">
-                        <i class="fa-solid fa-camera"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-white text-base">Snapbooth & Pasang Foto</h3>
-                        <p class="text-xs text-slate-400">Gunakan webcam atau unggah foto untuk profil Anda</p>
-                    </div>
-                </div>
-                <button onclick="closeSnapboothModal();" class="text-slate-400 hover:text-white p-1">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <!-- Video / Photo Viewport -->
-            <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden border border-slate-800 flex items-center justify-center">
-                <video id="webcamVideo" autoplay playsinline class="w-full h-full object-cover"></video>
-                <canvas id="photoCanvas" class="hidden w-full h-full object-cover"></canvas>
-                
-                <!-- Countdown Overlay -->
-                <div id="snapCountdown" class="hidden absolute inset-0 bg-black/50 flex items-center justify-center text-6xl font-extrabold text-white animate-ping">
-                    3
-                </div>
-
-                <!-- Camera Prompt -->
-                <div id="cameraPrompt" class="absolute inset-0 bg-slate-900/90 flex flex-col items-center justify-center p-6 text-center space-y-3">
-                    <i class="fa-solid fa-video text-4xl text-purple-400"></i>
-                    <p class="text-sm text-slate-300">Klik "Aktifkan Kamera" untuk mengambil foto atau gunakan opsi unggah berkas dari komputer.</p>
-                    <button onclick="startWebcam();" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold text-xs shadow-lg">
-                        <i class="fa-solid fa-power-off"></i> Aktifkan Kamera
-                    </button>
-                </div>
-            </div>
-
-            <!-- Filters -->
-            <div>
-                <span class="text-xs font-semibold text-slate-400 block mb-2">Pilih Filter Efek:</span>
-                <div class="grid grid-cols-5 gap-2 text-center text-[11px]">
-                    <button onclick="applyPhotoFilter('none');" class="filter-btn py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold hover:border-purple-500 active:scale-95 transition-all">Normal</button>
-                    <button onclick="applyPhotoFilter('filter-vintage');" class="filter-btn py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold hover:border-purple-500 active:scale-95 transition-all">Turats</button>
-                    <button onclick="applyPhotoFilter('filter-emerald');" class="filter-btn py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold hover:border-purple-500 active:scale-95 transition-all">Siyasah</button>
-                    <button onclick="applyPhotoFilter('filter-cyber');" class="filter-btn py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold hover:border-purple-500 active:scale-95 transition-all">Cyber</button>
-                    <button onclick="applyPhotoFilter('filter-bw');" class="filter-btn py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold hover:border-purple-500 active:scale-95 transition-all">B&W</button>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <div class="flex items-center justify-between pt-2 border-t border-slate-800">
-                <label class="text-xs text-slate-400 hover:text-white cursor-pointer flex items-center gap-1.5">
-                    <i class="fa-solid fa-upload"></i> Unggah File Gambar
-                    <input type="file" id="uploadPhotoInput" accept="image/*" class="hidden">
-                </label>
-
-                <div class="flex items-center gap-2">
-                    <button id="snapBtn" onclick="takeSnapshot();" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-xs shadow-lg flex items-center gap-1.5">
-                        <i class="fa-solid fa-camera"></i> Jepret Foto
-                    </button>
-                    <button id="savePhotoBtn" onclick="saveAsAvatar();" class="hidden px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-lg flex items-center gap-1.5">
-                        <i class="fa-solid fa-check"></i> Pasang Jadi Profil
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ======================================================== -->
-    <!-- PREVIEW MODAL (TUGAS UAS)                                 -->
-    <!-- ======================================================== -->
-    <div id="previewModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 space-y-4">
-            
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-regular fa-file-lines text-purple-400 text-lg"></i>
-                    <h3 class="font-bold text-white text-base">Pratinjau Dokumen UAS</h3>
-                </div>
-                <button id="closeModalBtn" class="text-slate-400 hover:text-white p-1">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
-                <div>
-                    <h4 class="font-bold text-white text-base">
-                        [Judul Makalah / Laporan Tugas UAS Anda]
-                    </h4>
-                    <p class="text-xs text-purple-400 mt-1">
-                        Penyusun: <strong>Fazry ilham sulaeman</strong> | NIM: <strong>1263030076</strong> | Kelas: <strong>HTN 1B</strong>
-                    </p>
-                </div>
-
-                <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-2">
-                    <h5 class="font-bold text-xs uppercase tracking-wider text-white">Ringkasan Dokumen:</h5>
-                    <p class="text-xs text-slate-400 italic">
-                        [Pratinjau naskah tugas UAS Anda akan tampil di bagian ini. Anda dapat mengedit ringkasan atau menambahkan tautan file dokumen makalah Anda.]
-                    </p>
-                </div>
-            </div>
-
-            <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
-                <button id="closeModalFooterBtn" class="px-4 py-2 rounded-xl text-slate-400 hover:bg-slate-800 text-xs font-semibold">Tutup</button>
-                <button onclick="document.getElementById('downloadPdfBtn').click();" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-bold shadow flex items-center gap-1.5">
-                    <i class="fa-solid fa-download"></i> Unduh Berkas
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 bg-slate-800 border border-purple-500/50 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
-        <i class="fa-solid fa-circle-check text-purple-400"></i>
-        <span id="toastMessage">Teks berhasil disalin!</span>
-    </div>
-
-    <!-- Floating Back to Top Button -->
-    <a href="#beranda" id="backToTopBtn" class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full bg-slate-800/90 hover:bg-slate-700 text-purple-400 shadow-xl border border-slate-700 flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none hover:scale-110" aria-label="Kembali ke Atas">
-        <i class="fa-solid fa-arrow-up text-sm"></i>
-    </a>
-
-    <!-- ======================================================== -->
-    <!-- FOOTER                                                    -->
-    <!-- ======================================================== -->
-    <footer id="kontak" class="bg-slate-950 text-white py-12 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-900">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs">
-                        FIS
-                    </div>
-                    <div>
-                        <span class="font-bold text-white">Fazry ilham sulaeman</span>
-                        <p class="text-xs text-slate-500">NIM 1263030076 &bull; Kelas HTN 1B</p>
-                    </div>
-                </div>
-
-                <!-- [EDIT DISINI: KONTAK & SOSIAL MEDIA] -->
-                <div class="flex items-center gap-4 text-slate-400 text-sm">
-                    <a href="mailto:fazry@example.com" class="hover:text-purple-400 transition-colors"><i class="fa-regular fa-envelope"></i> Email</a>
-                    <a href="https://wa.me/" target="_blank" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    <a href="https://github.com/aetheriashop/fazry-portofolio" target="_blank" class="hover:text-purple-400 transition-colors"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
-                <p>&copy; 2026 <strong>Fazry ilham sulaeman</strong>. All rights reserved.</p>
-                <p>Program Studi Hukum Tata Negara (HTN 1B)</p>
-            </div>
+    <footer class="py-8 border-t border-slate-800 text-center text-xs text-slate-500">
+        <div class="container mx-auto px-4 space-y-2">
+            <p>&copy; 2026 <strong>Fazry ilham sulaeman</strong>. NIM 1263030076 &bull; Kelas HTN 1B.</p>
+            <p>UI/UX Design inspired by <a href="https://snapbooth.vercel.app" target="_blank" class="text-purple-400 hover:underline">snapbooth.vercel.app</a></p>
         </div>
     </footer>
 
     <!-- ======================================================== -->
-    <!-- VANILLA JAVASCRIPT LOGIC                                  -->
+    <!-- JAVASCRIPT LOGIC (PHOTO BOOTH & TEMPLATE RENDERER)       -->
     <!-- ======================================================== -->
     <script>
         // ----------------------------------------------------
-        // 1. DATA 10 MUFRADAT (TEMPLATE KOSONG SIAP DI-CUSTOM)
-        // [EDIT DISINI: Ganti nilai teks Arab, transliterasi, arti, dan contoh kalimat di bawah]
+        // 1. DATA 10 MUFRADAT (SLOT TEMPLATE KOSONG)
         // ----------------------------------------------------
-        const mufradatData = [
-            {
-                no: 1,
-                arab: "[كَلِمَة ١]",
-                transliterasi: "[Transliterasi 1]",
-                arti: "[Arti Kosakata 1]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ١]",
-                contohArti: "[Arti contoh kalimat 1]"
-            },
-            {
-                no: 2,
-                arab: "[كَلِمَة ٢]",
-                transliterasi: "[Transliterasi 2]",
-                arti: "[Arti Kosakata 2]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٢]",
-                contohArti: "[Arti contoh kalimat 2]"
-            },
-            {
-                no: 3,
-                arab: "[كَلِمَة ٣]",
-                transliterasi: "[Transliterasi 3]",
-                arti: "[Arti Kosakata 3]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٣]",
-                contohArti: "[Arti contoh kalimat 3]"
-            },
-            {
-                no: 4,
-                arab: "[كَلِمَة ٤]",
-                transliterasi: "[Transliterasi 4]",
-                arti: "[Arti Kosakata 4]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٤]",
-                contohArti: "[Arti contoh kalimat 4]"
-            },
-            {
-                no: 5,
-                arab: "[كَلِمَة ٥]",
-                transliterasi: "[Transliterasi 5]",
-                arti: "[Arti Kosakata 5]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٥]",
-                contohArti: "[Arti contoh kalimat 5]"
-            },
-            {
-                no: 6,
-                arab: "[كَلِمَة ٦]",
-                transliterasi: "[Transliterasi 6]",
-                arti: "[Arti Kosakata 6]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٦]",
-                contohArti: "[Arti contoh kalimat 6]"
-            },
-            {
-                no: 7,
-                arab: "[كَلِمَة ٧]",
-                transliterasi: "[Transliterasi 7]",
-                arti: "[Arti Kosakata 7]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٧]",
-                contohArti: "[Arti contoh kalimat 7]"
-            },
-            {
-                no: 8,
-                arab: "[كَلِمَة ٨]",
-                transliterasi: "[Transliterasi 8]",
-                arti: "[Arti Kosakata 8]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٨]",
-                contohArti: "[Arti contoh kalimat 8]"
-            },
-            {
-                no: 9,
-                arab: "[كَلِمَة ٩]",
-                transliterasi: "[Transliterasi 9]",
-                arti: "[Arti Kosakata 9]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ٩]",
-                contohArti: "[Arti contoh kalimat 9]"
-            },
-            {
-                no: 10,
-                arab: "[كَلِمَة ١٠]",
-                transliterasi: "[Transliterasi 10]",
-                arti: "[Arti Kosakata 10]",
-                contohArab: "[مِثَالُ الجُمْلَةِ بِالعَرَبِيَّةِ ١٠]",
-                contohArti: "[Arti contoh kalimat 10]"
-            }
+        const mufradatSlots = [
+            { no: 1, arab: "[كَلِمَة ١]", latin: "[Transliterasi 1]", arti: "[Arti Kosakata 1]", contoh: "[مِثَالُ الجُمْلَةِ ١]" },
+            { no: 2, arab: "[كَلِمَة ٢]", latin: "[Transliterasi 2]", arti: "[Arti Kosakata 2]", contoh: "[مِثَالُ الجُمْلَةِ ٢]" },
+            { no: 3, arab: "[كَلِمَة ٣]", latin: "[Transliterasi 3]", arti: "[Arti Kosakata 3]", contoh: "[مِثَالُ الجُمْلَةِ ٣]" },
+            { no: 4, arab: "[كَلِمَة ٤]", latin: "[Transliterasi 4]", arti: "[Arti Kosakata 4]", contoh: "[مِثَالُ الجُمْلَةِ ٤]" },
+            { no: 5, arab: "[كَلِمَة ٥]", latin: "[Transliterasi 5]", arti: "[Arti Kosakata 5]", contoh: "[مِثَالُ الجُمْلَةِ ٥]" },
+            { no: 6, arab: "[كَلِمَة ٦]", latin: "[Transliterasi 6]", arti: "[Arti Kosakata 6]", contoh: "[مِثَالُ الجُمْلَةِ ٦]" },
+            { no: 7, arab: "[كَلِمَة ٧]", latin: "[Transliterasi 7]", arti: "[Arti Kosakata 7]", contoh: "[مِثَالُ الجُمْلَةِ ٧]" },
+            { no: 8, arab: "[كَلِمَة ٨]", latin: "[Transliterasi 8]", arti: "[Arti Kosakata 8]", contoh: "[مِثَالُ الجُمْلَةِ ٨]" },
+            { no: 9, arab: "[كَلِمَة ٩]", latin: "[Transliterasi 9]", arti: "[Arti Kosakata 9]", contoh: "[مِثَالُ الجُمْلَةِ ٩]" },
+            { no: 10, arab: "[كَلِمَة ١٠]", latin: "[Transliterasi 10]", arti: "[Arti Kosakata 10]", contoh: "[مِثَالُ الجُمْلَةِ ١٠]" },
         ];
 
-        // ----------------------------------------------------
-        // 2. RENDER MUFRADAT
-        // ----------------------------------------------------
-        const mufradatGrid = document.getElementById('mufradatGrid');
-        const mufradatTableBody = document.getElementById('mufradatTableBody');
-        const searchInput = document.getElementById('mufradatSearch');
-        const emptyNotice = document.getElementById('emptyNotice');
+        const mufradatContainer = document.getElementById('mufradatContainer');
+        mufradatSlots.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "bg-slate-900/80 rounded-lg p-3.5 border border-dashed border-slate-700 flex flex-col justify-between";
+            card.innerHTML = `
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-xs font-bold text-purple-400"># Slot ${item.no}</span>
+                    <span class="font-arabic text-lg text-slate-200" dir="rtl">${item.arab}</span>
+                </div>
+                <div class="space-y-1 text-xs">
+                    <div class="flex justify-between text-slate-400">
+                        <span>Transliterasi:</span>
+                        <span class="text-blue-400 font-mono">${item.latin}</span>
+                    </div>
+                    <div class="flex justify-between text-slate-400">
+                        <span>Arti:</span>
+                        <span class="text-slate-200">${item.arti}</span>
+                    </div>
+                    <div class="pt-1 text-[11px] text-slate-500 font-arabic text-right leading-loose" dir="rtl">
+                        ${item.contoh}
+                    </div>
+                </div>
+            `;
+            mufradatContainer.appendChild(card);
+        });
 
-        function renderMufradat(items) {
-            mufradatGrid.innerHTML = '';
-            mufradatTableBody.innerHTML = '';
+        // ----------------------------------------------------
+        // 2. WEBCAM & PHOTO BOOTH ENGINE (SNAPBOOTH CORE)
+        // ----------------------------------------------------
+        const video = document.getElementById('webcamVideo');
+        const startOverlay = document.getElementById('cameraStartOverlay');
+        const countdownBox = document.getElementById('countdownBox');
+        const filterSelect = document.getElementById('filterSelect');
+        const intensitySlider = document.getElementById('intensitySlider');
+        const intensityVal = document.getElementById('intensityVal');
+        const emptyStripBox = document.getElementById('emptyStripBox');
+        const activeStripBox = document.getElementById('activeStripBox');
+        const stripPhotosList = document.getElementById('stripPhotosList');
+        const stripActions = document.getElementById('stripActions');
+        const photoCountBadge = document.getElementById('photoCountBadge');
+        const captureCanvas = document.getElementById('captureCanvas');
 
-            if (items.length === 0) {
-                emptyNotice.classList.remove('hidden');
+        let stream = null;
+        let capturedPhotos = [];
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: 640, height: 480, facingMode: "user" }
+                });
+                video.srcObject = stream;
+                startOverlay.classList.add('hidden');
+            } catch (err) {
+                alert("Tidak dapat mengakses kamera. Pastikan izin kamera aktif di browser Anda.");
+            }
+        }
+
+        function getFilterStyle() {
+            const type = filterSelect.value;
+            const intensity = intensitySlider.value;
+            intensityVal.textContent = intensity + "%";
+
+            if (type === 'none') return 'none';
+            if (type === 'grayscale') return `grayscale(${intensity}%)`;
+            if (type === 'sepia') return `sepia(${intensity}%)`;
+            if (type === 'invert') return `invert(${intensity}%)`;
+            if (type === 'hue-rotate') return `hue-rotate(${(intensity / 100) * 360}deg)`;
+            if (type === 'contrast') return `contrast(${100 + (intensity * 1.5)}%)`;
+            return 'none';
+        }
+
+        function updateFilter() {
+            const filterCss = getFilterStyle();
+            video.style.filter = filterCss;
+        }
+
+        function snapPhoto() {
+            if (capturedPhotos.length >= 4) {
+                alert("Photo strip penuh (maksimal 4 foto). Klik 'Reset' untuk mengulang.");
                 return;
             }
-            emptyNotice.classList.add('hidden');
 
-            items.forEach(item => {
-                // Card View
-                const card = document.createElement('div');
-                card.className = "bg-slate-800/60 rounded-2xl border border-dashed border-slate-700/80 p-5 shadow-xl hover:border-purple-500/60 transition-all duration-300 flex flex-col justify-between group backdrop-blur-md";
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-center justify-between border-b border-slate-700/80 pb-3 mb-4">
-                            <span class="w-7 h-7 rounded-lg bg-slate-900 text-purple-400 font-bold text-xs flex items-center justify-center border border-slate-700">
-                                ${item.no}
-                            </span>
-                            <div class="flex items-center gap-1.5">
-                                <button onclick="copyToClipboard('${item.arab}')" title="Salin Kosakata" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 transition-colors">
-                                    <i class="fa-regular fa-copy text-xs"></i>
-                                </button>
-                                <button onclick="speakArabic('${item.arab}')" title="Dengarkan Pelafalan" class="p-1.5 rounded-lg text-slate-400 hover:text-blue-400 hover:bg-slate-700 transition-colors">
-                                    <i class="fa-solid fa-volume-high text-xs"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="text-right mb-3">
-                            <h3 class="font-arabic text-3xl font-bold text-slate-200 group-hover:text-purple-300 transition-colors leading-relaxed" dir="rtl">
-                                ${item.arab}
-                            </h3>
-                            <p class="text-xs font-semibold text-blue-400 italic font-sans mt-0.5">${item.transliterasi}</p>
-                        </div>
-
-                        <div class="mb-4">
-                            <span class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold block">Arti:</span>
-                            <p class="text-sm font-bold text-slate-300">${item.arti}</p>
-                        </div>
-
-                        <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-700/70 text-xs">
-                            <span class="text-[10px] uppercase font-bold text-purple-400 block mb-1">Contoh:</span>
-                            <p class="font-arabic text-base text-slate-300 text-right leading-loose mb-1" dir="rtl">${item.contohArab}</p>
-                            <p class="text-slate-400 text-[11px] italic mt-1">${item.contohArti}</p>
-                        </div>
-                    </div>
-                `;
-                mufradatGrid.appendChild(card);
-
-                // Table Row
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-700/40 transition-colors";
-                tr.innerHTML = `
-                    <td class="py-3 px-4 text-center text-xs font-bold text-slate-400">${item.no}</td>
-                    <td class="py-3 px-6 text-right font-arabic text-xl font-bold text-slate-200" dir="rtl">${item.arab}</td>
-                    <td class="py-3 px-5 text-xs font-semibold text-blue-400 italic">${item.transliterasi}</td>
-                    <td class="py-3 px-5 text-xs font-bold text-slate-300">${item.arti}</td>
-                    <td class="py-3 px-6 text-xs text-slate-300">
-                        <div class="font-arabic text-base text-slate-200 text-right leading-loose" dir="rtl">${item.contohArab}</div>
-                        <div class="text-[11px] text-slate-400 italic mt-0.5">${item.contohArti}</div>
-                    </td>
-                `;
-                mufradatTableBody.appendChild(tr);
-            });
-        }
-
-        renderMufradat(mufradatData);
-
-        // Search
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            const filtered = mufradatData.filter(item => {
-                return item.arab.toLowerCase().includes(query) ||
-                       item.transliterasi.toLowerCase().includes(query) ||
-                       item.arti.toLowerCase().includes(query) ||
-                       item.contohArti.toLowerCase().includes(query);
-            });
-            renderMufradat(filtered);
-        });
-
-        // View Toggler
-        const viewGridBtn = document.getElementById('viewGridBtn');
-        const viewTableBtn = document.getElementById('viewTableBtn');
-        const mufradatTableContainer = document.getElementById('mufradatTableContainer');
-
-        viewGridBtn.addEventListener('click', () => {
-            mufradatGrid.classList.remove('hidden');
-            mufradatTableContainer.classList.add('hidden');
-            viewGridBtn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md flex items-center gap-1.5 transition-all";
-            viewTableBtn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5 transition-all";
-        });
-
-        viewTableBtn.addEventListener('click', () => {
-            mufradatGrid.classList.add('hidden');
-            mufradatTableContainer.classList.remove('hidden');
-            viewTableBtn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md flex items-center gap-1.5 transition-all";
-            viewGridBtn.className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center gap-1.5 transition-all";
-        });
-
-        // Copy
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(`Mufradat disalin: ${text}`);
-            }).catch(() => {
-                showToast("Gagal menyalin.");
-            });
-        }
-
-        // Voice
-        function speakArabic(text) {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'ar-SA';
-                window.speechSynthesis.speak(utterance);
-                showToast(`Pelafalan: ${text}`);
-            } else {
-                showToast("Browser tidak mendukung audio.");
+            if (!stream) {
+                startCamera();
+                return;
             }
-        }
 
-        // Toast
-        const toast = document.getElementById('toastNotification');
-        const toastMessage = document.getElementById('toastMessage');
-        let toastTimeout;
-
-        function showToast(msg) {
-            clearTimeout(toastTimeout);
-            toastMessage.textContent = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-            toastTimeout = setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // ----------------------------------------------------
-        // 3. QIRA'AH ACCORDION & AUDIO TIMER
-        // ----------------------------------------------------
-        const toggleTranslationBtn = document.getElementById('toggleTranslationBtn');
-        const translationContainer = document.getElementById('translationContainer');
-        const toggleTranslationText = document.getElementById('toggleTranslationText');
-        const toggleChevron = document.getElementById('toggleChevron');
-
-        toggleTranslationBtn.addEventListener('click', () => {
-            const isHidden = translationContainer.classList.contains('hidden');
-            if (isHidden) {
-                translationContainer.classList.remove('hidden');
-                toggleTranslationText.textContent = "Sembunyikan Terjemahan";
-                toggleChevron.classList.add('rotate-180');
-            } else {
-                translationContainer.classList.add('hidden');
-                toggleTranslationText.textContent = "Tampilkan Terjemahan";
-                toggleChevron.classList.remove('rotate-180');
-            }
-        });
-
-        const readingAudio = document.getElementById('readingAudio');
-        const audioTimer = document.getElementById('audioTimer');
-
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        readingAudio.addEventListener('loadedmetadata', () => {
-            audioTimer.textContent = `00:00 / ${formatTime(readingAudio.duration || 0)}`;
-        });
-
-        readingAudio.addEventListener('timeupdate', () => {
-            const current = formatTime(readingAudio.currentTime);
-            const duration = formatTime(readingAudio.duration || 0);
-            audioTimer.textContent = `${current} / ${duration}`;
-        });
-
-        // ----------------------------------------------------
-        // 4. PREVIEW MODAL (TUGAS UAS)
-        // ----------------------------------------------------
-        const previewModal = document.getElementById('previewModal');
-        const openPreviewModalBtn = document.getElementById('openPreviewModalBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const closeModalFooterBtn = document.getElementById('closeModalFooterBtn');
-
-        openPreviewModalBtn.addEventListener('click', () => {
-            previewModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closePreviewModal() {
-            previewModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        closeModalBtn.addEventListener('click', closePreviewModal);
-        closeModalFooterBtn.addEventListener('click', closePreviewModal);
-        previewModal.addEventListener('click', (e) => {
-            if (e.target === previewModal) closePreviewModal();
-        });
-
-        // ----------------------------------------------------
-        // 5. SNAPBOOTH WEBCAM & PHOTO LOGIC
-        // ----------------------------------------------------
-        const snapboothModal = document.getElementById('snapboothModal');
-        const webcamVideo = document.getElementById('webcamVideo');
-        const photoCanvas = document.getElementById('photoCanvas');
-        const cameraPrompt = document.getElementById('cameraPrompt');
-        const snapCountdown = document.getElementById('snapCountdown');
-        const snapBtn = document.getElementById('snapBtn');
-        const savePhotoBtn = document.getElementById('savePhotoBtn');
-        const avatarImage = document.getElementById('avatarImage');
-        const avatarImageSecondary = document.getElementById('avatarImageSecondary');
-        const avatarPlaceholderIcon = document.getElementById('avatarPlaceholderIcon');
-        const avatarPlaceholderIconSecondary = document.getElementById('avatarPlaceholderIconSecondary');
-        const uploadPhotoInput = document.getElementById('uploadPhotoInput');
-        let currentFilter = 'none';
-        let mediaStream = null;
-
-        function openSnapboothModal() {
-            snapboothModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            photoCanvas.classList.add('hidden');
-            webcamVideo.classList.remove('hidden');
-            snapBtn.classList.remove('hidden');
-            savePhotoBtn.classList.add('hidden');
-        }
-
-        function closeSnapboothModal() {
-            snapboothModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            stopWebcam();
-        }
-
-        document.getElementById('openPhotoBoothNavBtn').addEventListener('click', openSnapboothModal);
-
-        async function startWebcam() {
-            try {
-                mediaStream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
-                webcamVideo.srcObject = mediaStream;
-                cameraPrompt.classList.add('hidden');
-            } catch (err) {
-                alert("Tidak dapat mengakses kamera. Pastikan Anda mengizinkan akses kamera atau gunakan opsi unggah berkas gambar.");
-            }
-        }
-
-        function stopWebcam() {
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(track => track.stop());
-                mediaStream = null;
-            }
-        }
-
-        function applyPhotoFilter(filterClass) {
-            currentFilter = filterClass;
-            webcamVideo.className = "w-full h-full object-cover " + (filterClass === 'none' ? '' : filterClass);
-            photoCanvas.className = "w-full h-full object-cover " + (filterClass === 'none' ? '' : filterClass);
-        }
-
-        function takeSnapshot() {
+            // Countdown 3-2-1
             let count = 3;
-            snapCountdown.textContent = count;
-            snapCountdown.classList.remove('hidden');
+            countdownBox.textContent = count;
+            countdownBox.classList.remove('hidden');
 
-            const countdownInterval = setInterval(() => {
+            const timer = setInterval(() => {
                 count--;
                 if (count > 0) {
-                    snapCountdown.textContent = count;
+                    countdownBox.textContent = count;
                 } else {
-                    clearInterval(countdownInterval);
-                    snapCountdown.classList.add('hidden');
-                    captureFrame();
+                    clearInterval(timer);
+                    countdownBox.classList.add('hidden');
+                    doCapture();
                 }
-            }, 700);
+            }, 600);
         }
 
-        function captureFrame() {
-            photoCanvas.width = webcamVideo.videoWidth || 640;
-            photoCanvas.height = webcamVideo.videoHeight || 480;
-            const ctx = photoCanvas.getContext('2d');
-            ctx.drawImage(webcamVideo, 0, 0, photoCanvas.width, photoCanvas.height);
-            webcamVideo.classList.add('hidden');
-            photoCanvas.classList.remove('hidden');
-            snapBtn.classList.add('hidden');
-            savePhotoBtn.classList.remove('hidden');
-            showToast("Foto berhasil dijepret! Klik 'Pasang Jadi Profil'.");
+        function doCapture() {
+            captureCanvas.width = video.videoWidth || 640;
+            captureCanvas.height = video.videoHeight || 480;
+            const ctx = captureCanvas.getContext('2d');
+
+            // Mirror effect
+            ctx.translate(captureCanvas.width, 0);
+            ctx.scale(-1, 1);
+
+            // Apply filter to canvas
+            ctx.filter = getFilterStyle();
+            ctx.drawImage(video, 0, 0, captureCanvas.width, captureCanvas.height);
+
+            const photoData = captureCanvas.toDataURL('image/png');
+            capturedPhotos.push(photoData);
+
+            renderStrip();
         }
 
-        function saveAsAvatar() {
-            const dataUrl = photoCanvas.toDataURL('image/png');
-            applyNewAvatar(dataUrl);
-            closeSnapboothModal();
-            showToast("Foto profil diperbarui!");
-        }
+        function renderStrip() {
+            photoCountBadge.textContent = `${capturedPhotos.length} / 4 Foto`;
 
-        function applyNewAvatar(url) {
-            avatarImage.src = url;
-            avatarImage.classList.remove('hidden');
-            avatarImage.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
-            if (avatarPlaceholderIcon) avatarPlaceholderIcon.classList.add('hidden');
-
-            if (avatarImageSecondary) {
-                avatarImageSecondary.src = url;
-                avatarImageSecondary.classList.remove('hidden');
-                avatarImageSecondary.className = "w-full h-full object-cover " + (currentFilter === 'none' ? '' : currentFilter);
+            if (capturedPhotos.length === 0) {
+                emptyStripBox.classList.remove('hidden');
+                activeStripBox.classList.add('hidden');
+                stripActions.classList.add('hidden');
+                return;
             }
-            if (avatarPlaceholderIconSecondary) avatarPlaceholderIconSecondary.classList.add('hidden');
-        }
 
-        uploadPhotoInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    applyNewAvatar(event.target.result);
-                    closeSnapboothModal();
-                    showToast("Foto berhasil diunggah!");
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+            emptyStripBox.classList.add('hidden');
+            activeStripBox.classList.remove('hidden');
+            stripActions.classList.remove('hidden');
 
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            const isClosed = mobileMenu.classList.contains('hidden');
-            if (isClosed) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-xmark');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
-            }
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-xmark');
-                menuIcon.classList.add('fa-bars');
+            stripPhotosList.innerHTML = '';
+            capturedPhotos.forEach((src) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = "w-full aspect-[4/3] object-cover rounded shadow-sm border border-slate-200";
+                stripPhotosList.appendChild(img);
             });
-        });
+        }
 
-        // Back to Top
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
-                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-            }
-        });
+        function resetStrip() {
+            capturedPhotos = [];
+            renderStrip();
+        }
+
+        function downloadStrip() {
+            if (capturedPhotos.length === 0) return;
+
+            // Generate full strip image using canvas
+            const stripCanvas = document.createElement('canvas');
+            const w = 400;
+            const imgH = 300;
+            const padding = 20;
+            const footerH = 80;
+            const totalH = (capturedPhotos.length * (imgH + padding)) + footerH + padding;
+
+            stripCanvas.width = w;
+            stripCanvas.height = totalH;
+            const sCtx = stripCanvas.getContext('2d');
+
+            // White background
+            sCtx.fillStyle = '#ffffff';
+            sCtx.fillRect(0, 0, w, totalH);
+
+            let loaded = 0;
+            capturedPhotos.forEach((src, idx) => {
+                const img = new Image();
+                img.onload = () => {
+                    const y = padding + (idx * (imgH + padding));
+                    sCtx.drawImage(img, padding, y, w - (padding * 2), imgH);
+                    loaded++;
+
+                    if (loaded === capturedPhotos.length) {
+                        // Draw footer text
+                        sCtx.fillStyle = '#0f172a';
+                        sCtx.font = 'bold 16px Inter, sans-serif';
+                        sCtx.textAlign = 'center';
+                        sCtx.fillText('FAZRY ILHAM SULAEMAN', w / 2, totalH - 45);
+
+                        sCtx.fillStyle = '#64748b';
+                        sCtx.font = '12px Inter, sans-serif';
+                        sCtx.fillText('1263030076 • HTN 1B', w / 2, totalH - 25);
+
+                        // Trigger download
+                        const link = document.createElement('a');
+                        link.download = `snapbooth_fazry_ilham_sulaeman_${Date.now()}.png`;
+                        link.href = stripCanvas.toDataURL('image/png');
+                        link.click();
+                    }
+                };
+                img.src = src;
+            });
+        }
     </script>
 </body>
 </html>
