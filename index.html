@@ -70,6 +70,7 @@
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -78,6 +79,15 @@
             background: #000000;
             border-radius: 4px;
         }
+        /* Shake animation for invalid PIN */
+        @keyframes neo-shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .animate-shake {
+            animation: neo-shake 0.4s ease-in-out;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[#F8FAFC] text-[#0A0A0A] antialiased selection:bg-[#FFE600] selection:text-black font-sans">
@@ -85,7 +95,7 @@
     <!-- ======================================================== -->
     <!-- HEADER / STICKY NAVBAR (api.jaky.dev Signature Header)   -->
     <!-- ======================================================== -->
-    <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b-[3px] border-black h-16 flex items-center">
+    <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b-[3px] border-black h-16 flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-16 flex items-center justify-between">
             
             <!-- Logo Brand -->
@@ -100,7 +110,7 @@
                         fazry<span class="text-[#FF3366]">.portofolio</span>
                     </span>
                     <span class="text-[10px] font-mono font-bold tracking-wider text-slate-500 uppercase mt-0.5">
-                        HTN 1B &bull; 1263030076
+                        <span id="navNimKelas">HTN 1B &bull; 1263030076</span>
                     </span>
                 </div>
             </a>
@@ -115,19 +125,25 @@
                 <a class="px-3 py-1.5 text-xs font-bold text-black hover:bg-[#00F0FF]/30 hover:border-2 hover:border-black rounded-lg transition-all" href="#kontak">Kontak</a>
             </nav>
 
-            <!-- Action Button Header -->
-            <div class="hidden md:flex items-center gap-3">
-                <a class="neo-btn bg-[#FFE600] hover:bg-[#FFD600] px-4 py-2 rounded-xl text-xs font-black text-black gap-1.5 shadow-[3px_3px_0px_0px_#000]" href="#tugas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap fill-black"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg>
-                    <span>Status Tugas</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </a>
+            <!-- Action Buttons Header: Admin Panel Trigger -->
+            <div class="hidden md:flex items-center gap-2.5">
+                <!-- Admin Panel Button -->
+                <button id="adminBtnDesktop" onclick="openAdminModal();" class="neo-btn bg-[#FFE600] hover:bg-[#FFD600] px-3.5 py-2 rounded-xl text-xs font-black text-black gap-1.5 shadow-[3px_3px_0px_0px_#000]">
+                    <i class="fa-solid fa-lock text-black"></i>
+                    <span id="adminBtnDesktopText">Panel Admin</span>
+                </button>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="md:hidden w-10 h-10 bg-[#00F0FF] hover:bg-[#00d8e6] border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black active:translate-x-[1px] active:translate-y-[1px] cursor-pointer">
-                <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
-            </button>
+            <div class="flex items-center gap-2 md:hidden">
+                <button onclick="openAdminModal();" class="neo-btn bg-[#FFE600] px-2.5 py-1.5 rounded-lg text-xs font-black text-black gap-1 shadow-[2px_2px_0px_0px_#000]">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Admin</span>
+                </button>
+                <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="w-9 h-9 bg-[#00F0FF] hover:bg-[#00d8e6] border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black active:translate-x-[1px] active:translate-y-[1px] cursor-pointer">
+                    <i id="menuIcon" class="fa-solid fa-bars text-sm"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Menu Dropdown -->
@@ -138,6 +154,12 @@
             <a class="block px-3 py-2 text-sm font-bold text-black hover:bg-[#00F0FF]/30 rounded-lg" href="#tugas" onclick="switchTaskTab('qiraah');">Tugas Baca Teks</a>
             <a class="block px-3 py-2 text-sm font-bold text-black hover:bg-[#00F0FF]/30 rounded-lg" href="#tugas" onclick="switchTaskTab('uas');">Tugas UAS</a>
             <a class="block px-3 py-2 text-sm font-bold text-black hover:bg-[#00F0FF]/30 rounded-lg" href="#kontak">Kontak</a>
+            <div class="pt-2 border-t border-black/20">
+                <button onclick="openAdminModal();" class="w-full neo-btn bg-[#FFE600] py-2.5 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Buka Panel Admin (Login)</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -155,20 +177,20 @@
                         <!-- Neo Pill Tag -->
                         <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-[#00F0FF] border-[2.5px] border-black rounded-xl shadow-[3px_3px_0px_0px_#000] text-xs sm:text-sm font-black text-black -rotate-1 hover:rotate-0 transition-transform">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles fill-black"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path></svg>
-                            <span>PORTOFOLIO AKADEMIK &bull; BAHASA ARAB HTN 1B</span>
+                            <span id="heroBadge">PORTOFOLIO AKADEMIK &bull; BAHASA ARAB HTN 1B</span>
                         </div>
 
                         <!-- Main Heading with Neo Tilt Highlights -->
                         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-black tracking-tight leading-[1.08]">
                             Portofolio Akademik <br class="hidden sm:inline">
-                            <span class="bg-[#FFE600] px-3 py-1 border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] inline-block -rotate-1 mt-1">
+                            <span id="heroName" class="bg-[#FFE600] px-3 py-1 border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] inline-block -rotate-1 mt-1">
                                 Fazry Ilham Sulaeman
                             </span>
                         </h1>
 
                         <!-- Narrative -->
-                        <p class="text-base sm:text-lg text-slate-700 font-semibold leading-relaxed max-w-2xl">
-                            Dokumentasi tugas akademik mata kuliah Bahasa Arab mahasiswa Program Studi Hukum Tata Negara <span class="font-mono font-bold text-black bg-[#00FF88]/40 px-1.5 py-0.5 border border-black rounded">HTN 1B</span>. Disusun dengan gaya arsitektur asimetris neo-brutalisme modern yang bersih, tegas, dan berbobot.
+                        <p id="heroBio" class="text-base sm:text-lg text-slate-700 font-semibold leading-relaxed max-w-2xl">
+                            Dokumentasi tugas akademik mata kuliah Bahasa Arab mahasiswa Program Studi Hukum Tata Negara <span class="font-mono font-bold text-black bg-[#00FF88]/40 px-1.5 py-0.5 border border-black rounded" id="heroKelasTag">HTN 1B</span>. Disusun dengan estetika arsitektur neo-brutalisme modern yang bersih, tegas, dan berbobot.
                         </p>
 
                         <!-- CTA Buttons -->
@@ -178,31 +200,31 @@
                                 <span>Lihat Daftar Tugas</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                             </a>
-                            <a class="neo-btn bg-[#FFFFFF] text-black hover:bg-slate-50 px-8 py-4 rounded-xl text-base sm:text-lg font-black gap-2 shadow-[5px_5px_0px_0px_#000]" href="#profil">
-                                <i class="fa-regular fa-id-badge text-lg"></i>
-                                <span>Biodata Mahasiswa</span>
-                            </a>
+                            <button onclick="openAdminModal();" class="neo-btn bg-[#FFE600] text-black hover:bg-[#FFD600] px-6 py-4 rounded-xl text-base font-black gap-2 shadow-[5px_5px_0px_0px_#000]">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <span>Kelola di Admin</span>
+                            </button>
                         </div>
 
                         <!-- Check Highlights -->
                         <div class="pt-3 flex flex-wrap items-center gap-6 text-xs sm:text-sm font-bold text-slate-700">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
-                                <span>NIM: <strong>1263030076</strong></span>
+                                <span>NIM: <strong id="highlightNim">1263030076</strong></span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
-                                <span>Kelas: <strong>HTN 1B</strong></span>
+                                <span>Kelas: <strong id="highlightKelas">HTN 1B</strong></span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
-                                <span>Fakultas Syari'ah & Hukum</span>
+                                <span id="highlightFakultas">Fakultas Syari'ah & Hukum</span>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Right Column: Neo-Brutalist Visual Card -->
+                    <!-- Right Column: Neo-Brutalist Visual Card (Hero Photo/Avatar) -->
                     <div class="lg:col-span-5 relative">
                         <div class="relative w-full max-w-md mx-auto">
                             <!-- Background Angled Color Blocks (api.jaky.dev signature) -->
@@ -223,28 +245,24 @@
                                     </span>
                                 </div>
 
-                                <!-- Empty Avatar Silhouette Box -->
-                                <div class="w-full h-44 rounded-xl border-2 border-dashed border-black bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center">
-                                    <div class="w-16 h-16 rounded-2xl bg-[#00F0FF] border-2 border-black shadow-[3px_3px_0px_0px_#000] flex items-center justify-center font-black text-xl text-black mb-2">
-                                        FIS
-                                    </div>
-                                    <span class="text-xs font-black text-black">Fazry ilham sulaeman</span>
-                                    <span class="text-[11px] font-mono font-bold text-slate-500">1263030076 &bull; HTN 1B</span>
+                                <!-- Photo Frame in Hero (Dynamic: shows image if uploaded, or placeholder) -->
+                                <div id="heroPhotoContainer" class="w-full h-56 rounded-xl border-2 border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center">
+                                    <!-- Rendered dynamically by JS -->
                                 </div>
 
                                 <!-- Information Mini Stats -->
-                                <div class="space-y-2 font-mono text-xs">
+                                <div class="space-y-2 font-mono text-xs text-left">
                                     <div class="flex justify-between p-2 bg-[#F8FAFC] border border-black rounded-lg">
                                         <span class="text-slate-500 font-bold">Program Studi:</span>
-                                        <span class="font-black text-black">Hukum Tata Negara</span>
+                                        <span id="heroProdiStat" class="font-black text-black">Hukum Tata Negara</span>
                                     </div>
                                     <div class="flex justify-between p-2 bg-[#F8FAFC] border border-black rounded-lg">
                                         <span class="text-slate-500 font-bold">Mata Kuliah:</span>
-                                        <span class="font-black text-[#FF3366]">Bahasa Arab Siyasah</span>
+                                        <span id="heroMatkulStat" class="font-black text-[#FF3366]">Bahasa Arab Siyasah</span>
                                     </div>
                                     <div class="flex justify-between p-2 bg-[#F8FAFC] border border-black rounded-lg">
                                         <span class="text-slate-500 font-bold">Status Tugas:</span>
-                                        <span class="font-black text-amber-700 bg-amber-100 px-1 rounded">Belum Diisi</span>
+                                        <span id="heroTaskStatusStat" class="font-black text-amber-700 bg-amber-100 px-1 rounded">Belum Diisi</span>
                                     </div>
                                 </div>
 
@@ -259,90 +277,31 @@
         <!-- ======================================================== -->
         <!-- METRICS BAR (api.jaky.dev Telemetry Section)              -->
         <!-- ======================================================== -->
-        <section class="py-16 lg:py-20 bg-[#F8FAFC] border-y-[3px] border-black">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-                
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b-2 border-black/15 text-left">
-                    <div class="space-y-2">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00FF88] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
-                            <span>LIVE ACADEMIC METRICS</span>
-                        </div>
-                        <h2 class="text-3xl sm:text-4xl font-black text-black tracking-tight">Status Perkuliahan & Beban Tugas</h2>
-                        <p class="text-slate-600 text-sm sm:text-base font-medium max-w-xl">Ringkasan administrasi perkuliahan semester ganjil dan kesiapan tugas portofolio.</p>
-                    </div>
-
-                    <div class="flex items-center gap-2 font-mono text-xs font-bold text-slate-700 bg-white border-2 border-black px-3.5 py-2 rounded-xl shadow-[3px_3px_0px_0px_#000]">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>Kelas Aktif: HTN-1B • Terdaftar</span>
-                    </div>
-                </div>
-
-                <!-- 4 Metric Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <section class="py-10 bg-[#0A0A0A] text-white border-y-[3px] border-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                     
-                    <!-- Metric 1 -->
-                    <div class="p-6 bg-white border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] space-y-3 text-left">
-                        <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 bg-[#00F0FF] border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center">
-                                <i class="fa-solid fa-book text-black"></i>
-                            </div>
-                            <span class="text-[10px] font-mono font-black px-2 py-0.5 bg-blue-100 text-blue-800 border border-blue-300 rounded">MATA KULIAH</span>
-                        </div>
-                        <div>
-                            <span class="text-3xl sm:text-4xl font-black text-black block">3 Tugas</span>
-                            <p class="text-xs font-mono font-bold uppercase text-slate-700 pt-1">Bahasa Arab Siyasah</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 font-medium">Mufradat, Baca Teks (Qira'ah), dan Portofolio UAS</p>
+                    <div class="p-4 border-2 border-white/20 rounded-xl bg-white/5 space-y-1">
+                        <div class="text-3xl sm:text-4xl font-black text-[#FFE600] font-mono">10</div>
+                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Target Mufradat Siyasah</div>
+                    </div>
+                    
+                    <div class="p-4 border-2 border-white/20 rounded-xl bg-white/5 space-y-1">
+                        <div class="text-3xl sm:text-4xl font-black text-[#00F0FF] font-mono">100%</div>
+                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Format Siyasah Syar'iyyah</div>
                     </div>
 
-                    <!-- Metric 2 -->
-                    <div class="p-6 bg-white border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] space-y-3 text-left">
-                        <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 bg-[#FFE600] border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center">
-                                <i class="fa-solid fa-graduation-cap text-black"></i>
-                            </div>
-                            <span class="text-[10px] font-mono font-black px-2 py-0.5 bg-[#FFE600] text-black border border-black rounded">SEMESTER 1</span>
-                        </div>
-                        <div>
-                            <span class="text-3xl sm:text-4xl font-black text-black block">HTN 1B</span>
-                            <p class="text-xs font-mono font-bold uppercase text-slate-700 pt-1">Kelas Mahasiswa</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 font-medium">Program Studi Hukum Tata Negara Islam</p>
+                    <div class="p-4 border-2 border-white/20 rounded-xl bg-white/5 space-y-1">
+                        <div class="text-3xl sm:text-4xl font-black text-[#00FF88] font-mono">HTML5</div>
+                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Audio Player & PDF Ready</div>
                     </div>
 
-                    <!-- Metric 3 -->
-                    <div class="p-6 bg-white border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] space-y-3 text-left">
-                        <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 bg-[#00FF88] border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center">
-                                <i class="fa-solid fa-fingerprint text-black"></i>
-                            </div>
-                            <span class="text-[10px] font-mono font-black px-2 py-0.5 bg-[#00FF88] text-black border border-black rounded">IDENTITAS</span>
-                        </div>
-                        <div>
-                            <span class="text-2xl sm:text-3xl font-black text-black block font-mono">1263030076</span>
-                            <p class="text-xs font-mono font-bold uppercase text-slate-700 pt-1">NIM Mahasiswa</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 font-medium">Terverifikasi di pangkalan data akademik</p>
-                    </div>
-
-                    <!-- Metric 4 -->
-                    <div class="p-6 bg-white border-[3px] border-black rounded-2xl shadow-[5px_5px_0px_0px_#000] space-y-3 text-left">
-                        <div class="flex items-center justify-between">
-                            <div class="w-10 h-10 bg-[#FF3366] border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-white">
-                                <i class="fa-solid fa-pen-ruler"></i>
-                            </div>
-                            <span class="text-[10px] font-mono font-black px-2 py-0.5 bg-rose-100 text-rose-800 border border-rose-300 rounded">KOSONG</span>
-                        </div>
-                        <div>
-                            <span class="text-3xl sm:text-4xl font-black text-black block">0 / 3</span>
-                            <p class="text-xs font-mono font-bold uppercase text-slate-700 pt-1">Tugas Diisi</p>
-                        </div>
-                        <p class="text-[11px] text-slate-500 font-medium">Slot tugas kosong siap dikustomisasi</p>
+                    <div class="p-4 border-2 border-white/20 rounded-xl bg-white/5 space-y-1">
+                        <div class="text-3xl sm:text-4xl font-black text-[#FF3366] font-mono">ADMIN</div>
+                        <div class="text-xs uppercase font-bold tracking-wider text-slate-300">Fitur Kustomisasi Siap Pakai</div>
                     </div>
 
                 </div>
-
             </div>
         </section>
 
@@ -362,62 +321,71 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     
                     <!-- Left: Identity Box -->
-                    <div class="lg:col-span-5 bg-white border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_#000] space-y-5">
+                    <div class="lg:col-span-5 bg-white border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_#000] space-y-5 text-left">
                         <div class="flex items-center justify-between border-b-2 border-black pb-3">
                             <span class="font-black text-sm uppercase text-black">Data Pribadi</span>
                             <span class="text-xs font-mono bg-[#00FF88] px-2 py-0.5 border border-black rounded font-bold">AKTIF</span>
                         </div>
 
-                        <!-- Empty Photo Frame -->
-                        <div class="w-full h-52 rounded-xl border-2 border-dashed border-black bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center">
-                            <div class="w-16 h-16 rounded-2xl bg-[#00F0FF] border-2 border-black shadow-[3px_3px_0px_0px_#000] flex items-center justify-center text-black text-2xl font-black mb-2">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <span class="text-sm font-black text-black">Foto Belum Dipasang</span>
-                            <span class="text-xs text-slate-500 font-mono mt-0.5">Placeholder Foto Siap Diisi</span>
+                        <!-- Profile Photo Frame -->
+                        <div id="profilPhotoContainer" class="w-full h-64 rounded-xl border-2 border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center">
+                            <!-- Rendered dynamically by JS -->
                         </div>
 
                         <div class="space-y-1">
-                            <h3 class="text-xl font-black text-black">Fazry ilham sulaeman</h3>
-                            <p class="text-xs font-mono font-bold text-slate-600">NIM: 1263030076 &bull; Kelas: HTN 1B</p>
+                            <h3 id="profilCardNama" class="text-xl font-black text-black">Fazry ilham sulaeman</h3>
+                            <p class="text-xs font-mono font-bold text-slate-600">
+                                NIM: <span id="profilCardNim">1263030076</span> &bull; Kelas: <span id="profilCardKelas">HTN 1B</span>
+                            </p>
                         </div>
+
+                        <!-- Quick Button to Edit Photo via Admin -->
+                        <button onclick="openAdminModal('tab-foto');" class="w-full neo-btn bg-[#00F0FF] hover:bg-[#00d8e6] py-2.5 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Ganti / Unggah Foto Profil</span>
+                        </button>
                     </div>
 
                     <!-- Right: Detailed Table -->
-                    <div class="lg:col-span-7 bg-white border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_#000] space-y-4">
-                        <h4 class="text-base font-black text-black flex items-center gap-2 border-b-2 border-black pb-3">
-                            <i class="fa-solid fa-university text-[#FF3366]"></i> Rincian Program Studi
-                        </h4>
+                    <div class="lg:col-span-7 bg-white border-[3px] border-black rounded-2xl p-6 shadow-[6px_6px_0px_0px_#000] space-y-4 text-left">
+                        <div class="flex items-center justify-between border-b-2 border-black pb-3">
+                            <h4 class="text-base font-black text-black flex items-center gap-2">
+                                <i class="fa-solid fa-university text-[#FF3366]"></i> Rincian Program Studi
+                            </h4>
+                            <button onclick="openAdminModal('tab-bio');" class="neo-btn bg-[#FFE600] px-3 py-1 rounded-lg text-xs font-black text-black gap-1 shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-pen"></i> Edit Biodata
+                            </button>
+                        </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-semibold">
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">Nama Lengkap</span>
-                                <span class="font-black text-black">Fazry ilham sulaeman</span>
+                                <span id="profilDetailNama" class="font-black text-black">Fazry ilham sulaeman</span>
                             </div>
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">NIM</span>
-                                <span class="font-black font-mono text-[#FF3366]">1263030076</span>
+                                <span id="profilDetailNim" class="font-black font-mono text-[#FF3366]">1263030076</span>
                             </div>
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">Program Studi</span>
-                                <span class="font-black text-black">Hukum Tata Negara (HTN)</span>
+                                <span id="profilDetailProdi" class="font-black text-black">Hukum Tata Negara (HTN)</span>
                             </div>
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">Kelas & Semester</span>
-                                <span class="font-black text-black">Kelas HTN 1B / Semester 1</span>
+                                <span id="profilDetailKelas" class="font-black text-black">Kelas HTN 1B / Semester 1</span>
                             </div>
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">Fakultas</span>
-                                <span class="font-black text-black">Fakultas Syari'ah dan Hukum</span>
+                                <span id="profilDetailFakultas" class="font-black text-black">Fakultas Syari'ah dan Hukum</span>
                             </div>
                             <div class="p-3 bg-[#F8FAFC] border-2 border-black rounded-xl">
                                 <span class="text-xs text-slate-500 uppercase font-mono block">Mata Kuliah</span>
-                                <span class="font-black text-black">Bahasa Arab / Siyasah Syar'iyyah</span>
+                                <span id="profilDetailMatkul" class="font-black text-black">Bahasa Arab / Siyasah Syar'iyyah</span>
                             </div>
                         </div>
 
                         <div class="p-4 bg-[#FFE600]/20 border-2 border-black rounded-xl text-xs text-slate-800 leading-relaxed">
-                            <strong>Catatan Mahasiswa:</strong> Portofolio akademik ini dipersiapkan sebagai media pengumpulan dan presentasi mandiri tugas mata kuliah Bahasa Arab. Seluruh data tugas di bawah saat ini berstatus kosong dan siap diisi.
+                            <strong>Catatan Mahasiswa:</strong> <span id="profilDetailCatatan">Portofolio akademik ini dipersiapkan sebagai media pengumpulan dan presentasi mandiri tugas mata kuliah Bahasa Arab.</span>
                         </div>
                     </div>
 
@@ -427,17 +395,24 @@
         </section>
 
         <!-- ======================================================== -->
-        <!-- DAFTAR TUGAS AKADEMIK (EMPTY STATES SEPERTI DIMINTA)     -->
+        <!-- DAFTAR TUGAS AKADEMIK                                    -->
         <!-- ======================================================== -->
         <section id="tugas" class="py-20 lg:py-24 bg-[#F8FAFC] border-t-[3px] border-black">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
                 
-                <div class="text-left space-y-3">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00F0FF] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
-                        TASK WORKSPACE
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-left">
+                    <div class="space-y-3">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00F0FF] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                            TASK WORKSPACE
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-black text-black tracking-tight">Daftar Tugas Perkuliahan</h2>
+                        <p class="text-slate-600 font-medium text-sm sm:text-base">Pilih tab di bawah untuk melihat rincian tugas. Tugas dapat diisi langsung melalui Panel Admin.</p>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-black text-black tracking-tight">Daftar Tugas Perkuliahan</h2>
-                    <p class="text-slate-600 font-medium text-sm sm:text-base">Pilih tab di bawah untuk melihat rincian tugas. Saat ini seluruh tugas berstatus kosong (belum ada tugas yang dikerjakan).</p>
+
+                    <button onclick="openAdminModal('tab-tugas1');" class="neo-btn bg-[#00FF88] hover:bg-[#00e67a] px-4 py-2.5 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000] self-start sm:self-auto shrink-0">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>Isi / Edit Tugas di Admin</span>
+                    </button>
                 </div>
 
                 <!-- Interactive Neo-Brutalist Tabs (api.jaky.dev Style) -->
@@ -457,7 +432,7 @@
                 </div>
 
                 <!-- ============================================== -->
-                <!-- PANEL 1: TUGAS KOSAKATA (EMPTY STATE)         -->
+                <!-- PANEL 1: TUGAS KOSAKATA                        -->
                 <!-- ============================================== -->
                 <div id="panelMufradat" class="task-panel">
                     <div class="bg-white border-[3.5px] border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6 text-left">
@@ -469,34 +444,26 @@
                                 </h3>
                                 <p class="text-xs font-mono font-bold text-slate-500 mt-1">Mata Kuliah: Bahasa Arab / Fiqh Siyasah</p>
                             </div>
-                            <span class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000] self-start sm:self-auto">
-                                STATUS: BELUM DIISI
-                            </span>
+                            <div class="flex items-center gap-2">
+                                <span id="badgeStatusTugas1" class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                                    STATUS: BELUM DIISI
+                                </span>
+                                <button onclick="openAdminModal('tab-tugas1');" class="neo-btn bg-[#00F0FF] p-2 rounded-lg text-xs shadow-[2px_2px_0px_0px_#000]" title="Kelola Tugas 1">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Big Empty State Box -->
-                        <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
-                            <div class="w-16 h-16 bg-[#00F0FF] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center mx-auto text-black text-2xl">
-                                <i class="fa-regular fa-folder-open"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-black">Belum Ada Tugas yang Dikerjakan</h4>
-                                <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
-                                    Tugas kosakata (10 mufradat bahasa Arab tentang siyasah) ini masih kosong atau belum diisi oleh mahasiswa.
-                                </p>
-                            </div>
-                            <div class="pt-2">
-                                <span class="inline-block font-mono text-xs font-bold text-slate-700 bg-white border-2 border-black px-3.5 py-1.5 rounded-lg shadow-[2px_2px_0px_0px_#000]">
-                                    File Target: <code>index.html</code> (Siap Dikustomisasi)
-                                </span>
-                            </div>
+                        <!-- Dynamic Content Area for Tugas 1 -->
+                        <div id="contentTugas1">
+                            <!-- Injected by JavaScript (Empty State or Filled Grid/Table) -->
                         </div>
 
                     </div>
                 </div>
 
                 <!-- ============================================== -->
-                <!-- PANEL 2: TUGAS BACA TEKS (EMPTY STATE)         -->
+                <!-- PANEL 2: TUGAS BACA TEKS (QIRA'AH)             -->
                 <!-- ============================================== -->
                 <div id="panelQiraah" class="task-panel hidden">
                     <div class="bg-white border-[3.5px] border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6 text-left">
@@ -508,34 +475,26 @@
                                 </h3>
                                 <p class="text-xs font-mono font-bold text-slate-500 mt-1">Naskah Bacaan Arab Berharakat & Rekaman Suara</p>
                             </div>
-                            <span class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000] self-start sm:self-auto">
-                                STATUS: BELUM DIISI
-                            </span>
+                            <div class="flex items-center gap-2">
+                                <span id="badgeStatusTugas2" class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                                    STATUS: BELUM DIISI
+                                </span>
+                                <button onclick="openAdminModal('tab-tugas2');" class="neo-btn bg-[#00F0FF] p-2 rounded-lg text-xs shadow-[2px_2px_0px_0px_#000]" title="Kelola Tugas 2">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Big Empty State Box -->
-                        <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
-                            <div class="w-16 h-16 bg-[#FF3366] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-white text-2xl mx-auto">
-                                <i class="fa-solid fa-microphone-slash"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-black">Belum Ada Rekaman & Teks yang Dikerjakan</h4>
-                                <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
-                                    Tugas membaca teks qira'ah dan pemutar audio masih kosong. Belum ada rekaman suara maupun teks bacaan bahasa Arab yang dimasukkan.
-                                </p>
-                            </div>
-                            <div class="pt-2">
-                                <span class="inline-block font-mono text-xs font-bold text-slate-700 bg-white border-2 border-black px-3.5 py-1.5 rounded-lg shadow-[2px_2px_0px_0px_#000]">
-                                    Format didukung: Audio MP3 / WAV & Naskah Arab
-                                </span>
-                            </div>
+                        <!-- Dynamic Content Area for Tugas 2 -->
+                        <div id="contentTugas2">
+                            <!-- Injected by JavaScript (Empty State or Qira'ah Reader & Audio Player) -->
                         </div>
 
                     </div>
                 </div>
 
                 <!-- ============================================== -->
-                <!-- PANEL 3: TUGAS UAS (EMPTY STATE)              -->
+                <!-- PANEL 3: TUGAS UAS                             -->
                 <!-- ============================================== -->
                 <div id="panelUas" class="task-panel hidden">
                     <div class="bg-white border-[3.5px] border-black rounded-2xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6 text-left">
@@ -547,27 +506,19 @@
                                 </h3>
                                 <p class="text-xs font-mono font-bold text-slate-500 mt-1">Makalah Akhir Semester & Berkas Dokumen PDF</p>
                             </div>
-                            <span class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000] self-start sm:self-auto">
-                                STATUS: BELUM DIISI
-                            </span>
+                            <div class="flex items-center gap-2">
+                                <span id="badgeStatusTugas3" class="px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                                    STATUS: BELUM DIISI
+                                </span>
+                                <button onclick="openAdminModal('tab-tugas3');" class="neo-btn bg-[#00F0FF] p-2 rounded-lg text-xs shadow-[2px_2px_0px_0px_#000]" title="Kelola Tugas 3">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Big Empty State Box -->
-                        <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
-                            <div class="w-16 h-16 bg-[#00FF88] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-black text-2xl mx-auto">
-                                <i class="fa-regular fa-file-lines"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-black">Belum Ada Dokumen Tugas yang Diunggah</h4>
-                                <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
-                                    Tugas evaluasi akhir semester (UAS) masih kosong. Belum ada makalah ilmiah atau berkas PDF yang ditautkan ke halaman ini.
-                                </p>
-                            </div>
-                            <div class="pt-2">
-                                <span class="inline-block font-mono text-xs font-bold text-slate-700 bg-white border-2 border-black px-3.5 py-1.5 rounded-lg shadow-[2px_2px_0px_0px_#000]">
-                                    Slot Makalah PDF Siap Ditautkan
-                                </span>
-                            </div>
+                        <!-- Dynamic Content Area for Tugas 3 -->
+                        <div id="contentTugas3">
+                            <!-- Injected by JavaScript (Empty State or UAS Makalah Viewer & Download) -->
                         </div>
 
                     </div>
@@ -587,18 +538,18 @@
                             ACADEMIC REPOSITORY
                         </div>
                         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-black tracking-tight leading-tight">
-                            Siap Mengisi Konten Portofolio Anda?
+                            Kelola Konten via Panel Admin
                         </h2>
                         <p class="text-slate-900 font-bold text-base max-w-xl">
-                            Seluruh template telah dikosongkan dengan rapi. Anda dapat mengedit berkas <code>index.html</code> secara langsung untuk memasukkan 10 mufradat, naskah bacaan, audio, dan tautan tugas UAS.
+                            Anda dapat mengunggah foto profil, mengisi 10 mufradat siyasah, menautkan rekaman audio qira'ah, dan berkas makalah UAS langsung dengan memasukkan PIN admin Anda.
                         </p>
                     </div>
 
-                    <div class="lg:col-span-4 flex justify-start lg:justify-end">
-                        <a class="neo-btn bg-[#FF3366] text-white hover:bg-[#e02657] px-8 py-4 rounded-2xl text-base font-black gap-2 shadow-[6px_6px_0px_0px_#000]" href="#tugas">
-                            <span>Buka Workspace Tugas</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                    <div class="lg:col-span-4 flex flex-wrap gap-3 justify-start lg:justify-end">
+                        <button onclick="openAdminModal();" class="neo-btn bg-[#FF3366] text-white hover:bg-[#e02657] px-8 py-4 rounded-2xl text-base font-black gap-2 shadow-[6px_6px_0px_0px_#000]">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Buka Panel Admin</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -625,7 +576,7 @@
                                 fazry<span class="text-[#FF3366]">.portofolio</span>
                             </span>
                             <span class="text-xs font-mono font-bold text-slate-600">
-                                Fazry Ilham Sulaeman &bull; HTN 1B
+                                <span id="footerNama">Fazry Ilham Sulaeman</span> &bull; <span id="footerKelas">HTN 1B</span>
                             </span>
                         </div>
                     </div>
@@ -634,7 +585,7 @@
                     </p>
                     <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#00FF88]/30 border-2 border-black rounded-md text-xs font-mono font-bold text-black shadow-[2px_2px_0px_0px_#000]">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#00CC6A] animate-ping"></span>
-                        <span>Mahasiswa Aktif &bull; Program Studi Hukum Tata Negara</span>
+                        <span id="footerStatusTag">Mahasiswa Aktif &bull; Program Studi Hukum Tata Negara</span>
                     </div>
                 </div>
 
@@ -650,11 +601,14 @@
                     </ul>
                 </div>
 
-                <!-- Col 3: Kontak & Tautan -->
+                <!-- Col 3: Kontak & Admin Quick Access -->
                 <div class="lg:col-span-3 space-y-3">
-                    <h4 class="font-black text-sm uppercase tracking-wider text-black">Kontak & Tautan</h4>
-                    <p class="text-xs text-slate-600 font-semibold">Tautan resmi mahasiswa.</p>
+                    <h4 class="font-black text-sm uppercase tracking-wider text-black">Akses & Kontak</h4>
+                    <p class="text-xs text-slate-600 font-semibold">Tautan resmi & akses panel pengelola.</p>
                     <div class="flex flex-wrap gap-2.5 pt-1">
+                        <button onclick="openAdminModal();" title="Buka Panel Admin" class="inline-flex items-center justify-center shrink-0 border-2 border-black bg-[#FFE600] text-black shadow-[3px_3px_0px_0px_#000] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000] transition-all cursor-pointer w-10 h-10 rounded-xl text-sm font-black">
+                            <i class="fa-solid fa-gear"></i>
+                        </button>
                         <a href="https://github.com/aetheriashop/fazry-portofolio" target="_blank" rel="noopener noreferrer" title="GitHub" class="inline-flex items-center justify-center shrink-0 border-2 border-black bg-[#24292e] text-white shadow-[3px_3px_0px_0px_#000] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#000] active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000] transition-all cursor-pointer w-10 h-10 rounded-xl text-sm">
                             <i class="fa-brands fa-github"></i>
                         </a>
@@ -671,29 +625,1340 @@
 
             <!-- Bottom Copyright -->
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-slate-600 text-left">
-                <p>&copy; 2026 Fazry Ilham Sulaeman. Seluruh hak cipta dilindungi.</p>
+                <p>&copy; 2026 <span id="copyNama">Fazry Ilham Sulaeman</span>. Seluruh hak cipta dilindungi.</p>
                 <p class="font-mono">
-                    NIM: <span class="text-black bg-[#00F0FF] px-2 py-0.5 border border-black rounded">1263030076</span>
-                    &bull; Kelas: <span class="text-black bg-[#FFE600] px-2 py-0.5 border border-black rounded">HTN 1B</span>
+                    NIM: <span id="copyNim" class="text-black bg-[#00F0FF] px-2 py-0.5 border border-black rounded">1263030076</span>
+                    &bull; Kelas: <span id="copyKelas" class="text-black bg-[#FFE600] px-2 py-0.5 border border-black rounded">HTN 1B</span>
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- ======================================================== -->
-    <!-- JAVASCRIPT LOGIC                                         -->
+    <!-- MODAL 1: AUTHENTICATION / LOGIN ADMIN                     -->
+    <!-- Username: fazry | PIN: 060508                             -->
+    <!-- ======================================================== -->
+    <div id="authModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div id="authBox" class="bg-white border-[4px] border-black rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-[10px_10px_0px_0px_#000] relative space-y-6 text-left">
+            
+            <button onclick="closeAuthModal();" class="absolute top-4 right-4 w-9 h-9 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black font-black hover:bg-slate-100">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                    <i class="fa-solid fa-shield-halved"></i> SECURITY ACCESS
+                </div>
+                <h3 class="text-2xl font-black text-black tracking-tight">Login Panel Admin</h3>
+                <p class="text-xs text-slate-600 font-semibold">Masukkan username dan PIN khusus untuk mengelola foto, tugas, dan data mahasiswa.</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="authError" class="hidden p-3 bg-[#FF3366] text-white border-2 border-black rounded-xl text-xs font-bold flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-base"></i>
+                <span id="authErrorMsg">Username atau PIN salah! Silakan coba lagi.</span>
+            </div>
+
+            <!-- Login Form -->
+            <form onsubmit="handleAdminLogin(event);" class="space-y-4">
+                <div class="space-y-1">
+                    <label class="text-xs font-black uppercase text-black font-mono">Username</label>
+                    <input type="text" id="loginUsername" required placeholder="Contoh: fazry" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm focus:outline-none focus:ring-2 focus:ring-[#00F0FF] shadow-[2px_2px_0px_0px_#000]">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-xs font-black uppercase text-black font-mono">PIN Rahasia (6 Angka)</label>
+                    <input type="password" id="loginPin" required maxlength="10" placeholder="Masukkan PIN 6 Angka" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm focus:outline-none focus:ring-2 focus:ring-[#FFE600] shadow-[2px_2px_0px_0px_#000]">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full neo-btn bg-[#00FF88] hover:bg-[#00e67a] py-3.5 rounded-xl text-sm font-black text-black gap-2 shadow-[4px_4px_0px_0px_#000]">
+                        <i class="fa-solid fa-key"></i>
+                        <span>Verifikasi & Masuk Dashboard</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="p-3 bg-[#00F0FF]/15 border border-black rounded-xl text-[11px] font-mono font-bold text-slate-700 flex items-center justify-between">
+                <span>Default Username: <strong>fazry</strong></span>
+                <span>Default PIN: <strong>060508</strong></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- MODAL 2: FULL ADMIN DASHBOARD                            -->
+    <!-- Tabbed interface for Biodata, Foto, Tugas 1, 2, 3        -->
+    <!-- ======================================================== -->
+    <div id="adminDashboardModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white border-[4px] border-black rounded-3xl max-w-4xl w-full my-auto shadow-[12px_12px_0px_0px_#000] flex flex-col max-h-[92vh] overflow-hidden text-left">
+            
+            <!-- Dashboard Header -->
+            <div class="p-4 sm:p-6 border-b-[3px] border-black bg-[#FFE600] flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black text-lg">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-black text-black leading-tight">Admin Control Panel</h3>
+                        <p class="text-xs font-mono font-bold text-slate-800">Fazry Ilham Sulaeman &bull; HTN 1B</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="handleAdminLogout();" class="neo-btn bg-[#FF3366] text-white hover:bg-[#e02657] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+                    </button>
+                    <button onclick="closeAdminDashboardModal();" class="w-9 h-9 bg-white border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black font-black hover:bg-slate-100">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Navigation inside Admin Panel -->
+            <div class="flex overflow-x-auto gap-2 p-3 bg-[#F8FAFC] border-b-2 border-black shrink-0">
+                <button id="adminTabBtnBio" onclick="switchAdminTab('tab-bio');" class="neo-btn bg-[#00F0FF] px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0">
+                    <i class="fa-regular fa-id-card mr-1.5"></i> Data Mahasiswa
+                </button>
+                <button id="adminTabBtnFoto" onclick="switchAdminTab('tab-foto');" class="neo-btn bg-white px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0">
+                    <i class="fa-regular fa-image mr-1.5"></i> Foto Profil
+                </button>
+                <button id="adminTabBtnTugas1" onclick="switchAdminTab('tab-tugas1');" class="neo-btn bg-white px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0">
+                    <i class="fa-solid fa-book-open mr-1.5"></i> Tugas 1 (10 Mufradat)
+                </button>
+                <button id="adminTabBtnTugas2" onclick="switchAdminTab('tab-tugas2');" class="neo-btn bg-white px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0">
+                    <i class="fa-solid fa-headphones mr-1.5"></i> Tugas 2 (Qira'ah & Audio)
+                </button>
+                <button id="adminTabBtnTugas3" onclick="switchAdminTab('tab-tugas3');" class="neo-btn bg-white px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0">
+                    <i class="fa-solid fa-file-pdf mr-1.5"></i> Tugas 3 (UAS PDF)
+                </button>
+            </div>
+
+            <!-- Modal Body (Scrollable Tab Contents) -->
+            <div class="p-4 sm:p-6 overflow-y-auto flex-grow space-y-6">
+                
+                <!-- ========================================== -->
+                <!-- TAB 1: DATA MAHASISWA                      -->
+                <!-- ========================================== -->
+                <div id="adminTabBio" class="admin-tab-content space-y-5">
+                    <div class="flex items-center justify-between border-b-2 border-black pb-2">
+                        <h4 class="font-black text-base text-black flex items-center gap-2">
+                            <i class="fa-solid fa-user-pen text-[#FF3366]"></i> Edit Biodata & Identitas Mahasiswa
+                        </h4>
+                        <span class="text-xs font-mono font-bold bg-[#FFE600] px-2 py-0.5 border border-black rounded">Pribadi</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Nama Lengkap</label>
+                            <input type="text" id="admInputNama" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">NIM</label>
+                            <input type="text" id="admInputNim" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Kelas</label>
+                            <input type="text" id="admInputKelas" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Program Studi</label>
+                            <input type="text" id="admInputProdi" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Fakultas</label>
+                            <input type="text" id="admInputFakultas" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Mata Kuliah</label>
+                            <input type="text" id="admInputMatkul" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-mono font-black uppercase text-black">Catatan Mahasiswa / Bio Singkat</label>
+                        <textarea id="admInputCatatan" rows="3" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm"></textarea>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- TAB 2: FOTO PROFIL                         -->
+                <!-- ========================================== -->
+                <div id="adminTabFoto" class="admin-tab-content hidden space-y-5">
+                    <div class="flex items-center justify-between border-b-2 border-black pb-2">
+                        <h4 class="font-black text-base text-black flex items-center gap-2">
+                            <i class="fa-solid fa-camera text-[#00F0FF]"></i> Pengaturan Foto Profil
+                        </h4>
+                        <span class="text-xs font-mono font-bold bg-[#00FF88] px-2 py-0.5 border border-black rounded">Avatar</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                        <!-- Preview Box -->
+                        <div class="sm:col-span-4 flex flex-col items-center">
+                            <div class="w-40 h-40 border-[3px] border-black rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_#000] bg-[#F8FAFC] flex items-center justify-center" id="admFotoPreviewBox">
+                                <span class="text-xs font-mono font-bold text-slate-500">Preview Foto</span>
+                            </div>
+                            <button type="button" onclick="removeAdminPhoto();" class="mt-3 neo-btn bg-[#FF3366] text-white hover:bg-[#e02657] px-3 py-1.5 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-trash mr-1"></i> Hapus Foto (Reset)
+                            </button>
+                        </div>
+
+                        <!-- Upload Options -->
+                        <div class="sm:col-span-8 space-y-4">
+                            <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-2">
+                                <label class="text-xs font-black uppercase text-black font-mono block">Opsi 1: Unggah Berkas Gambar (JPG, PNG, WebP)</label>
+                                <input type="file" id="admInputFotoFile" accept="image/*" onchange="handlePhotoFileUpload(event);" class="w-full text-xs font-bold file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-2 file:border-black file:text-xs file:font-black file:bg-[#FFE600] file:cursor-pointer">
+                                <p class="text-[11px] text-slate-500 font-mono">Foto langsung dikonversi menjadi data gambar dan tersimpan otomatis di browser.</p>
+                            </div>
+
+                            <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-2">
+                                <label class="text-xs font-black uppercase text-black font-mono block">Opsi 2: Tautkan URL Gambar Online</label>
+                                <div class="flex gap-2">
+                                    <input type="url" id="admInputFotoUrl" placeholder="https://example.com/foto-fazry.jpg" class="flex-grow p-2.5 bg-white border-2 border-black rounded-xl font-bold text-xs">
+                                    <button type="button" onclick="applyPhotoFromUrl();" class="neo-btn bg-[#00FF88] px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                        Terapkan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- TAB 3: TUGAS 1 (10 MUFRADAT SIYASAH)       -->
+                <!-- ========================================== -->
+                <div id="adminTabTugas1" class="admin-tab-content hidden space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-3 gap-2">
+                        <div>
+                            <h4 class="font-black text-base text-black flex items-center gap-2">
+                                <i class="fa-solid fa-book-open text-[#FFE600]"></i> Kelola Tugas 1: 10 Kosakata Siyasah
+                            </h4>
+                            <p class="text-xs text-slate-600 font-semibold">Tentukan apakah tugas berstatus 'Selesai' atau 'Kosong', serta edit 10 istilah siyasah.</p>
+                        </div>
+
+                        <!-- Status Switcher -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold">Status Tampilan:</span>
+                            <button type="button" id="admBtnToggleTugas1" onclick="toggleTugasStatus(1);" class="neo-btn px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <!-- Injected by JS -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Preset Helper Buttons -->
+                    <div class="flex flex-wrap gap-2.5 p-3 bg-[#FFE600]/20 border-2 border-black rounded-xl items-center justify-between">
+                        <div class="text-xs font-bold text-slate-800">
+                            <strong>Pintasan:</strong> Muat 10 istilah politik Islam resmi atau kosongkan seketika.
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="button" onclick="loadDefaultMufradatPreset();" class="neo-btn bg-[#00FF88] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Isi 10 Kosakata Lengkap
+                            </button>
+                            <button type="button" onclick="clearMufradatData();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-eraser mr-1"></i> Kosongkan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 10 Mufradat Form Fields Container -->
+                    <div id="admMufradatInputsContainer" class="space-y-4 max-h-[50vh] overflow-y-auto pr-1">
+                        <!-- 10 rows injected by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- TAB 4: TUGAS 2 (QIRA'AH & AUDIO)           -->
+                <!-- ========================================== -->
+                <div id="adminTabTugas2" class="admin-tab-content hidden space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-3 gap-2">
+                        <div>
+                            <h4 class="font-black text-base text-black flex items-center gap-2">
+                                <i class="fa-solid fa-headphones text-[#FF3366]"></i> Kelola Tugas 2: Qira'ah & Audio
+                            </h4>
+                            <p class="text-xs text-slate-600 font-semibold">Tentukan status tugas baca teks, masukkan naskah Arab, dan unggah rekaman suara.</p>
+                        </div>
+
+                        <!-- Status Switcher -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold">Status Tampilan:</span>
+                            <button type="button" id="admBtnToggleTugas2" onclick="toggleTugasStatus(2);" class="neo-btn px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <!-- Injected by JS -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Preset -->
+                    <div class="flex flex-wrap gap-2.5 p-3 bg-[#00F0FF]/20 border-2 border-black rounded-xl items-center justify-between">
+                        <div class="text-xs font-bold text-slate-800">
+                            <strong>Pintasan:</strong> Muat naskah bacaan siyasah berharakat lengkap.
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="button" onclick="loadDefaultQiraahPreset();" class="neo-btn bg-[#FFE600] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Muat Contoh Naskah Arab
+                            </button>
+                            <button type="button" onclick="clearQiraahData();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-eraser mr-1"></i> Kosongkan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Judul Teks Bacaan</label>
+                            <input type="text" id="admInputQiraahJudul" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Naskah Bacaan Bahasa Arab (Lengkap Harakat)</label>
+                            <textarea id="admInputQiraahArab" rows="4" dir="rtl" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-arabic text-lg sm:text-xl font-bold text-slate-900 leading-loose"></textarea>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Terjemahan Bahasa Indonesia</label>
+                            <textarea id="admInputQiraahArti" rows="3" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-semibold text-sm leading-relaxed"></textarea>
+                        </div>
+
+                        <!-- Audio Upload & Preview -->
+                        <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-3">
+                            <label class="text-xs font-mono font-black uppercase text-black block">
+                                <i class="fa-solid fa-microphone mr-1 text-[#FF3366]"></i> Berkas Audio Rekaman Membaca (MP3 / WAV / M4A)
+                            </label>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <span class="text-[11px] font-mono font-bold block mb-1">Unggah dari Komputer / HP:</span>
+                                    <input type="file" id="admInputAudioFile" accept="audio/*" onchange="handleAudioFileUpload(event);" class="w-full text-xs font-bold file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border file:border-black file:text-xs file:font-black file:bg-[#00FF88] file:cursor-pointer">
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-mono font-bold block mb-1">Atau masukkan URL Audio:</span>
+                                    <div class="flex gap-2">
+                                        <input type="url" id="admInputAudioUrl" placeholder="https://example.com/audio.mp3" class="flex-grow p-1.5 bg-white border-2 border-black rounded-lg text-xs font-bold">
+                                        <button type="button" onclick="applyAudioFromUrl();" class="neo-btn bg-[#FFE600] px-3 py-1 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
+                                            Set
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Audio Player Preview in Admin -->
+                            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex-grow">
+                                    <audio id="admAudioPreview" controls class="w-full hidden h-10"></audio>
+                                    <span id="admAudioStatusText" class="text-xs font-mono font-bold text-slate-500">Belum ada file audio yang terpasang.</span>
+                                </div>
+                                <button type="button" onclick="removeAudioFile();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000] shrink-0">
+                                    <i class="fa-solid fa-trash mr-1"></i> Hapus Audio
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- TAB 5: TUGAS 3 (UAS PDF)                   -->
+                <!-- ========================================== -->
+                <div id="adminTabTugas3" class="admin-tab-content hidden space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-3 gap-2">
+                        <div>
+                            <h4 class="font-black text-base text-black flex items-center gap-2">
+                                <i class="fa-solid fa-file-pdf text-[#00FF88]"></i> Kelola Tugas 3: Makalah & Berkas UAS
+                            </h4>
+                            <p class="text-xs text-slate-600 font-semibold">Tentukan status tugas UAS, judul makalah, intisari abstrak, dan berkas PDF.</p>
+                        </div>
+
+                        <!-- Status Switcher -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-mono font-bold">Status Tampilan:</span>
+                            <button type="button" id="admBtnToggleTugas3" onclick="toggleTugasStatus(3);" class="neo-btn px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <!-- Injected by JS -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Preset -->
+                    <div class="flex flex-wrap gap-2.5 p-3 bg-[#00FF88]/20 border-2 border-black rounded-xl items-center justify-between">
+                        <div class="text-xs font-bold text-slate-800">
+                            <strong>Pintasan:</strong> Muat rancangan tugas akhir semester siyasah syar'iyyah.
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="button" onclick="loadDefaultUasPreset();" class="neo-btn bg-[#FFE600] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Muat Contoh Makalah UAS
+                            </button>
+                            <button type="button" onclick="clearUasData();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
+                                <i class="fa-solid fa-eraser mr-1"></i> Kosongkan
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Judul Laporan / Makalah UAS</label>
+                            <input type="text" id="admInputUasJudul" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono font-black uppercase text-black">Dosen Pengampu</label>
+                                <input type="text" id="admInputUasDosen" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono font-black uppercase text-black">Nama File PDF</label>
+                                <input type="text" id="admInputUasPdfNama" placeholder="Tugas_UAS_Fazry_Ilham.pdf" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-mono font-black uppercase text-black">Abstrak / Ringkasan Intisari Makalah</label>
+                            <textarea id="admInputUasAbstrak" rows="4" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-semibold text-sm leading-relaxed"></textarea>
+                        </div>
+
+                        <!-- PDF Upload & Link Section -->
+                        <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-3">
+                            <label class="text-xs font-mono font-black uppercase text-black block">
+                                <i class="fa-solid fa-file-pdf mr-1 text-[#FF3366]"></i> Berkas Dokumen PDF Tugas UAS
+                            </label>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <span class="text-[11px] font-mono font-bold block mb-1">Unggah PDF dari Komputer / HP:</span>
+                                    <input type="file" id="admInputPdfFile" accept="application/pdf" onchange="handlePdfFileUpload(event);" class="w-full text-xs font-bold file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border file:border-black file:text-xs file:font-black file:bg-[#FFE600] file:cursor-pointer">
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-mono font-bold block mb-1">Atau masukkan Link PDF / Google Drive:</span>
+                                    <div class="flex gap-2">
+                                        <input type="url" id="admInputPdfUrl" placeholder="https://drive.google.com/..." class="flex-grow p-1.5 bg-white border-2 border-black rounded-lg text-xs font-bold">
+                                        <button type="button" onclick="applyPdfFromUrl();" class="neo-btn bg-[#00FF88] px-3 py-1 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
+                                            Set
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <span id="admPdfStatusText" class="text-xs font-mono font-bold text-slate-500">Belum ada file PDF yang terpasang.</span>
+                                <button type="button" onclick="removePdfFile();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000] shrink-0">
+                                    <i class="fa-solid fa-trash mr-1"></i> Hapus PDF
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dashboard Footer with Save Button -->
+            <div class="p-4 sm:p-5 border-t-[3px] border-black bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="resetAllToDefault();" class="neo-btn bg-slate-100 hover:bg-slate-200 px-3.5 py-2.5 rounded-xl text-xs font-black text-black gap-1.5 shadow-[2px_2px_0px_0px_#000]">
+                        <i class="fa-solid fa-rotate-left"></i> Reset ke Format Awal
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                    <button type="button" onclick="closeAdminDashboardModal();" class="neo-btn bg-white hover:bg-slate-100 px-4 py-2.5 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                        Batal
+                    </button>
+                    <button type="button" onclick="saveAdminChanges();" class="neo-btn bg-[#00FF88] hover:bg-[#00e67a] px-6 py-2.5 rounded-xl text-sm font-black text-black gap-2 shadow-[4px_4px_0px_0px_#000] flex-grow sm:flex-grow-0">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Simpan Semua Perubahan</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- TOAST NOTIFICATION POPUP                                 -->
+    <!-- ======================================================== -->
+    <div id="neoToast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-[#FFE600] border-[3px] border-black rounded-2xl p-4 shadow-[6px_6px_0px_0px_#000] flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-white border-2 border-black flex items-center justify-center text-black font-black text-sm">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div class="text-left">
+                <h5 class="text-xs font-black uppercase text-black font-mono leading-none">Berhasil Disimpan!</h5>
+                <p id="toastMessage" class="text-xs font-bold text-slate-800 mt-0.5">Perubahan portofolio telah diperbarui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- JAVASCRIPT LOGIC & STATE MANAGEMENT                      -->
     <!-- ======================================================== -->
     <script>
         // ----------------------------------------------------
-        // 1. TASK TABS SWITCHER
+        // DEFAULT INITIAL DATA STATE
+        // (Tasks are empty by default as requested by user)
+        // ----------------------------------------------------
+        const INITIAL_DATA = {
+            biodata: {
+                nama: "Fazry ilham sulaeman",
+                nim: "1263030076",
+                kelas: "HTN 1B",
+                prodi: "Hukum Tata Negara (HTN)",
+                semester: "Semester 1",
+                fakultas: "Fakultas Syari'ah dan Hukum",
+                universitas: "UIN Sunan Gunung Djati Bandung",
+                matkul: "Bahasa Arab / Siyasah Syar'iyyah",
+                catatan: "Portofolio akademik ini dipersiapkan sebagai media pengumpulan dan presentasi mandiri tugas mata kuliah Bahasa Arab. Seluruh data tugas di bawah saat ini berstatus kosong dan siap diisi."
+            },
+            foto: "", // Base64 dataURL or link
+            tugas1: {
+                isFilled: false,
+                items: [
+                    { no: 1, arab: "السِّيَاسَةُ", transliterasi: "As-Siyāsah", arti: "Politik / Kebijakan", contoh: "السِّيَاسَةُ الشَّرْعِيَّةُ تَهْدِفُ إِلَى مَصْلَحَةِ الأُمَّةِ" },
+                    { no: 2, arab: "الدَّوْلَةُ", transliterasi: "Ad-Daulah", arti: "Negara", contoh: "الدَّوْلَةُ العَادِلَةُ تَحْمِي حُقُوْقَ المُواطِنِينَ" },
+                    { no: 3, arab: "الحُكُوْمَةُ", transliterasi: "Al-Hukūmah", arti: "Pemerintah", contoh: "تَعْمَلُ الحُكُوْمَةُ عَلَى تَطْوِيْرِ الخَدَمَاتِ العَامَّةِ" },
+                    { no: 4, arab: "الدُّسْتُوْرُ", transliterasi: "Ad-Dustūr", arti: "Konstitusi / UUD", contoh: "الدُّسْتُوْرُ هُوَ القَانُوْنُ الأَسَاسِيُّ فِي البِلَادِ" },
+                    { no: 5, arab: "الانْتِخَابَاتُ", transliterasi: "Al-Intikhābāt", arti: "Pemilihan Umum (Pemilu)", contoh: "تَجْرِي الانْتِخَابَاتُ بِطَرِيْقَةٍ دِيْمُقْرَاطِيَّةٍ" },
+                    { no: 6, arab: "البَرْلَمَانُ", transliterasi: "Al-Barlamān", arti: "Parlemen / Legislatif", contoh: "يُنَاقِشُ البَرْلَمَانُ مَشَارِيْعَ القَوَانِيْنِ الجَدِيْدَةِ" },
+                    { no: 7, arab: "القَضَاءُ", transliterasi: "Al-Qadhā'", arti: "Peradilan / Yudikatif", contoh: "يَسْتَقِلُّ سُلْطَةُ القَضَاءِ لِتَحْقِيْقِ العَدْلِ" },
+                    { no: 8, arab: "العَدَالَةُ", transliterasi: "Al-'Adālah", arti: "Keadilan", contoh: "العَدَالَةُ أَسَاسُ المُلْكِ وَاسْتِقْرَارِ المُجْتَمَعِ" },
+                    { no: 9, arab: "المُوَاطَنَةُ", transliterasi: "Al-Muwāthanah", arti: "Kewarganegaraan", contoh: "المُوَاطَنَةُ الصَّالِحَةُ تَقْتَضِي الوَفَاءَ بِالوَاجِبَاتِ" },
+                    { no: 10, arab: "الإِمَامَةُ / الخِلَافَةُ", transliterasi: "Al-Imāmah / Al-Khilāfah", arti: "Kepemimpinan Negara", contoh: "الإِمَامَةُ مَوْضُوْعَةٌ لِخِلَافَةِ النُّبُوَّةِ فِي حِرَاسَةِ الدِّيْنِ" }
+                ]
+            },
+            tugas2: {
+                isFilled: false,
+                judul: "النِّظَامُ السِّيَاسِيُّ فِي الإِسْلَامِ (Sistem Ketatanegaraan dalam Islam)",
+                teksArab: "النِّظَامُ السِّيَاسِيُّ فِي الإِسْلَامِ يَقُوْمُ عَلَى مَبَادِئَ أَسَاسِيَّةٍ مِنْهَا الشُّوْرَى وَالعَدَالَةُ وَالمُسَاوَاةُ. وَالحَاكِمُ فِي الإِسْلَامِ مُؤْتَمَنٌ عَلَى رِعَايَةِ شُؤُوْنِ الرَّعِيَّةِ وَإِقَامَةِ الحَقِّ، كَمَا قَالَ تَعَالَى: ﴿وَشَاوِرْهُمْ فِي الْأَمْرِ﴾. وَإِنَّ سِيَاسَةَ الدَّوْلَةِ تَسْعَى لِتَحْقِيْقِ المَصَالِحِ وَدَرْءِ المَفَاسِدِ لِلْمُوَاطِنِيْنَ جَمِيْعًا.",
+                terjemahan: "Sistem politik dalam Islam berpijak pada prinsip-prinsip fundamental, di antaranya adalah musyawarah (as-syura), keadilan (al-'adalah), dan kesetaraan (al-musawah). Pemimpin dalam Islam diamanahkan untuk mengayomi urusan rakyat dan menegakkan kebenaran, sebagaimana firman Allah: 'Dan bermusyawarahlah dengan mereka dalam urusan itu'. Sesungguhnya kebijakan ketatanegaraan berorientasi untuk mewujudkan kemaslahatan bersama dan menolak segala bentuk kerusakan bagi seluruh warga negara.",
+                audioData: "" // Base64 dataURL or audio URL
+            },
+            tugas3: {
+                isFilled: false,
+                judul: "Analisis Prinsip As-Siyasah Asy-Syar'iyyah dalam Konstitusi dan Tata Negara Modern di Indonesia",
+                dosen: "Dr. H. Dosen Pengampu, M.Ag.",
+                abstrak: "Makalah akhir semester ini mengkaji penerapan kaidah fikih siyasah (kebijakan ketatanegaraan berbasis syariat) dalam sistem ketatanegaraan Negara Kesatuan Republik Indonesia, berfokus pada harmonisasi prinsip musyawarah, perlindungan hak asasi warga negara (al-muwathanah), serta perwujudan keadilan hukum dalam tatanan konstitusional Indonesia.",
+                pdfData: "", // Base64 dataURL or PDF link
+                pdfNama: "Makalah_UAS_Siyasah_Fazry_Ilham_Sulaeman.pdf"
+            }
+        };
+
+        // State holder
+        let appData = {};
+
+        function loadAppData() {
+            const saved = localStorage.getItem('fazry_portfolio_data');
+            if (saved) {
+                try {
+                    appData = JSON.parse(saved);
+                } catch (e) {
+                    appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+                }
+            } else {
+                appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+            }
+        }
+
+        function saveToStorage() {
+            localStorage.setItem('fazry_portfolio_data', JSON.stringify(appData));
+        }
+
+        // ----------------------------------------------------
+        // ADMIN AUTHENTICATION
+        // Username: fazry
+        // PIN: 060508
+        // ----------------------------------------------------
+        const ADMIN_USER = "fazry";
+        const ADMIN_PIN = "060508";
+
+        function isAdminAuthenticated() {
+            return sessionStorage.getItem('fazry_admin_auth') === 'true';
+        }
+
+        function openAdminModal(defaultTab = 'tab-bio') {
+            if (isAdminAuthenticated()) {
+                openAdminDashboard(defaultTab);
+            } else {
+                document.getElementById('authModal').classList.remove('hidden');
+                document.getElementById('loginUsername').value = 'fazry';
+                document.getElementById('loginPin').value = '';
+                document.getElementById('authError').classList.add('hidden');
+                setTimeout(() => document.getElementById('loginPin').focus(), 150);
+            }
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('loginUsername').value.trim().toLowerCase();
+            const p = document.getElementById('loginPin').value.trim();
+
+            if (u === ADMIN_USER && p === ADMIN_PIN) {
+                sessionStorage.setItem('fazry_admin_auth', 'true');
+                closeAuthModal();
+                updateAdminNavBtn();
+                openAdminDashboard('tab-bio');
+                showToast("Login Berhasil! Selamat datang di Panel Admin.");
+            } else {
+                const errBox = document.getElementById('authError');
+                errBox.classList.remove('hidden');
+                document.getElementById('authErrorMsg').textContent = "Username atau PIN salah! (Username: fazry, PIN: 060508)";
+                const box = document.getElementById('authBox');
+                box.classList.remove('animate-shake');
+                void box.offsetWidth;
+                box.classList.add('animate-shake');
+            }
+        }
+
+        function handleAdminLogout() {
+            sessionStorage.removeItem('fazry_admin_auth');
+            closeAdminDashboardModal();
+            updateAdminNavBtn();
+            showToast("Anda telah keluar dari Panel Admin.");
+        }
+
+        function updateAdminNavBtn() {
+            const btn = document.getElementById('adminBtnDesktop');
+            const txt = document.getElementById('adminBtnDesktopText');
+            if (isAdminAuthenticated()) {
+                btn.className = "neo-btn bg-[#00FF88] hover:bg-[#00e67a] px-3.5 py-2 rounded-xl text-xs font-black text-black gap-1.5 shadow-[3px_3px_0px_0px_#000]";
+                txt.textContent = "⚙️ Dashboard";
+            } else {
+                btn.className = "neo-btn bg-[#FFE600] hover:bg-[#FFD600] px-3.5 py-2 rounded-xl text-xs font-black text-black gap-1.5 shadow-[3px_3px_0px_0px_#000]";
+                txt.textContent = "Panel Admin";
+            }
+        }
+
+        // ----------------------------------------------------
+        // ADMIN DASHBOARD CONTROLLER
+        // ----------------------------------------------------
+        function openAdminDashboard(tabName = 'tab-bio') {
+            populateAdminForm();
+            switchAdminTab(tabName);
+            document.getElementById('adminDashboardModal').classList.remove('hidden');
+        }
+
+        function closeAdminDashboardModal() {
+            document.getElementById('adminDashboardModal').classList.add('hidden');
+        }
+
+        function switchAdminTab(tabId) {
+            const tabs = ['tab-bio', 'tab-foto', 'tab-tugas1', 'tab-tugas2', 'tab-tugas3'];
+            const btns = {
+                'tab-bio': document.getElementById('adminTabBtnBio'),
+                'tab-foto': document.getElementById('adminTabBtnFoto'),
+                'tab-tugas1': document.getElementById('adminTabBtnTugas1'),
+                'tab-tugas2': document.getElementById('adminTabBtnTugas2'),
+                'tab-tugas3': document.getElementById('adminTabBtnTugas3'),
+            };
+            const contents = {
+                'tab-bio': document.getElementById('adminTabBio'),
+                'tab-foto': document.getElementById('adminTabFoto'),
+                'tab-tugas1': document.getElementById('adminTabTugas1'),
+                'tab-tugas2': document.getElementById('adminTabTugas2'),
+                'tab-tugas3': document.getElementById('adminTabTugas3'),
+            };
+
+            tabs.forEach(t => {
+                if (t === tabId) {
+                    contents[t].classList.remove('hidden');
+                    btns[t].className = "neo-btn bg-[#00F0FF] px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0";
+                } else {
+                    contents[t].classList.add('hidden');
+                    btns[t].className = "neo-btn bg-white hover:bg-slate-50 px-3.5 py-2 rounded-xl text-xs font-black text-black shadow-[2px_2px_0px_0px_#000] shrink-0";
+                }
+            });
+        }
+
+        function populateAdminForm() {
+            // Biodata
+            document.getElementById('admInputNama').value = appData.biodata.nama || '';
+            document.getElementById('admInputNim').value = appData.biodata.nim || '';
+            document.getElementById('admInputKelas').value = appData.biodata.kelas || '';
+            document.getElementById('admInputProdi').value = appData.biodata.prodi || '';
+            document.getElementById('admInputFakultas').value = appData.biodata.fakultas || '';
+            document.getElementById('admInputMatkul').value = appData.biodata.matkul || '';
+            document.getElementById('admInputCatatan').value = appData.biodata.catatan || '';
+
+            // Foto
+            updateAdminFotoPreview();
+
+            // Tugas 1
+            renderAdminMufradatInputs();
+            updateTugasToggleBtn(1);
+
+            // Tugas 2
+            document.getElementById('admInputQiraahJudul').value = appData.tugas2.judul || '';
+            document.getElementById('admInputQiraahArab').value = appData.tugas2.teksArab || '';
+            document.getElementById('admInputQiraahArti').value = appData.tugas2.terjemahan || '';
+            updateAdminAudioStatus();
+            updateTugasToggleBtn(2);
+
+            // Tugas 3
+            document.getElementById('admInputUasJudul').value = appData.tugas3.judul || '';
+            document.getElementById('admInputUasDosen').value = appData.tugas3.dosen || '';
+            document.getElementById('admInputUasPdfNama').value = appData.tugas3.pdfNama || '';
+            document.getElementById('admInputUasAbstrak').value = appData.tugas3.abstrak || '';
+            updateAdminPdfStatus();
+            updateTugasToggleBtn(3);
+        }
+
+        // Toggle Tugas Filled Status in Admin
+        function toggleTugasStatus(num) {
+            const tKey = 'tugas' + num;
+            appData[tKey].isFilled = !appData[tKey].isFilled;
+            updateTugasToggleBtn(num);
+            showToast(`Status Tugas ${num} diubah ke: ${appData[tKey].isFilled ? 'SELESAI (Ditampilkan)' : 'KOSONG (Belum Ada Tugas)'}`);
+        }
+
+        function updateTugasToggleBtn(num) {
+            const btn = document.getElementById(`admBtnToggleTugas${num}`);
+            const isFilled = appData['tugas' + num].isFilled;
+            if (isFilled) {
+                btn.className = "neo-btn bg-[#00FF88] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]";
+                btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i> SELESAI (Aktif)`;
+            } else {
+                btn.className = "neo-btn bg-[#FFE600] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]";
+                btn.innerHTML = `<i class="fa-regular fa-circle mr-1"></i> KOSONG (Belum Diisi)`;
+            }
+        }
+
+        // ----------------------------------------------------
+        // ADMIN PHOTO HANDLERS
+        // ----------------------------------------------------
+        function updateAdminFotoPreview() {
+            const previewBox = document.getElementById('admFotoPreviewBox');
+            if (appData.foto) {
+                previewBox.innerHTML = `<img src="${appData.foto}" alt="Foto Profil" class="w-full h-full object-cover">`;
+            } else {
+                previewBox.innerHTML = `
+                    <div class="text-center p-3">
+                        <i class="fa-regular fa-image text-3xl text-slate-400 mb-1"></i>
+                        <p class="text-xs font-mono font-bold text-slate-500">Belum ada foto</p>
+                    </div>`;
+            }
+        }
+
+        function handlePhotoFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) {
+                alert("Ukuran gambar terlalu besar! Harap pilih gambar di bawah 5MB.");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                appData.foto = event.target.result;
+                updateAdminFotoPreview();
+                showToast("Foto profil berhasil diunggah!");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyPhotoFromUrl() {
+            const url = document.getElementById('admInputFotoUrl').value.trim();
+            if (!url) return;
+            appData.foto = url;
+            updateAdminFotoPreview();
+            showToast("URL Foto Profil diterapkan!");
+        }
+
+        function removeAdminPhoto() {
+            appData.foto = "";
+            document.getElementById('admInputFotoUrl').value = "";
+            document.getElementById('admInputFotoFile').value = "";
+            updateAdminFotoPreview();
+            showToast("Foto profil dihapus (kembali ke avatar default).");
+        }
+
+        // ----------------------------------------------------
+        // ADMIN TUGAS 1 (10 MUFRADAT)
+        // ----------------------------------------------------
+        function renderAdminMufradatInputs() {
+            const container = document.getElementById('admMufradatInputsContainer');
+            container.innerHTML = '';
+            
+            // Ensure 10 items
+            if (!appData.tugas1.items || appData.tugas1.items.length < 10) {
+                appData.tugas1.items = JSON.parse(JSON.stringify(INITIAL_DATA.tugas1.items));
+            }
+
+            appData.tugas1.items.forEach((item, idx) => {
+                const row = document.createElement('div');
+                row.className = "p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-3";
+                row.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-black/20 pb-2">
+                        <span class="font-black text-xs uppercase bg-[#FFE600] px-2 py-0.5 border border-black rounded font-mono">
+                            Kosakata #${item.no || (idx + 1)}
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-[11px] font-mono font-bold block">Teks Arab (Harakat):</label>
+                            <input type="text" dir="rtl" value="${item.arab || ''}" onchange="updateMufradatItem(${idx}, 'arab', this.value);" class="w-full p-2 bg-white border-2 border-black rounded-lg font-arabic font-bold text-base text-right">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] font-mono font-bold block">Transliterasi:</label>
+                            <input type="text" value="${item.transliterasi || ''}" onchange="updateMufradatItem(${idx}, 'transliterasi', this.value);" class="w-full p-2 bg-white border-2 border-black rounded-lg font-bold text-xs italic">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] font-mono font-bold block">Arti Bahasa Indonesia:</label>
+                            <input type="text" value="${item.arti || ''}" onchange="updateMufradatItem(${idx}, 'arti', this.value);" class="w-full p-2 bg-white border-2 border-black rounded-lg font-bold text-xs">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-mono font-bold block">Contoh Kalimat Siyasah:</label>
+                        <input type="text" dir="rtl" value="${item.contoh || ''}" onchange="updateMufradatItem(${idx}, 'contoh', this.value);" class="w-full p-2 bg-white border-2 border-black rounded-lg font-arabic font-bold text-sm text-right">
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function updateMufradatItem(index, field, value) {
+            appData.tugas1.items[index][field] = value;
+        }
+
+        function loadDefaultMufradatPreset() {
+            appData.tugas1.items = JSON.parse(JSON.stringify(INITIAL_DATA.tugas1.items));
+            appData.tugas1.isFilled = true;
+            renderAdminMufradatInputs();
+            updateTugasToggleBtn(1);
+            showToast("10 Kosakata Siyasah Standar berhasil dimuat & status diubah ke SELESAI!");
+        }
+
+        function clearMufradatData() {
+            appData.tugas1.items = appData.tugas1.items.map(item => ({
+                no: item.no,
+                arab: "",
+                transliterasi: "",
+                arti: "",
+                contoh: ""
+            }));
+            appData.tugas1.isFilled = false;
+            renderAdminMufradatInputs();
+            updateTugasToggleBtn(1);
+            showToast("Tugas 1 dikosongkan.");
+        }
+
+        // ----------------------------------------------------
+        // ADMIN TUGAS 2 (QIRA'AH & AUDIO)
+        // ----------------------------------------------------
+        function updateAdminAudioStatus() {
+            const player = document.getElementById('admAudioPreview');
+            const statusTxt = document.getElementById('admAudioStatusText');
+            if (appData.tugas2.audioData) {
+                player.src = appData.tugas2.audioData;
+                player.classList.remove('hidden');
+                statusTxt.textContent = "Audio aktif siap diputar.";
+                statusTxt.className = "text-xs font-mono font-bold text-emerald-600";
+            } else {
+                player.src = "";
+                player.classList.add('hidden');
+                statusTxt.textContent = "Belum ada file audio yang terpasang.";
+                statusTxt.className = "text-xs font-mono font-bold text-slate-500";
+            }
+        }
+
+        function handleAudioFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 15 * 1024 * 1024) {
+                alert("Ukuran audio terlalu besar! Pilih file audio di bawah 15MB.");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                appData.tugas2.audioData = event.target.result;
+                updateAdminAudioStatus();
+                showToast("File rekaman audio berhasil diunggah!");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyAudioFromUrl() {
+            const url = document.getElementById('admInputAudioUrl').value.trim();
+            if (!url) return;
+            appData.tugas2.audioData = url;
+            updateAdminAudioStatus();
+            showToast("URL Audio diterapkan!");
+        }
+
+        function removeAudioFile() {
+            appData.tugas2.audioData = "";
+            document.getElementById('admInputAudioUrl').value = "";
+            document.getElementById('admInputAudioFile').value = "";
+            updateAdminAudioStatus();
+            showToast("Berkas audio dihapus.");
+        }
+
+        function loadDefaultQiraahPreset() {
+            appData.tugas2.judul = INITIAL_DATA.tugas2.judul;
+            appData.tugas2.teksArab = INITIAL_DATA.tugas2.teksArab;
+            appData.tugas2.terjemahan = INITIAL_DATA.tugas2.terjemahan;
+            appData.tugas2.isFilled = true;
+            document.getElementById('admInputQiraahJudul').value = appData.tugas2.judul;
+            document.getElementById('admInputQiraahArab').value = appData.tugas2.teksArab;
+            document.getElementById('admInputQiraahArti').value = appData.tugas2.terjemahan;
+            updateTugasToggleBtn(2);
+            showToast("Contoh naskah bacaan siyasah dimuat & status diubah ke SELESAI!");
+        }
+
+        function clearQiraahData() {
+            appData.tugas2.judul = "";
+            appData.tugas2.teksArab = "";
+            appData.tugas2.terjemahan = "";
+            appData.tugas2.audioData = "";
+            appData.tugas2.isFilled = false;
+            document.getElementById('admInputQiraahJudul').value = "";
+            document.getElementById('admInputQiraahArab').value = "";
+            document.getElementById('admInputQiraahArti').value = "";
+            updateAdminAudioStatus();
+            updateTugasToggleBtn(2);
+            showToast("Tugas 2 dikosongkan.");
+        }
+
+        // ----------------------------------------------------
+        // ADMIN TUGAS 3 (UAS PDF)
+        // ----------------------------------------------------
+        function updateAdminPdfStatus() {
+            const statusTxt = document.getElementById('admPdfStatusText');
+            if (appData.tugas3.pdfData) {
+                statusTxt.innerHTML = `<span class="text-emerald-600"><i class="fa-solid fa-circle-check"></i> Dokumen PDF aktif: <strong>${appData.tugas3.pdfNama || 'Tugas_UAS.pdf'}</strong></span>`;
+            } else {
+                statusTxt.textContent = "Belum ada berkas PDF yang terpasang.";
+            }
+        }
+
+        function handlePdfFileUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 15 * 1024 * 1024) {
+                alert("Ukuran PDF terlalu besar! Pilih dokumen di bawah 15MB.");
+                return;
+            }
+            appData.tugas3.pdfNama = file.name;
+            document.getElementById('admInputUasPdfNama').value = file.name;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                appData.tugas3.pdfData = event.target.result;
+                updateAdminPdfStatus();
+                showToast("Berkas PDF UAS berhasil diunggah!");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyPdfFromUrl() {
+            const url = document.getElementById('admInputPdfUrl').value.trim();
+            if (!url) return;
+            appData.tugas3.pdfData = url;
+            if (!appData.tugas3.pdfNama) {
+                appData.tugas3.pdfNama = "Dokumen_Tugas_UAS.pdf";
+            }
+            updateAdminPdfStatus();
+            showToast("Link dokumen PDF diterapkan!");
+        }
+
+        function removePdfFile() {
+            appData.tugas3.pdfData = "";
+            document.getElementById('admInputPdfUrl').value = "";
+            document.getElementById('admInputPdfFile').value = "";
+            updateAdminPdfStatus();
+            showToast("Berkas PDF UAS dihapus.");
+        }
+
+        function loadDefaultUasPreset() {
+            appData.tugas3.judul = INITIAL_DATA.tugas3.judul;
+            appData.tugas3.dosen = INITIAL_DATA.tugas3.dosen;
+            appData.tugas3.abstrak = INITIAL_DATA.tugas3.abstrak;
+            appData.tugas3.pdfNama = INITIAL_DATA.tugas3.pdfNama;
+            appData.tugas3.isFilled = true;
+            document.getElementById('admInputUasJudul').value = appData.tugas3.judul;
+            document.getElementById('admInputUasDosen').value = appData.tugas3.dosen;
+            document.getElementById('admInputUasAbstrak').value = appData.tugas3.abstrak;
+            document.getElementById('admInputUasPdfNama').value = appData.tugas3.pdfNama;
+            updateTugasToggleBtn(3);
+            showToast("Contoh berkas UAS dimuat & status diubah ke SELESAI!");
+        }
+
+        function clearUasData() {
+            appData.tugas3.judul = "";
+            appData.tugas3.dosen = "";
+            appData.tugas3.abstrak = "";
+            appData.tugas3.pdfData = "";
+            appData.tugas3.isFilled = false;
+            document.getElementById('admInputUasJudul').value = "";
+            document.getElementById('admInputUasDosen').value = "";
+            document.getElementById('admInputUasAbstrak').value = "";
+            document.getElementById('admInputUasPdfNama').value = "";
+            updateAdminPdfStatus();
+            updateTugasToggleBtn(3);
+            showToast("Tugas 3 dikosongkan.");
+        }
+
+        // ----------------------------------------------------
+        // SAVE & RESET GLOBAL
+        // ----------------------------------------------------
+        function saveAdminChanges() {
+            // Read Biodata fields
+            appData.biodata.nama = document.getElementById('admInputNama').value.trim() || INITIAL_DATA.biodata.nama;
+            appData.biodata.nim = document.getElementById('admInputNim').value.trim() || INITIAL_DATA.biodata.nim;
+            appData.biodata.kelas = document.getElementById('admInputKelas').value.trim() || INITIAL_DATA.biodata.kelas;
+            appData.biodata.prodi = document.getElementById('admInputProdi').value.trim() || INITIAL_DATA.biodata.prodi;
+            appData.biodata.fakultas = document.getElementById('admInputFakultas').value.trim() || INITIAL_DATA.biodata.fakultas;
+            appData.biodata.matkul = document.getElementById('admInputMatkul').value.trim() || INITIAL_DATA.biodata.matkul;
+            appData.biodata.catatan = document.getElementById('admInputCatatan').value.trim() || INITIAL_DATA.biodata.catatan;
+
+            // Read Tugas 2 fields
+            appData.tugas2.judul = document.getElementById('admInputQiraahJudul').value.trim();
+            appData.tugas2.teksArab = document.getElementById('admInputQiraahArab').value.trim();
+            appData.tugas2.terjemahan = document.getElementById('admInputQiraahArti').value.trim();
+
+            // Read Tugas 3 fields
+            appData.tugas3.judul = document.getElementById('admInputUasJudul').value.trim();
+            appData.tugas3.dosen = document.getElementById('admInputUasDosen').value.trim();
+            appData.tugas3.pdfNama = document.getElementById('admInputUasPdfNama').value.trim();
+            appData.tugas3.abstrak = document.getElementById('admInputUasAbstrak').value.trim();
+
+            // Save to storage
+            saveToStorage();
+
+            // Re-render UI
+            renderAllPageContent();
+            closeAdminDashboardModal();
+            showToast("Seluruh perubahan berhasil disimpan secara permanen!");
+        }
+
+        function resetAllToDefault() {
+            if (confirm("Apakah Anda yakin ingin mereset seluruh data ke format awal (tugas dikosongkan)?")) {
+                appData = JSON.parse(JSON.stringify(INITIAL_DATA));
+                saveToStorage();
+                populateAdminForm();
+                renderAllPageContent();
+                showToast("Semua data telah direset ke bawaan awal!");
+            }
+        }
+
+        // ----------------------------------------------------
+        // PUBLIC WEBSITE RENDERING
+        // ----------------------------------------------------
+        function renderAllPageContent() {
+            const bio = appData.biodata;
+
+            // Update texts in Header & Hero
+            document.getElementById('navNimKelas').textContent = `${bio.kelas} • ${bio.nim}`;
+            document.getElementById('heroName').textContent = bio.nama;
+            document.getElementById('heroKelasTag').textContent = bio.kelas;
+            document.getElementById('highlightNim').textContent = bio.nim;
+            document.getElementById('highlightKelas').textContent = bio.kelas;
+            document.getElementById('highlightFakultas').textContent = bio.fakultas;
+            document.getElementById('heroProdiStat').textContent = bio.prodi;
+            document.getElementById('heroMatkulStat').textContent = bio.matkul;
+
+            // Overall task status in Hero
+            const anyFinished = appData.tugas1.isFilled || appData.tugas2.isFilled || appData.tugas3.isFilled;
+            const heroStatus = document.getElementById('heroTaskStatusStat');
+            if (anyFinished) {
+                heroStatus.textContent = "Sebagian / Selesai";
+                heroStatus.className = "font-black text-emerald-800 bg-emerald-100 px-1 rounded";
+            } else {
+                heroStatus.textContent = "Belum Diisi";
+                heroStatus.className = "font-black text-amber-700 bg-amber-100 px-1 rounded";
+            }
+
+            // Update texts in Profil section
+            document.getElementById('profilCardNama').textContent = bio.nama;
+            document.getElementById('profilCardNim').textContent = bio.nim;
+            document.getElementById('profilCardKelas').textContent = bio.kelas;
+            document.getElementById('profilDetailNama').textContent = bio.nama;
+            document.getElementById('profilDetailNim').textContent = bio.nim;
+            document.getElementById('profilDetailProdi').textContent = bio.prodi;
+            document.getElementById('profilDetailKelas').textContent = `Kelas ${bio.kelas} / ${bio.semester || 'Semester 1'}`;
+            document.getElementById('profilDetailFakultas').textContent = bio.fakultas;
+            document.getElementById('profilDetailMatkul').textContent = bio.matkul;
+            document.getElementById('profilDetailCatatan').textContent = bio.catatan;
+
+            // Update Footer
+            document.getElementById('footerNama').textContent = bio.nama;
+            document.getElementById('footerKelas').textContent = bio.kelas;
+            document.getElementById('copyNama').textContent = bio.nama;
+            document.getElementById('copyNim').textContent = bio.nim;
+            document.getElementById('copyKelas').textContent = bio.kelas;
+
+            // Render Photos
+            renderPhotos();
+
+            // Render Task Panels
+            renderTugas1();
+            renderTugas2();
+            renderTugas3();
+        }
+
+        function renderPhotos() {
+            const heroContainer = document.getElementById('heroPhotoContainer');
+            const profilContainer = document.getElementById('profilPhotoContainer');
+
+            if (appData.foto) {
+                const imgHtml = `
+                    <img src="${appData.foto}" alt="Foto Profil ${appData.biodata.nama}" class="w-full h-full object-cover">
+                    <div class="absolute bottom-2 right-2 bg-[#FFE600] border-2 border-black rounded-lg px-2 py-0.5 text-[10px] font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
+                        TERVERIFIKASI
+                    </div>`;
+                heroContainer.innerHTML = imgHtml;
+                profilContainer.innerHTML = imgHtml;
+            } else {
+                // Default Neo-Brutal Placeholder
+                heroContainer.innerHTML = `
+                    <div class="w-16 h-16 rounded-2xl bg-[#00F0FF] border-2 border-black shadow-[3px_3px_0px_0px_#000] flex items-center justify-center font-black text-xl text-black mb-2">
+                        FIS
+                    </div>
+                    <span class="text-xs font-black text-black">${appData.biodata.nama}</span>
+                    <span class="text-[11px] font-mono font-bold text-slate-500">${appData.biodata.nim} &bull; ${appData.biodata.kelas}</span>
+                    <div class="mt-2 text-[10px] font-mono bg-[#FFE600] border border-black rounded px-2 py-0.5 font-bold">Foto Belum Dipasang</div>`;
+
+                profilContainer.innerHTML = `
+                    <div class="w-16 h-16 rounded-2xl bg-[#00F0FF] border-2 border-black shadow-[3px_3px_0px_0px_#000] flex items-center justify-center text-black text-2xl font-black mb-2">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="text-sm font-black text-black">Foto Belum Dipasang</span>
+                    <span class="text-xs text-slate-500 font-mono mt-0.5">Placeholder Foto Siap Diisi via Panel Admin</span>`;
+            }
+        }
+
+        // Render Tugas 1 (Mufradat)
+        function renderTugas1() {
+            const badge = document.getElementById('badgeStatusTugas1');
+            const content = document.getElementById('contentTugas1');
+
+            if (!appData.tugas1.isFilled) {
+                // EMPTY STATE
+                badge.className = "px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.textContent = "STATUS: BELUM DIISI";
+                content.innerHTML = `
+                    <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
+                        <div class="w-16 h-16 bg-[#00F0FF] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center mx-auto text-black text-2xl">
+                            <i class="fa-regular fa-folder-open"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-black text-black">Belum Ada Tugas yang Dikerjakan</h4>
+                            <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
+                                Tugas kosakata (10 mufradat bahasa Arab tentang siyasah) ini masih kosong atau belum diisi oleh mahasiswa.
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <button onclick="openAdminModal('tab-tugas1');" class="neo-btn bg-[#FFE600] px-4 py-2 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>Isi Mufradat via Panel Admin</span>
+                            </button>
+                        </div>
+                    </div>`;
+            } else {
+                // FILLED STATE: 10 CARDS GRID
+                badge.className = "px-3 py-1 bg-[#00FF88] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
+
+                const items = appData.tugas1.items || [];
+                let cardsHtml = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">`;
+
+                items.forEach((item, i) => {
+                    cardsHtml += `
+                        <div class="bg-[#F8FAFC] border-2 border-black rounded-xl p-4 shadow-[4px_4px_0px_0px_#000] space-y-2 hover:-translate-y-0.5 transition-transform">
+                            <div class="flex items-center justify-between border-b border-black/15 pb-2">
+                                <span class="w-6 h-6 rounded-lg bg-[#FFE600] border border-black flex items-center justify-center text-xs font-black font-mono">
+                                    ${item.no || (i + 1)}
+                                </span>
+                                <span class="text-xl font-arabic font-bold text-slate-900">${item.arab || '-'}</span>
+                            </div>
+                            <div class="space-y-0.5">
+                                <div class="text-xs font-bold text-[#FF3366] italic font-mono">${item.transliterasi || '-'}</div>
+                                <div class="text-sm font-black text-black">${item.arti || '-'}</div>
+                            </div>
+                            ${item.contoh ? `
+                                <div class="mt-2 pt-2 border-t border-dashed border-black/20 text-xs font-arabic text-right text-slate-700 bg-white/70 p-2 rounded-lg border border-black/10">
+                                    ${item.contoh}
+                                </div>` : ''}
+                        </div>`;
+                });
+
+                cardsHtml += `</div>`;
+                content.innerHTML = cardsHtml;
+            }
+        }
+
+        // Render Tugas 2 (Qira'ah & Audio)
+        function renderTugas2() {
+            const badge = document.getElementById('badgeStatusTugas2');
+            const content = document.getElementById('contentTugas2');
+
+            if (!appData.tugas2.isFilled) {
+                // EMPTY STATE
+                badge.className = "px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.textContent = "STATUS: BELUM DIISI";
+                content.innerHTML = `
+                    <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
+                        <div class="w-16 h-16 bg-[#FF3366] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-white text-2xl mx-auto">
+                            <i class="fa-solid fa-microphone-slash"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-black text-black">Belum Ada Rekaman & Teks yang Dikerjakan</h4>
+                            <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
+                                Tugas membaca teks qira'ah dan pemutar audio masih kosong. Belum ada rekaman suara maupun teks bacaan bahasa Arab yang dimasukkan.
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <button onclick="openAdminModal('tab-tugas2');" class="neo-btn bg-[#FFE600] px-4 py-2 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>Isi Baca Teks via Panel Admin</span>
+                            </button>
+                        </div>
+                    </div>`;
+            } else {
+                // FILLED STATE: QIRA'AH READER & AUDIO PLAYER
+                badge.className = "px-3 py-1 bg-[#00FF88] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
+
+                const t = appData.tugas2;
+                content.innerHTML = `
+                    <div class="space-y-6">
+                        <!-- Reading Header Card -->
+                        <div class="p-4 bg-[#FFE600]/25 border-2 border-black rounded-xl flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-book-quran text-lg text-black"></i>
+                                <span class="font-black text-sm text-black">${t.judul || 'Naskah Bacaan Qira\'ah'}</span>
+                            </div>
+                            <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 border border-black rounded">RTL Amiri</span>
+                        </div>
+
+                        <!-- Arabic Text Box -->
+                        <div class="p-6 sm:p-8 bg-[#F8FAFC] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-4">
+                            <p class="font-arabic text-xl sm:text-2xl lg:text-3xl leading-[2.2] sm:leading-[2.4] text-slate-900 text-right font-medium">
+                                ${t.teksArab || 'Naskah belum diisi.'}
+                            </p>
+                        </div>
+
+                        <!-- Translation Box -->
+                        <div class="p-5 bg-white border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000] space-y-2">
+                            <div class="flex items-center gap-2 text-xs font-black uppercase text-black font-mono border-b border-black/15 pb-2">
+                                <i class="fa-solid fa-language text-[#00F0FF] text-base"></i>
+                                <span>Terjemahan Bahasa Indonesia</span>
+                            </div>
+                            <p class="text-sm font-semibold text-slate-800 leading-relaxed">
+                                ${t.terjemahan || 'Terjemahan belum diisi.'}
+                            </p>
+                        </div>
+
+                        <!-- Audio Player -->
+                        <div class="p-5 bg-[#FFE600] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2 font-black text-xs uppercase text-black font-mono">
+                                    <i class="fa-solid fa-headphones text-base"></i>
+                                    <span>Rekaman Suara Membaca (Audio Player)</span>
+                                </div>
+                                <span class="text-[11px] font-mono font-bold bg-white px-2 py-0.5 border border-black rounded">HTML5 Audio</span>
+                            </div>
+                            ${t.audioData ? `
+                                <audio controls class="w-full h-11 border border-black rounded-lg">
+                                    <source src="${t.audioData}" type="audio/mpeg">
+                                    Browser Anda tidak mendukung pemutar audio HTML5.
+                                </audio>` : `
+                                <div class="p-3 bg-white border border-black rounded-xl text-center text-xs font-mono font-bold text-slate-600">
+                                    File rekaman audio belum diunggah. Silakan unggah rekaman melalui Panel Admin.
+                                </div>`}
+                        </div>
+                    </div>`;
+            }
+        }
+
+        // Render Tugas 3 (UAS PDF)
+        function renderTugas3() {
+            const badge = document.getElementById('badgeStatusTugas3');
+            const content = document.getElementById('contentTugas3');
+
+            if (!appData.tugas3.isFilled) {
+                // EMPTY STATE
+                badge.className = "px-3 py-1 bg-[#FFE600] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.textContent = "STATUS: BELUM DIISI";
+                content.innerHTML = `
+                    <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-[#F8FAFC] space-y-4">
+                        <div class="w-16 h-16 bg-[#00FF88] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-black text-2xl mx-auto">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-black text-black">Belum Ada Dokumen Tugas yang Diunggah</h4>
+                            <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
+                                Tugas evaluasi akhir semester (UAS) masih kosong. Belum ada makalah ilmiah atau berkas PDF yang ditautkan ke halaman ini.
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <button onclick="openAdminModal('tab-tugas3');" class="neo-btn bg-[#FFE600] px-4 py-2 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                                <i class="fa-solid fa-pen"></i>
+                                <span>Unggah Berkas UAS via Panel Admin</span>
+                            </button>
+                        </div>
+                    </div>`;
+            } else {
+                // FILLED STATE: UAS MAKALAHDETAIL & DOWNLOAD PDF
+                badge.className = "px-3 py-1 bg-[#00FF88] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
+                badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
+
+                const t = appData.tugas3;
+                content.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="p-6 bg-[#F8FAFC] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-1 bg-[#FF3366] text-white border border-black rounded font-mono text-xs font-black">
+                                    MAKALAH UAS
+                                </span>
+                                <span class="text-xs font-mono font-bold text-slate-500">Mata Kuliah: Bahasa Arab / Fiqh Siyasah</span>
+                            </div>
+
+                            <h4 class="text-xl sm:text-2xl font-black text-black leading-snug">
+                                ${t.judul || 'Judul Makalah UAS'}
+                            </h4>
+
+                            <div class="text-xs font-mono font-bold text-slate-600">
+                                Dosen Pengampu: <span class="text-black font-black">${t.dosen || '-'}</span>
+                            </div>
+
+                            <div class="p-4 bg-white border border-black rounded-xl space-y-2">
+                                <span class="text-xs font-black uppercase text-black font-mono block">Intisari / Abstrak Tugas:</span>
+                                <p class="text-sm font-semibold text-slate-700 leading-relaxed">
+                                    ${t.abstrak || 'Ringkasan tugas belum diisi.'}
+                                </p>
+                            </div>
+
+                            <!-- PDF Actions -->
+                            <div class="pt-2 flex flex-wrap items-center gap-3">
+                                ${t.pdfData ? `
+                                    <a href="${t.pdfData}" download="${t.pdfNama || 'Tugas_UAS.pdf'}" class="neo-btn bg-[#00FF88] hover:bg-[#00e67a] px-5 py-2.5 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                                        <i class="fa-solid fa-download"></i>
+                                        <span>Unduh Dokumen PDF</span>
+                                    </a>
+                                    <a href="${t.pdfData}" target="_blank" class="neo-btn bg-white hover:bg-slate-50 px-5 py-2.5 rounded-xl text-xs font-black text-black gap-2 shadow-[3px_3px_0px_0px_#000]">
+                                        <i class="fa-solid fa-eye"></i>
+                                        <span>Lihat Dokumen / Preview</span>
+                                    </a>
+                                    <span class="text-xs font-mono font-bold text-slate-500 ml-auto">
+                                        <i class="fa-regular fa-file-pdf text-[#FF3366]"></i> ${t.pdfNama || 'Dokumen.pdf'}
+                                    </span>` : `
+                                    <div class="p-3 bg-amber-50 border border-black rounded-xl text-xs font-mono font-bold text-amber-800 w-full">
+                                        Berkas PDF belum ditautkan. Anda dapat mengunggah file PDF melalui Panel Admin.
+                                    </div>`}
+                            </div>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        // ----------------------------------------------------
+        // TABS SWITCHER (TUGAS WORKSPACE)
         // ----------------------------------------------------
         function switchTaskTab(tabName) {
-            // Hide all task panels
             document.getElementById('panelMufradat').classList.add('hidden');
             document.getElementById('panelQiraah').classList.add('hidden');
             document.getElementById('panelUas').classList.add('hidden');
 
-            // Reset tab styles
             const btnMufradat = document.getElementById('tabBtnMufradat');
             const btnQiraah = document.getElementById('tabBtnQiraah');
             const btnUas = document.getElementById('tabBtnUas');
@@ -718,7 +1983,24 @@
         }
 
         // ----------------------------------------------------
-        // 2. MOBILE MENU TOGGLE
+        // TOAST HELPER
+        // ----------------------------------------------------
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('neoToast');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3500);
+        }
+
+        // ----------------------------------------------------
+        // MOBILE MENU TOGGLE
         // ----------------------------------------------------
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -743,6 +2025,15 @@
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
             });
+        });
+
+        // ----------------------------------------------------
+        // INITIALIZE ON LOAD
+        // ----------------------------------------------------
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAppData();
+            renderAllPageContent();
+            updateAdminNavBtn();
         });
     </script>
 </body>
