@@ -391,7 +391,7 @@
                                 </div>
 
                                 <!-- Photo Frame in Hero (Dynamic: shows image if uploaded, or placeholder) -->
-                                <div id="heroPhotoContainer" class="w-full h-52 rounded-xl border-2 border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-3 text-center">
+                                <div id="heroPhotoContainer" class="w-full aspect-[3/4] max-w-[260px] mx-auto rounded-2xl border-[3px] border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-3 text-center shadow-[3px_3px_0px_0px_#000]">
                                     <!-- Rendered dynamically by JS -->
                                 </div>
 
@@ -567,7 +567,7 @@
                     </div>
 
                     <!-- Profile Photo Frame -->
-                    <div id="profilPhotoContainer" class="w-full h-64 rounded-xl border-2 border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center">
+                    <div id="profilPhotoContainer" class="w-full aspect-[3/4] max-w-[280px] mx-auto rounded-2xl border-[3px] border-black overflow-hidden relative bg-[#F8FAFC] flex flex-col items-center justify-center p-4 text-center shadow-[4px_4px_0px_0px_#000]">
                         <!-- Rendered dynamically by JS -->
                     </div>
 
@@ -1057,7 +1057,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
                         <!-- Preview Box -->
                         <div class="sm:col-span-4 flex flex-col items-center">
-                            <div class="w-40 h-40 border-[3px] border-black rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_#000] bg-[#F8FAFC] flex items-center justify-center" id="admFotoPreviewBox">
+                            <div class="w-44 aspect-[3/4] border-[3px] border-black rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_#000] bg-[#F8FAFC] flex items-center justify-center" id="admFotoPreviewBox">
                                 <span class="text-xs font-mono font-bold text-slate-500">Preview Foto</span>
                             </div>
                             <button type="button" onclick="removeAdminPhoto();" class="mt-3 neo-btn bg-[#FF3366] text-white hover:bg-[#e02657] px-3 py-1.5 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
@@ -1663,7 +1663,7 @@
         function updateAdminFotoPreview() {
             const previewBox = document.getElementById('admFotoPreviewBox');
             if (appData.foto) {
-                previewBox.innerHTML = `<img src="${appData.foto}" alt="Foto Profil" class="w-full h-full object-cover">`;
+                previewBox.innerHTML = `<img src="${appData.foto}" alt="Foto Profil" class="w-full h-full object-cover object-top">`;
             } else {
                 previewBox.innerHTML = `
                     <div class="text-center p-3">
@@ -2038,7 +2038,7 @@
 
             if (appData.foto) {
                 const imgHtml = `
-                    <img src="${appData.foto}" alt="Foto Profil ${appData.biodata.nama}" class="w-full h-full object-cover">
+                    <img src="${appData.foto}" alt="Foto Profil ${appData.biodata.nama}" class="w-full h-full object-cover object-top">
                     <div class="absolute bottom-2 right-2 bg-[#FFE600] border-2 border-black rounded-lg px-2 py-0.5 text-[10px] font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
                         TERVERIFIKASI
                     </div>`;
