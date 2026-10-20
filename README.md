@@ -1,51 +1,54 @@
 # Portofolio Akademik - Fazry Ilham Sulaeman (HTN 1B)
 
-Website portofolio akademik berbasis *single-page* modern dengan estetika **Neo-Brutalism** terinspirasi dari arsitektur desain [api.jaky.dev](https://api.jaky.dev). Dibuat khusus untuk memenuhi tugas mata kuliah **Bahasa Arab / Siyasah Syar'iyyah** pada Program Studi **Hukum Tata Negara (HTN 1B)**, Fakultas Syari'ah dan Hukum, UIN Sunan Gunung Djati Bandung.
+Website portofolio akademik modern berarsitektur **Neo-Brutalism** terinspirasi dari [api.jaky.dev](https://api.jaky.dev). Dirancang khusus untuk tugas mata kuliah **Bahasa Arab / Siyasah Syar'iyyah**, Program Studi **Hukum Tata Negara (HTN 1B)**, Fakultas Syari'ah dan Hukum, UIN Sunan Gunung Djati Bandung.
 
 ---
 
-## 🌟 Fitur Utama & Desain
+## 🌟 Fitur Desain & Animasi Non-Scroll
 
-1. **Arsitektur Neo-Brutalisme (api.jaky.dev Style):**
-   - Garis batas tegas hitam pekat (`border-[3px] border-black`), sudut kartu tebal (`rounded-2xl`), dan efek bayangan padat asimetris (`shadow-[6px_6px_0px_0px_#000]`).
-   - Palet warna kontras berani: Vibrant Yellow (`#FFE600`), Cyan (`#00F0FF`), Neo-Pink (`#FF3366`), Lime Green (`#00FF88`), serta latar belakang abu-abu terang bersih (`#F8FAFC`).
-   - Tipografi modern Google Fonts **Plus Jakarta Sans** untuk teks Latin dan **Amiri** untuk teks beraksara Arab dengan dukungan penuh tata letak RTL (*Right-to-Left*) dan harakat yang presisi.
+1. **Animasi Berbasis Deck / View Transition (Bukan Scroll Membosankan):**
+   - Halaman tidak menggunakan scrolling vertikal yang panjang dan monoton.
+   - Menggunakan sistem **App Deck & View Transition** dengan efek *spring pop-in* yang asimetris dan tegas (`@keyframes neoViewIn`).
+   - Setiap tab navigasi (`Beranda`, `Profil`, `Kosakata`, `Baca Teks`, `Tugas UAS`, `Kontak`) beralih secara instan dan mulus tanpa harus men-scroll layar.
 
-2. **Panel Admin Interaktif (Full Customizer):**
-   - Dilengkapi sistem otentikasi login aman:
-     - **Username**: `fazry`
-     - **PIN**: `060508`
-   - **Upload Foto Profil**: Unggah langsung file gambar dari HP/laptop (disimpan otomatis sebagai data gambar Base64) atau gunakan tautan URL online.
-   - **Kelola Biodata**: Ubah nama lengkap, NIM, kelas, program studi, fakultas, mata kuliah, dan catatan bio mahasiswa.
-   - **Kelola Tugas 1 (10 Mufradat Siyasah)**: Saklar toggle status tugas (Kosong vs Selesai), edit 10 kosakata Arab berharakat, transliterasi, arti, dan contoh kalimat siyasah. Tersedia tombol *1-Click Preset* untuk mengisi 10 istilah siyasah standar secara otomatis.
-   - **Kelola Tugas 2 (Qira'ah & Audio)**: Saklar toggle status tugas, edit judul, naskah Arab, terjemahan Indonesia, serta pemutar dan pengunggah rekaman suara audio MP3 / WAV.
-   - **Kelola Tugas 3 (UAS Makalah)**: Saklar toggle status tugas, edit judul makalah, dosen pengampu, abstrak, dan pengunggah dokumen PDF.
-   - **Penyimpanan Lokal (localStorage)**: Semua perubahan tersimpan secara aman di browser tanpa ketergantungan server database eksternal.
+2. **Landing Page Kaya Visual & Interaktif:**
+   - **Continuous Running Marquee**: Running text neon kuning (`#FFE600`) dengan animasi tak terbatas berisi identitas mahasiswa dan mata kuliah.
+   - **Floating Sticker Badges**: Label beranimasi mengapung (*subtle floating animation*) dengan kemiringan neo-brutalisme.
+   - **Interactive Explore Cards**: 4 kartu jalan pintas interaktif dengan efek *hover lift* dan *shadow pop* untuk langsung membuka tiap tugas.
+   - **Hikmah Siyasah Syar'iyyah Widget**: Kotak kutipan politik Islam interaktif lengkap dengan tombol **Ganti Kutipan** (*shuffle* beranimasi) yang memuat kaidah fiqh siyasah, kutipan Al-Mawardi, As-Suyuthi, dan QS. An-Nisa': 58.
 
-3. **Status Bawaan (Default State):**
-   - Sesuai instruksi, secara bawaan seluruh slot tugas berstatus **Kosong** (*"Belum Ada Tugas yang Dikerjakan"*) hingga diisi atau diaktifkan melalui Panel Admin.
+3. **Status Bawaan Tugas (Default State):**
+   - Seluruh slot tugas 1, 2, dan 3 berstatus bawaan **Kosong** (*"Belum Ada Tugas yang Dikerjakan"*) hingga diisi atau diaktifkan melalui Panel Admin.
 
 ---
 
-## 🔐 Kredensial Panel Admin
+## 🔒 Akses Panel Admin Tersembunyi (Secret Admin Access)
 
-Untuk membuka Panel Admin dan mengelola portofolio:
-1. Klik tombol **[Panel Admin]** atau **[Kelola di Admin]** di navbar atau banner website.
-2. Masukkan:
-   - **Username**: `fazry`
-   - **PIN**: `060508`
-3. Klik **Verifikasi & Masuk Dashboard**.
-4. Lakukan kustomisasi yang diinginkan, lalu klik **Simpan Semua Perubahan**.
+Panel Admin disembunyikan secara rapi dari pengunjung umum. Untuk membuka modal autentikasi pengelola:
+
+1. **Cara 1 (Triple-Click Logo)**: Klik logo brand **"FS"** di pojok kiri atas navbar sebanyak **3 kali berturut-turut**.
+2. **Cara 2 (Triple-Click NIM)**: Klik badge nomor **NIM (1263030076)** di bagian footer sebanyak **3 kali**.
+3. **Cara 3 (Kombinasi Tombol Pintas)**: Tekan tombol keyboard `Ctrl + Shift + A` (atau `Alt + A`) di mana saja pada halaman website.
+4. **Cara 4 (URL Hash)**: Tambahkan `#admin` pada alamat URL browser (contoh: `https://fazry-portofolio.vercel.app/#admin`).
+
+### 🔑 Kredensial Login:
+- **Username**: `fazry`
+- **PIN**: `060508`
+
+Setelah login berhasil:
+- Muncul badge melayang di pojok kiri bawah: `[ ⚙️ Dashboard (fazry) | Logout ]` yang memudahkan Fazry mengelola konten selama sesi berlangsung.
+- Pengunjung reguler tidak akan melihat tombol admin apa pun di halaman utama.
 
 ---
 
-## 📁 Struktur Berkas
+## 🎛️ Fitur di Panel Pengelola
 
-```text
-fazry-portofolio/
-├── index.html       # Seluruh kode website + Panel Admin (Tailwind CSS CDN & Vanilla JS)
-└── README.md        # Dokumentasi lengkap proyek
-```
+- **Upload Foto Profil**: Unggah foto dari HP/laptop (dikonversi ke data Base64) atau gunakan URL gambar online, dengan pratinjau dan tombol hapus/reset.
+- **Edit Biodata**: Ubah Nama Lengkap, NIM, Kelas, Program Studi, Fakultas, Mata Kuliah, dan Catatan Bio.
+- **Tugas 1 (10 Mufradat)**: Toggle status tugas Kosong vs Selesai, form kustom 10 mufradat berharakat, dan tombol *1-Click Preset* mufradat siyasah standar.
+- **Tugas 2 (Qira'ah & Audio)**: Toggle status, naskah Arab RTL font Amiri, terjemahan Indonesia, dan pengunggah rekaman suara audio MP3.
+- **Tugas 3 (UAS PDF)**: Toggle status, judul tugas, dosen pengampu, abstrak, dan pengunggah berkas PDF makalah.
+- **Data Persistence**: Disimpan permanen di memori browser pengguna (`localStorage`).
 
 ---
 
@@ -53,5 +56,3 @@ fazry-portofolio/
 
 - **Website Live (Vercel)**: [https://fazry-portofolio.vercel.app](https://fazry-portofolio.vercel.app)
 - **Repositori GitHub**: [https://github.com/aetheriashop/fazry-portofolio](https://github.com/aetheriashop/fazry-portofolio)
-
-Setiap perubahan yang di-*push* ke cabang `main` pada GitHub akan memicu *auto-deployment* secara instan ke Vercel.
