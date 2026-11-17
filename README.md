@@ -46,7 +46,7 @@ Setelah login berhasil:
 - **Upload Foto Profil**: Unggah foto dari HP/laptop (dikonversi ke data Base64) atau gunakan URL gambar online, dengan pratinjau dan tombol hapus/reset.
 - **Edit Biodata & Kontak**: Ubah Nama Lengkap, NIM, Kelas, Program Studi, Fakultas, Mata Kuliah, Catatan Bio, serta konfigurasi **Nomor WhatsApp** dan **Alamat Email**.
 - **Tugas 1 (10 Mufradat)**: Toggle status tugas Kosong vs Selesai, form kustom 10 mufradat berharakat, dan tombol *1-Click Preset* mufradat siyasah standar.
-- **Tugas 2 (Qira'ah & Audio)**: Toggle status, naskah Arab RTL font Amiri, terjemahan Indonesia, dan pengunggah rekaman suara audio MP3.
+- **Tugas 2 (Baca Teks & Link Google Drive)**: Toggle status tugas, judul, deskripsi tugas, konfigurasi teks tombol kustom (misal: "Buka di Google Drive"), dan tautan URL Google Drive berkas baca teks.
 - **Tugas 3 (UAS PDF)**: Toggle status, judul tugas, dosen pengampu, abstrak, dan pengunggah berkas PDF makalah.
 - **Data Persistence**: Disimpan permanen di memori browser pengguna (`localStorage`).
 

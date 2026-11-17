@@ -224,7 +224,7 @@
                 <i class="fa-solid fa-book-open w-5 text-center"></i> Tugas 1: Kosakata (Mufradat)
             </button>
             <button onclick="switchView('qiraah'); closeMobileMenu();" class="w-full text-left px-3 py-2 text-sm font-bold text-black hover:bg-[#00F0FF]/30 rounded-lg flex items-center gap-2">
-                <i class="fa-solid fa-headphones w-5 text-center"></i> Tugas 2: Baca Teks & Audio
+                <i class="fa-solid fa-file-lines w-5 text-center"></i> Tugas 2: Baca Teks
             </button>
             <button onclick="switchView('uas'); closeMobileMenu();" class="w-full text-left px-3 py-2 text-sm font-bold text-black hover:bg-[#00F0FF]/30 rounded-lg flex items-center gap-2">
                 <i class="fa-solid fa-file-pdf w-5 text-center"></i> Tugas 3: Portofolio UAS
@@ -258,7 +258,7 @@
             </span>
             <span class="mx-4">&bull;</span>
             <span class="mx-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#FF3366]"></span> 10 MUFRADAT SIYASAH &bull; QIRA'AH AUDIO &bull; MAKALAH UAS
+                <span class="w-2 h-2 rounded-full bg-[#FF3366]"></span> 10 MUFRADAT SIYASAH &bull; BACA TEKS (GOOGLE DRIVE) &bull; MAKALAH UAS
             </span>
             <span class="mx-4">&bull;</span>
             <!-- Duplicate for infinite seamless scroll -->
@@ -279,7 +279,7 @@
             </span>
             <span class="mx-4">&bull;</span>
             <span class="mx-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#FF3366]"></span> 10 MUFRADAT SIYASAH &bull; QIRA'AH AUDIO &bull; MAKALAH UAS
+                <span class="w-2 h-2 rounded-full bg-[#FF3366]"></span> 10 MUFRADAT SIYASAH &bull; BACA TEKS (GOOGLE DRIVE) &bull; MAKALAH UAS
             </span>
             <span class="mx-4">&bull;</span>
         </div>
@@ -335,7 +335,7 @@
 
                         <!-- Narrative -->
                         <p id="heroBio" class="text-base sm:text-lg text-slate-700 font-semibold leading-relaxed max-w-xl">
-                            Pusat dokumentasi dan publikasi karya akademik mata kuliah Bahasa Arab & Siyasah Syar'iyyah mahasiswa Program Studi Hukum Tata Negara <span class="font-mono font-bold text-black bg-[#00FF88]/40 px-1.5 py-0.5 border border-black rounded" id="heroKelasTag">HTN 1B</span>. Memuat khazanah kosakata politik Islam, rekaman pelafalan teks qira'ah, serta risalah makalah akhir semester.
+                            Pusat dokumentasi dan publikasi karya akademik mata kuliah Bahasa Arab & Siyasah Syar'iyyah mahasiswa Program Studi Hukum Tata Negara <span class="font-mono font-bold text-black bg-[#00FF88]/40 px-1.5 py-0.5 border border-black rounded" id="heroKelasTag">HTN 1B</span>. Memuat khazanah kosakata politik Islam, berkas tugas baca teks di Google Drive, serta risalah makalah akhir semester.
                         </p>
 
                         <!-- Non-Scroll Navigation Action Buttons (Bukan Scroll!) -->
@@ -453,18 +453,23 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: Tugas Qira'ah -->
+                    <!-- Card 2: Tugas Baca Teks -->
                     <div onclick="switchView('qiraah');" class="group bg-white border-[3px] border-black rounded-2xl p-5 shadow-[5px_5px_0px_0px_#000] hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000] transition-all cursor-pointer flex flex-col justify-between space-y-4">
                         <div class="space-y-3">
                             <div class="w-12 h-12 rounded-xl bg-[#00F0FF] border-2 border-black shadow-[2px_2px_0px_0px_#000] flex items-center justify-center text-black text-xl group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-headphones"></i>
+                                <i class="fa-solid fa-file-lines"></i>
                             </div>
                             <div>
                                 <span class="text-[10px] font-mono font-black bg-[#00F0FF] px-2 py-0.5 border border-black rounded">TUGAS 2</span>
-                                <h3 class="text-base font-black text-black mt-1">Tugas Baca Teks & Audio</h3>
-                                <p class="text-xs text-slate-600 font-semibold mt-1 leading-relaxed">Naskah bacaan Arab berharakat jelas dan pemutar rekaman suara membaca.</p>
+                                <h3 class="text-base font-black text-black mt-1">Baca Teks</h3>
+                                <p class="text-xs text-slate-600 font-semibold mt-1 leading-relaxed">Tugas membaca teks bahasa Arab yang terhubung langsung ke Google Drive.</p>
                             </div>
                         </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-black/10 text-xs font-black text-black">
+                            <span>Buka Baca Teks</span>
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
                         <div class="flex items-center justify-between pt-2 border-t border-black/10 text-xs font-black text-black">
                             <span>Buka Qira'ah</span>
                             <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -669,7 +674,7 @@
                     <i class="fa-solid fa-arrow-left mr-1"></i> Ke Biodata
                 </button>
                 <button onclick="switchView('qiraah');" class="neo-btn bg-[#00F0FF] hover:bg-[#00d8e6] px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000]">
-                    <span>Lanjut ke Tugas 2: Qira'ah</span> <i class="fa-solid fa-arrow-right ml-1"></i>
+                    <span>Lanjut ke Tugas 2: Baca Teks</span> <i class="fa-solid fa-arrow-right ml-1"></i>
                 </button>
             </div>
 
@@ -746,7 +751,7 @@
             <!-- Bottom View Navigation -->
             <div class="flex justify-between items-center pt-4 border-t border-black/20">
                 <button onclick="switchView('qiraah');" class="neo-btn bg-white hover:bg-slate-100 px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000]">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Ke Tugas 2: Qira'ah
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Ke Tugas 2: Baca Teks
                 </button>
                 <button onclick="switchView('kontak');" class="neo-btn bg-[#FFE600] hover:bg-[#FFD600] px-4 py-2 rounded-xl text-xs font-black shadow-[2px_2px_0px_0px_#000]">
                     <span>Ke Halaman Kontak</span> <i class="fa-solid fa-arrow-right ml-1"></i>
@@ -1135,9 +1140,9 @@
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-3 gap-2">
                         <div>
                             <h4 class="font-black text-base text-black flex items-center gap-2">
-                                <i class="fa-solid fa-headphones text-[#FF3366]"></i> Kelola Tugas 2: Qira'ah & Audio
+                                <i class="fa-solid fa-file-lines text-[#00F0FF]"></i> Kelola Tugas 2: Baca Teks
                             </h4>
-                            <p class="text-xs text-slate-600 font-semibold">Tentukan status tugas baca teks, masukkan naskah Arab, dan unggah rekaman suara.</p>
+                            <p class="text-xs text-slate-600 font-semibold">Tentukan status tugas baca teks, atur nama tombol dan link Google Drive.</p>
                         </div>
 
                         <!-- Status Switcher -->
@@ -1149,14 +1154,14 @@
                         </div>
                     </div>
 
-                    <!-- Quick Preset -->
+                    <!-- Preset Helper Buttons -->
                     <div class="flex flex-wrap gap-2.5 p-3 bg-[#00F0FF]/20 border-2 border-black rounded-xl items-center justify-between">
                         <div class="text-xs font-bold text-slate-800">
-                            <strong>Pintasan:</strong> Muat naskah bacaan siyasah berharakat lengkap.
+                            <strong>Pintasan:</strong> Muat contoh tautan Google Drive atau kosongkan seketika.
                         </div>
                         <div class="flex gap-2">
                             <button type="button" onclick="loadDefaultQiraahPreset();" class="neo-btn bg-[#FFE600] px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
-                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Muat Contoh Naskah Arab
+                                <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Muat Contoh Link Drive
                             </button>
                             <button type="button" onclick="clearQiraahData();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-black shadow-[2px_2px_0px_0px_#000]">
                                 <i class="fa-solid fa-eraser mr-1"></i> Kosongkan
@@ -1166,41 +1171,37 @@
 
                     <div class="space-y-4">
                         <div class="space-y-1">
-                            <label class="text-xs font-mono font-black uppercase text-black">Judul Teks Bacaan</label>
-                            <input type="text" id="admInputQiraahJudul" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
+                            <label class="text-xs font-mono font-black uppercase text-black">Judul Tugas</label>
+                            <input type="text" id="admInputQiraahJudul" placeholder="Contoh: Baca Teks Bahasa Arab" class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-bold text-sm">
                         </div>
 
                         <div class="space-y-1">
-                            <label class="text-xs font-mono font-black uppercase text-black">Naskah Bacaan Bahasa Arab (Lengkap Harakat)</label>
-                            <textarea id="admInputQiraahArab" rows="4" dir="rtl" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-arabic text-lg sm:text-xl font-bold text-slate-900 leading-loose"></textarea>
+                            <label class="text-xs font-mono font-black uppercase text-black">Deskripsi / Keterangan Singkat</label>
+                            <textarea id="admInputQiraahDeskripsi" rows="2" placeholder="Contoh: Silakan klik tombol di bawah untuk membuka naskah bacaan teks dan rekaman yang tersimpan di Google Drive." class="w-full p-2.5 bg-[#F8FAFC] border-2 border-black rounded-xl font-semibold text-sm"></textarea>
                         </div>
 
-                        <div class="space-y-1">
-                            <label class="text-xs font-mono font-black uppercase text-black">Terjemahan Bahasa Indonesia</label>
-                            <textarea id="admInputQiraahArti" rows="3" class="w-full p-3 bg-[#F8FAFC] border-2 border-black rounded-xl font-semibold text-sm leading-relaxed"></textarea>
-                        </div>
-
-                        <!-- Audio Upload & Preview -->
-                        <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-3">
-                            <label class="text-xs font-mono font-black uppercase text-black block">
-                                <i class="fa-solid fa-microphone mr-1 text-[#FF3366]"></i> Berkas Audio Rekaman Membaca (MP3 / WAV / M4A)
-                            </label>
-                            
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div>
-                                    <span class="text-[11px] font-mono font-bold block mb-1">Unggah dari Komputer / HP:</span>
-                                    <input type="file" id="admInputAudioFile" accept="audio/*" onchange="handleAudioFileUpload(event);" class="w-full text-xs font-bold file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border file:border-black file:text-xs file:font-black file:bg-[#00FF88] file:cursor-pointer">
-                                </div>
-                                <div>
-                                    <span class="text-[11px] font-mono font-bold block mb-1">Atau masukkan URL Audio:</span>
-                                    <div class="flex gap-2">
-                                        <input type="url" id="admInputAudioUrl" placeholder="https://example.com/audio.mp3" class="flex-grow p-1.5 bg-white border-2 border-black rounded-lg text-xs font-bold">
-                                        <button type="button" onclick="applyAudioFromUrl();" class="neo-btn bg-[#FFE600] px-3 py-1 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000]">
-                                            Set
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="p-4 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-4">
+                            <div class="flex items-center justify-between border-b border-black/15 pb-2">
+                                <span class="text-xs font-mono font-black uppercase text-black flex items-center gap-1.5">
+                                    <i class="fa-brands fa-google-drive text-[#00F0FF] text-base"></i> Pengaturan Tombol & Tautan Google Drive
+                                </span>
+                                <span class="text-[10px] font-mono font-bold bg-[#FFE600] px-2 py-0.5 border border-black rounded">Aksi Utama</span>
                             </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono font-black uppercase text-black">Nama Tombol (Label Button)</label>
+                                <input type="text" id="admInputQiraahBtnNama" placeholder="Contoh: Buka Tugas di Google Drive" class="w-full p-2.5 bg-white border-2 border-black rounded-xl font-bold text-sm">
+                                <p class="text-[10px] font-mono text-slate-500">Teks ini yang akan tertulis pada tombol di halaman Baca Teks.</p>
+                            </div>
+
+                            <div class="space-y-1">
+                                <label class="text-xs font-mono font-black uppercase text-black">Tautan / Link Google Drive</label>
+                                <input type="url" id="admInputQiraahDriveUrl" placeholder="https://drive.google.com/drive/folders/... atau https://drive.google.com/file/d/..." class="w-full p-2.5 bg-white border-2 border-black rounded-xl font-bold text-sm">
+                                <p class="text-[10px] font-mono text-slate-500">Pastikan akses link Google Drive diatur ke "Siapa saja yang memiliki link dapat melihat".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                             <!-- Audio Player Preview in Admin -->
                             <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1387,10 +1388,10 @@
             },
             tugas2: {
                 isFilled: false,
-                judul: "النِّظَامُ السِّيَاسِيُّ فِي الإِسْلَامِ (Sistem Ketatanegaraan dalam Islam)",
-                teksArab: "النِّظَامُ السِّيَاسِيُّ فِي الإِسْلَامِ يَقُوْمُ عَلَى مَبَادِئَ أَسَاسِيَّةٍ مِنْهَا الشُّوْرَى وَالعَدَالَةُ وَالمُسَاوَاةُ. وَالحَاكِمُ فِي الإِسْلَامِ مُؤْتَمَنٌ عَلَى رِعَايَةِ شُؤُوْنِ الرَّعِيَّةِ وَإِقَامَةِ الحَقِّ، كَمَا قَالَ تَعَالَى: ﴿وَشَاوِرْهُمْ فِي الْأَمْرِ﴾. وَإِنَّ سِيَاسَةَ الدَّوْلَةِ تَسْعَى لِتَحْقِيْقِ المَصَالِحِ وَدَرْءِ المَفَاسِدِ لِلْمُوَاطِنِيْنَ جَمِيْعًا.",
-                terjemahan: "Sistem politik dalam Islam berpijak pada prinsip-prinsip fundamental, di antaranya adalah musyawarah (as-syura), keadilan (al-'adalah), dan kesetaraan (al-musawah). Pemimpin dalam Islam diamanahkan untuk mengayomi urusan rakyat dan menegakkan kebenaran, sebagaimana firman Allah: 'Dan bermusyawarahlah dengan mereka dalam urusan itu'. Sesungguhnya kebijakan ketatanegaraan berorientasi untuk mewujudkan kemaslahatan bersama dan menolak segala bentuk kerusakan bagi seluruh warga negara.",
-                audioData: ""
+                judul: "Baca Teks Bahasa Arab",
+                deskripsi: "Tugas membaca teks bahasa Arab mata kuliah Siyasah Syar'iyyah. Silakan klik tombol di bawah untuk membuka naskah bacaan dan rekaman suara di Google Drive.",
+                btnNama: "Buka di Google Drive",
+                driveUrl: ""
             },
             tugas3: {
                 isFilled: false,
@@ -1772,79 +1773,33 @@
             showToast("Tugas 1 dikosongkan.");
         }
 
-        // Qira'ah handlers
-        function updateAdminAudioStatus() {
-            const player = document.getElementById('admAudioPreview');
-            const statusTxt = document.getElementById('admAudioStatusText');
-            if (appData.tugas2.audioData) {
-                player.src = appData.tugas2.audioData;
-                player.classList.remove('hidden');
-                statusTxt.textContent = "Audio aktif siap diputar.";
-                statusTxt.className = "text-xs font-mono font-bold text-emerald-600";
-            } else {
-                player.src = "";
-                player.classList.add('hidden');
-                statusTxt.textContent = "Belum ada file audio yang terpasang.";
-                statusTxt.className = "text-xs font-mono font-bold text-slate-500";
-            }
-        }
-
-        function handleAudioFileUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            if (file.size > 15 * 1024 * 1024) {
-                alert("Ukuran audio terlalu besar! Pilih file audio di bawah 15MB.");
-                return;
-            }
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                appData.tugas2.audioData = event.target.result;
-                updateAdminAudioStatus();
-                showToast("File rekaman audio berhasil diunggah!");
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function applyAudioFromUrl() {
-            const url = document.getElementById('admInputAudioUrl').value.trim();
-            if (!url) return;
-            appData.tugas2.audioData = url;
-            updateAdminAudioStatus();
-            showToast("URL Audio diterapkan!");
-        }
-
-        function removeAudioFile() {
-            appData.tugas2.audioData = "";
-            document.getElementById('admInputAudioUrl').value = "";
-            document.getElementById('admInputAudioFile').value = "";
-            updateAdminAudioStatus();
-            showToast("Berkas audio dihapus.");
-        }
-
+        // Baca Teks (Google Drive) handlers
         function loadDefaultQiraahPreset() {
-            appData.tugas2.judul = INITIAL_DATA.tugas2.judul;
-            appData.tugas2.teksArab = INITIAL_DATA.tugas2.teksArab;
-            appData.tugas2.terjemahan = INITIAL_DATA.tugas2.terjemahan;
+            appData.tugas2.judul = "Baca Teks Bahasa Arab";
+            appData.tugas2.deskripsi = "Tugas membaca teks bahasa Arab mata kuliah Siyasah Syar'iyyah. Silakan klik tombol di bawah untuk membuka naskah bacaan dan rekaman suara di Google Drive.";
+            appData.tugas2.btnNama = "Buka di Google Drive";
+            appData.tugas2.driveUrl = "https://drive.google.com";
             appData.tugas2.isFilled = true;
             document.getElementById('admInputQiraahJudul').value = appData.tugas2.judul;
-            document.getElementById('admInputQiraahArab').value = appData.tugas2.teksArab;
-            document.getElementById('admInputQiraahArti').value = appData.tugas2.terjemahan;
+            document.getElementById('admInputQiraahDeskripsi').value = appData.tugas2.deskripsi;
+            document.getElementById('admInputQiraahBtnNama').value = appData.tugas2.btnNama;
+            document.getElementById('admInputQiraahDriveUrl').value = appData.tugas2.driveUrl;
             updateTugasToggleBtn(2);
-            showToast("Contoh naskah bacaan dimuat & status diubah ke SELESAI!");
+            showToast("Contoh tautan Google Drive dimuat & status diubah ke SELESAI!");
         }
 
         function clearQiraahData() {
             appData.tugas2.judul = "";
-            appData.tugas2.teksArab = "";
-            appData.tugas2.terjemahan = "";
-            appData.tugas2.audioData = "";
+            appData.tugas2.deskripsi = "";
+            appData.tugas2.btnNama = "Buka di Google Drive";
+            appData.tugas2.driveUrl = "";
             appData.tugas2.isFilled = false;
             document.getElementById('admInputQiraahJudul').value = "";
-            document.getElementById('admInputQiraahArab').value = "";
-            document.getElementById('admInputQiraahArti').value = "";
-            updateAdminAudioStatus();
+            document.getElementById('admInputQiraahDeskripsi').value = "";
+            document.getElementById('admInputQiraahBtnNama').value = "Buka di Google Drive";
+            document.getElementById('admInputQiraahDriveUrl').value = "";
             updateTugasToggleBtn(2);
-            showToast("Tugas 2 dikosongkan.");
+            showToast("Tugas 2 (Baca Teks) dikosongkan.");
         }
 
         // UAS handlers
@@ -2127,18 +2082,18 @@
                 badge.textContent = "STATUS: BELUM DIISI";
                 content.innerHTML = `
                     <div class="border-[2.5px] border-dashed border-black/40 rounded-2xl p-8 sm:p-12 text-center bg-white space-y-4">
-                        <div class="w-16 h-16 bg-[#FF3366] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-white text-2xl mx-auto">
-                            <i class="fa-solid fa-microphone-slash"></i>
+                        <div class="w-16 h-16 bg-[#00F0FF] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] flex items-center justify-center text-black text-2xl mx-auto">
+                            <i class="fa-solid fa-file-lines"></i>
                         </div>
                         <div>
-                            <h4 class="text-xl font-black text-black">Belum Ada Rekaman & Teks yang Dikerjakan</h4>
+                            <h4 class="text-xl font-black text-black">Belum Ada Tugas yang Dikerjakan</h4>
                             <p class="text-slate-600 text-sm max-w-md mx-auto mt-1 leading-relaxed">
-                                Tugas membaca teks qira'ah dan pemutar audio masih kosong. Belum ada rekaman suara maupun teks bacaan bahasa Arab yang dimasukkan.
+                                Tugas Baca Teks belum diisi atau tautan Google Drive belum disematkan oleh mahasiswa.
                             </p>
                         </div>
                         <div class="pt-1">
                             <span class="inline-block font-mono text-xs font-bold text-slate-700 bg-[#F8FAFC] border-2 border-black px-3.5 py-1.5 rounded-lg shadow-[2px_2px_0px_0px_#000]">
-                                Format: Naskah Arab Harakat & Audio MP3
+                                Siap diatur melalui Panel Pengelola
                             </span>
                         </div>
                     </div>`;
@@ -2147,49 +2102,52 @@
                 badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
 
                 const t = appData.tugas2;
+                const driveLink = t.driveUrl ? t.driveUrl.trim() : '#';
+                const btnLabel = t.btnNama ? t.btnNama.trim() : 'Buka di Google Drive';
+
                 content.innerHTML = `
-                    <div class="space-y-6">
-                        <div class="p-4 bg-[#FFE600]/30 border-2 border-black rounded-2xl flex items-center justify-between">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-book-quran text-lg text-black"></i>
-                                <span class="font-black text-sm text-black">${t.judul || 'Naskah Bacaan Qira\'ah'}</span>
-                            </div>
-                            <span class="text-xs font-mono font-bold bg-white px-2 py-0.5 border border-black rounded">RTL Amiri</span>
-                        </div>
-
-                        <div class="p-6 sm:p-8 bg-white border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-4">
-                            <p class="font-arabic text-xl sm:text-2xl lg:text-3xl leading-[2.2] sm:leading-[2.5] text-slate-900 text-right font-medium">
-                                ${t.teksArab || 'Naskah belum diisi.'}
-                            </p>
-                        </div>
-
-                        <div class="p-5 bg-white border-2 border-black rounded-2xl shadow-[3px_3px_0px_0px_#000] space-y-2">
-                            <div class="flex items-center gap-2 text-xs font-black uppercase text-black font-mono border-b border-black/15 pb-2">
-                                <i class="fa-solid fa-language text-[#00F0FF] text-base"></i>
-                                <span>Terjemahan Bahasa Indonesia</span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-800 leading-relaxed">
-                                ${t.terjemahan || 'Terjemahan belum diisi.'}
-                            </p>
-                        </div>
-
-                        <div class="p-5 bg-[#FFE600] border-2 border-black rounded-2xl shadow-[4px_4px_0px_0px_#000] space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-2 font-black text-xs uppercase text-black font-mono">
-                                    <i class="fa-solid fa-headphones text-base"></i>
-                                    <span>Rekaman Suara Membaca (Audio Player)</span>
+                    <div class="bg-white border-[3.5px] border-black rounded-3xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6 text-left">
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-4 gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-[#00F0FF] border-2 border-black shadow-[3px_3px_0px_0px_#000] flex items-center justify-center text-xl text-black shrink-0">
+                                    <i class="fa-solid fa-book-open-reader"></i>
                                 </div>
-                                <span class="text-[11px] font-mono font-bold bg-white px-2 py-0.5 border border-black rounded">HTML5 Audio</span>
+                                <div>
+                                    <span class="text-xs font-mono font-black uppercase text-[#FF3366] tracking-wider block">TUGAS 2 &bull; BAHASA ARAB</span>
+                                    <h3 class="text-xl sm:text-2xl font-black text-black">${t.judul || 'Baca Teks'}</h3>
+                                </div>
                             </div>
-                            ${t.audioData ? `
-                                <audio controls class="w-full h-11 border border-black rounded-xl">
-                                    <source src="${t.audioData}" type="audio/mpeg">
-                                    Browser Anda tidak mendukung pemutar audio HTML5.
-                                </audio>` : `
-                                <div class="p-3 bg-white border border-black rounded-xl text-center text-xs font-mono font-bold text-slate-600">
-                                    File rekaman audio belum diunggah.
-                                </div>`}
+                            <span class="px-3 py-1 bg-[#00FF88] border-2 border-black rounded-xl text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000] self-start sm:self-auto flex items-center gap-1.5">
+                                <i class="fa-brands fa-google-drive"></i> GOOGLE DRIVE
+                            </span>
                         </div>
+
+                        <div class="p-5 bg-[#F8FAFC] border-2 border-black rounded-2xl space-y-2">
+                            <span class="text-xs font-black uppercase text-black font-mono block">Deskripsi Tugas:</span>
+                            <p class="text-sm font-semibold text-slate-700 leading-relaxed">
+                                ${t.deskripsi || "Silakan klik tombol di bawah untuk mengakses berkas naskah bacaan teks dan rekaman audio yang tersimpan di Google Drive."}
+                            </p>
+                        </div>
+
+                        <!-- Action Button pointing to Google Drive -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                            <a href="${driveLink}" ${driveLink !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="neo-btn bg-[#FFE600] hover:bg-[#FFD600] text-black px-8 py-4 rounded-2xl text-base sm:text-lg font-black gap-3 shadow-[5px_5px_0px_0px_#000] group transition-all text-center">
+                                <i class="fa-brands fa-google-drive text-2xl text-[#0A0A0A] group-hover:scale-110 transition-transform"></i>
+                                <span>${btnLabel}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                            </a>
+
+                            <span class="text-xs font-mono font-bold text-slate-500 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Terbuka langsung di tab baru
+                            </span>
+                        </div>
+
+                        ${t.driveUrl ? `
+                        <div class="pt-1 text-[11px] font-mono text-slate-500 break-all bg-slate-50 p-3 rounded-xl border border-dashed border-black/30">
+                            <span class="font-bold text-black">Link Tersemat:</span> <a href="${t.driveUrl}" target="_blank" class="underline text-blue-600 hover:text-black">${t.driveUrl}</a>
+                        </div>` : ''}
+
                     </div>`;
             }
         }
