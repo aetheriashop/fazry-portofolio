@@ -688,9 +688,9 @@
             <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-black pb-4 gap-3">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#00F0FF] border-2 border-black rounded-md text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]">
-                        TUGAS 2 &bull; QIRA'AH & AUDIO
+                        TUGAS 2 &bull; BACA TEKS
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-black tracking-tight mt-1">Tugas Membaca Teks Arab & Rekaman Suara</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-black tracking-tight mt-1">Tugas Baca Teks Arab (Google Drive)</h2>
                 </div>
 
                 <div class="flex items-center gap-2">
@@ -1372,11 +1372,11 @@
                 ]
             },
             tugas2: {
-                isFilled: false,
+                isFilled: true,
                 judul: "Baca Teks Bahasa Arab",
-                deskripsi: "Tugas membaca teks bahasa Arab mata kuliah Siyasah Syar'iyyah. Silakan klik tombol di bawah untuk membuka naskah bacaan dan rekaman suara di Google Drive.",
+                deskripsi: "Silakan klik tombol di bawah untuk membuka berkas naskah bacaan teks dan rekaman yang tersimpan di Google Drive.",
                 btnNama: "Buka di Google Drive",
-                driveUrl: ""
+                driveUrl: "https://drive.google.com"
             },
             tugas3: {
                 isFilled: false,
@@ -1391,20 +1391,44 @@
         let appData = {};
 
         function loadAppData() {
-            const saved = localStorage.getItem('fazry_portfolio_data');
-            if (saved) {
-                try {
-                    appData = JSON.parse(saved);
-                } catch (e) {
+            try {
+                const saved = localStorage.getItem('fazry_portfolio_data');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    appData = {
+                        biodata: { ...INITIAL_DATA.biodata, ...(parsed.biodata || {}) },
+                        foto: (parsed.foto !== undefined && parsed.foto !== "") ? parsed.foto : INITIAL_DATA.foto,
+                        tugas1: { ...INITIAL_DATA.tugas1, ...(parsed.tugas1 || {}) },
+                        tugas2: {
+                            ...INITIAL_DATA.tugas2,
+                            ...(parsed.tugas2 || {}),
+                            judul: (parsed.tugas2 && parsed.tugas2.judul) ? parsed.tugas2.judul : INITIAL_DATA.tugas2.judul,
+                            deskripsi: (parsed.tugas2 && parsed.tugas2.deskripsi) ? parsed.tugas2.deskripsi : INITIAL_DATA.tugas2.deskripsi,
+                            btnNama: (parsed.tugas2 && parsed.tugas2.btnNama) ? parsed.tugas2.btnNama : INITIAL_DATA.tugas2.btnNama,
+                            driveUrl: (parsed.tugas2 && parsed.tugas2.driveUrl) ? parsed.tugas2.driveUrl : INITIAL_DATA.tugas2.driveUrl,
+                        },
+                        tugas3: { ...INITIAL_DATA.tugas3, ...(parsed.tugas3 || {}) }
+                    };
+                    // Migrasi untuk pengguna lama: jika tugas2 belum ada driveUrl atau nama tombol, aktifkan default
+                    if (parsed.tugas2 && !parsed.tugas2.driveUrl) {
+                        appData.tugas2.driveUrl = INITIAL_DATA.tugas2.driveUrl;
+                        appData.tugas2.isFilled = true;
+                    }
+                } else {
                     appData = JSON.parse(JSON.stringify(INITIAL_DATA));
                 }
-            } else {
+            } catch (e) {
+                console.warn("Storage access failed, using default data:", e);
                 appData = JSON.parse(JSON.stringify(INITIAL_DATA));
             }
         }
 
         function saveToStorage() {
-            localStorage.setItem('fazry_portfolio_data', JSON.stringify(appData));
+            try {
+                localStorage.setItem('fazry_portfolio_data', JSON.stringify(appData));
+            } catch (e) {
+                console.warn("Gagal menyimpan ke localStorage:", e);
+            }
         }
 
         // ----------------------------------------------------
@@ -1413,8 +1437,19 @@
         // ----------------------------------------------------
         const ALL_VIEWS = ['beranda', 'profil', 'mufradat', 'qiraah', 'uas', 'kontak'];
 
+        function resolveViewName(name) {
+            const h = (name || '').replace('#', '').toLowerCase().trim();
+            if (h === 'baca' || h === 'baca-teks' || h === 'baca_teks' || h === 'tugas2' || h === 'tugas-2') return 'qiraah';
+            if (h === 'kosakata' || h === 'mufradat' || h === 'tugas1' || h === 'tugas-1') return 'mufradat';
+            if (h === 'makalah' || h === 'uas' || h === 'tugas3' || h === 'tugas-3') return 'uas';
+            if (h === 'profil' || h === 'biodata') return 'profil';
+            if (h === 'kontak') return 'kontak';
+            if (ALL_VIEWS.includes(h)) return h;
+            return 'beranda';
+        }
+
         function switchView(viewName) {
-            if (!ALL_VIEWS.includes(viewName)) viewName = 'beranda';
+            viewName = resolveViewName(viewName);
 
             ALL_VIEWS.forEach(v => {
                 const elId = 'view' + v.charAt(0).toUpperCase() + v.slice(1);
@@ -2095,9 +2130,9 @@
                 badge.className = "px-3 py-1 bg-[#00FF88] border-2 border-black rounded-xl text-xs font-mono font-black text-black shadow-[2px_2px_0px_0px_#000]";
                 badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
 
-                const t = appData.tugas2;
-                const driveLink = t.driveUrl ? t.driveUrl.trim() : '#';
-                const btnLabel = t.btnNama ? t.btnNama.trim() : 'Buka di Google Drive';
+                const t = appData.tugas2 || {};
+                const driveLink = (t.driveUrl && t.driveUrl.trim()) ? t.driveUrl.trim() : 'https://drive.google.com';
+                const btnLabel = (t.btnNama && t.btnNama.trim()) ? t.btnNama.trim() : 'Buka di Google Drive';
 
                 content.innerHTML = `
                     <div class="bg-white border-[3.5px] border-black rounded-3xl p-6 sm:p-8 shadow-[8px_8px_0px_0px_#000] space-y-6 text-left">
@@ -2325,10 +2360,18 @@
             if (currentHash === 'admin') {
                 openAdminModal();
                 switchView('beranda');
-            } else if (ALL_VIEWS.includes(currentHash)) {
-                switchView(currentHash);
             } else {
-                switchView('beranda');
+                switchView(resolveViewName(currentHash));
+            }
+        });
+
+        // Listen for browser navigation & hash changes (back/forward or direct link clicking)
+        window.addEventListener('hashchange', () => {
+            const h = window.location.hash.replace('#', '');
+            if (h === 'admin') {
+                openAdminModal();
+            } else if (h) {
+                switchView(resolveViewName(h));
             }
         });
     </script>
