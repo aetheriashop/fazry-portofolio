@@ -1203,21 +1203,6 @@
                     </div>
                 </div>
 
-                            <!-- Audio Player Preview in Admin -->
-                            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                                <div class="flex-grow">
-                                    <audio id="admAudioPreview" controls class="w-full hidden h-10"></audio>
-                                    <span id="admAudioStatusText" class="text-xs font-mono font-bold text-slate-500">Belum ada file audio yang terpasang.</span>
-                                </div>
-                                <button type="button" onclick="removeAudioFile();" class="neo-btn bg-[#FF3366] text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow-[2px_2px_0px_0px_#000] shrink-0">
-                                    <i class="fa-solid fa-trash mr-1"></i> Hapus Audio
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
                 <!-- ========================================== -->
                 <!-- TAB 5: TUGAS 3 (UAS PDF)                   -->
                 <!-- ========================================== -->
@@ -1625,11 +1610,15 @@
             renderAdminMufradatInputs();
             updateTugasToggleBtn(1);
 
-            // Tugas 2
-            document.getElementById('admInputQiraahJudul').value = appData.tugas2.judul || '';
-            document.getElementById('admInputQiraahArab').value = appData.tugas2.teksArab || '';
-            document.getElementById('admInputQiraahArti').value = appData.tugas2.terjemahan || '';
-            updateAdminAudioStatus();
+            // Tugas 2 (Baca Teks)
+            const qJudulEl = document.getElementById('admInputQiraahJudul');
+            if (qJudulEl) qJudulEl.value = appData.tugas2.judul || '';
+            const qDeskEl = document.getElementById('admInputQiraahDeskripsi');
+            if (qDeskEl) qDeskEl.value = appData.tugas2.deskripsi || '';
+            const qBtnEl = document.getElementById('admInputQiraahBtnNama');
+            if (qBtnEl) qBtnEl.value = appData.tugas2.btnNama || 'Buka di Google Drive';
+            const qDriveEl = document.getElementById('admInputQiraahDriveUrl');
+            if (qDriveEl) qDriveEl.value = appData.tugas2.driveUrl || '';
             updateTugasToggleBtn(2);
 
             // Tugas 3
@@ -1889,9 +1878,14 @@
             appData.biodata.whatsapp = document.getElementById('admInputWa').value.trim();
             appData.biodata.email = document.getElementById('admInputEmail').value.trim();
 
-            appData.tugas2.judul = document.getElementById('admInputQiraahJudul').value.trim();
-            appData.tugas2.teksArab = document.getElementById('admInputQiraahArab').value.trim();
-            appData.tugas2.terjemahan = document.getElementById('admInputQiraahArti').value.trim();
+            const qJudulEl = document.getElementById('admInputQiraahJudul');
+            if (qJudulEl) appData.tugas2.judul = qJudulEl.value.trim();
+            const qDeskEl = document.getElementById('admInputQiraahDeskripsi');
+            if (qDeskEl) appData.tugas2.deskripsi = qDeskEl.value.trim();
+            const qBtnEl = document.getElementById('admInputQiraahBtnNama');
+            if (qBtnEl) appData.tugas2.btnNama = qBtnEl.value.trim() || 'Buka di Google Drive';
+            const qDriveEl = document.getElementById('admInputQiraahDriveUrl');
+            if (qDriveEl) appData.tugas2.driveUrl = qDriveEl.value.trim();
 
             appData.tugas3.judul = document.getElementById('admInputUasJudul').value.trim();
             appData.tugas3.dosen = document.getElementById('admInputUasDosen').value.trim();
