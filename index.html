@@ -1390,7 +1390,7 @@
                 judul: "Baca Teks Bahasa Arab",
                 deskripsi: "Silakan klik tombol di bawah untuk membuka berkas naskah bacaan teks dan rekaman yang tersimpan di Google Drive.",
                 btnNama: "Buka di Google Drive",
-                driveUrl: "https://drive.google.com"
+                driveUrl: "https://drive.google.com/file/d/1iyiEvh3yFrmiq6etRjxYMVW2ds4R70z5/view?usp=drivesdk"
             },
             tugas3: {
                 isFilled: false,
@@ -1423,8 +1423,8 @@
                         },
                         tugas3: { ...INITIAL_DATA.tugas3, ...(parsed.tugas3 || {}) }
                     };
-                    // Migrasi untuk pengguna lama: jika tugas2 belum ada driveUrl atau nama tombol, aktifkan default
-                    if (parsed.tugas2 && !parsed.tugas2.driveUrl) {
+                    // Migrasi untuk pengguna lama: jika tugas2 belum ada driveUrl atau masih link umum, sinkronkan ke link berkas resmi
+                    if (!appData.tugas2.driveUrl || appData.tugas2.driveUrl === 'https://drive.google.com' || appData.tugas2.driveUrl === '#') {
                         appData.tugas2.driveUrl = INITIAL_DATA.tugas2.driveUrl;
                         appData.tugas2.isFilled = true;
                     }
@@ -1867,7 +1867,7 @@
             appData.tugas2.judul = "Baca Teks Bahasa Arab";
             appData.tugas2.deskripsi = "Tugas membaca teks bahasa Arab mata kuliah Siyasah Syar'iyyah. Silakan klik tombol di bawah untuk membuka naskah bacaan dan rekaman suara di Google Drive.";
             appData.tugas2.btnNama = "Buka di Google Drive";
-            appData.tugas2.driveUrl = "https://drive.google.com";
+            appData.tugas2.driveUrl = "https://drive.google.com/file/d/1iyiEvh3yFrmiq6etRjxYMVW2ds4R70z5/view?usp=drivesdk";
             appData.tugas2.isFilled = true;
             document.getElementById('admInputQiraahJudul').value = appData.tugas2.judul;
             document.getElementById('admInputQiraahDeskripsi').value = appData.tugas2.deskripsi;
@@ -2205,7 +2205,7 @@
                 badge.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> STATUS: SELESAI`;
 
                 const t = appData.tugas2 || {};
-                const driveLink = (t.driveUrl && t.driveUrl.trim()) ? t.driveUrl.trim() : 'https://drive.google.com';
+                const driveLink = (t.driveUrl && t.driveUrl.trim()) ? t.driveUrl.trim() : 'https://drive.google.com/file/d/1iyiEvh3yFrmiq6etRjxYMVW2ds4R70z5/view?usp=drivesdk';
                 const btnLabel = (t.btnNama && t.btnNama.trim()) ? t.btnNama.trim() : 'Buka di Google Drive';
 
                 content.innerHTML = `
